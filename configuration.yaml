@@ -1,0 +1,140 @@
+##
+# CORE
+##
+
+default_config:
+
+homeassistant:
+  name: Thuis
+  latitude: !secret home_latitude
+  longitude: !secret home_longitude
+  unit_system: metric
+  time_zone: Europe/Brussels
+  customize: !include customize.yaml
+
+http:
+  base_url: !secret base_url
+  ssl_certificate: /ssl/fullchain.pem
+  ssl_key: /ssl/privkey.pem
+
+frontend:
+  themes: !include_dir_merge_named themes
+
+hacs:
+  token: !secret hacs_token
+  appdaemon: true
+
+##
+# LOGGING, HISTORY, ETC
+##
+
+logger:
+  default: warning
+
+# TODO: Move to external MySQL?
+recorder:
+  purge_keep_days: 7
+  purge_interval: 1
+  #db_url: 'sqlite:///:memory:'
+  exclude:
+    domains:
+      - automation
+      - weblink
+      - updater
+    entities:
+      - sun.sun
+      - sensor.last_boot
+      - sensor.date
+
+##
+# INTEGRATIONS
+##
+
+discovery:
+  ignore:
+    - homekit
+
+pi_hole:
+  - host: localhost:4865
+    api_key: !secret pihole1_api_key
+  #   name: 'Pi-Hole #1'
+  # - host: !secret pihole2_host
+  #   api_key: !secret pihole2_api_key
+  #   name 'Pi-Hole #2'
+
+mikrotik:
+  - host: !secret mikrotik_host
+    username: !secret mikrotik_username
+    password: !secret mikrotik_password
+    ssl: true
+    method: dhcp
+    arp_ping: true
+    track_devices: true
+
+rfxtrx:
+  device: /dev/serial/by-id/usb-RFXCOM_RFXtrx433XL_DO43QQZI-if00-port0
+
+ring:
+  username: !secret ring_username
+  password: !secret ring_password
+
+life360:
+  accounts:
+    - username: !secret life360_username
+      password: !secret life360_password
+  circles:
+    include: [Family]
+
+speedtestdotnet:
+
+remote:
+  - platform: harmony
+    name: Living
+    activity: Kijk TV
+  - platform: harmony
+    name: Home Theater
+    activity: Kijk een Film
+
+##
+# DEVICES, ENTITIES, ...
+##
+
+shell_command:
+  convert_lovelace: 'python3 /config/json2yaml.py /config/.storage/lovelace /config/lovelace-ui.yaml'
+
+binary_sensor:
+  - platform: huesensor
+
+cover:
+  - platform: rfxtrx
+    automatic_add: False
+    devices:
+      071a000001020300: # RFY SOMFY
+        name: Living Vooraan
+      071a000001020301: # RFY SOMFY
+        name: Living Achteraan
+      071a000001020302: # RFY SOMFY
+        name: Keuken
+
+media_player:
+  - platform: spotify
+    client_id: !secret spotify_client_id
+    client_secret: !secret spotify_client_secret
+
+## -------------
+
+# Text to speech
+tts:
+  - platform: google_translate
+
+##
+# INCLUDES
+##
+
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+device_tracker: !include device_trackers.yaml
+group: !include groups.yaml
+sensor: !include sensors.yaml
+switch: !include switches.yaml

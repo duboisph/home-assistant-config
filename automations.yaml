@@ -1,0 +1,73 @@
+- alias: 'Lovelace: Set theme on startup'
+  trigger:
+    - platform: homeassistant
+      event: start
+  action:
+    - service: frontend.set_theme
+      data:
+        name: sundown
+       
+- alias: "Lovelace: convert lovelace.json to lovelace-ui.yaml"
+  trigger:
+    - platform: state
+      entity_id: sensor.lovelace
+  action:
+    - service: shell_command.convert_lovelace
+
+- alias: "Let's Encrypt: Renew"
+  trigger:
+    - platform: time
+      at: '00:00:00'
+  action:
+    - service: hassio.addon_restart
+      data:
+        addon: core_letsencrypt
+ 
+##
+# LIGTHS
+##
+
+- alias: 'Turn lights on as the sun gets dimmer'
+  trigger:
+    - platform: numeric_state
+      entity_id: sun.sun
+      value_template: "{{ state_attr('sun.sun', 'elevation') }}"
+      below: 1.5
+  action:
+    - service: light.turn_on
+      entity_id: light.living
+
+- alias: 'Turn lights off after 1AM'
+  trigger:
+    - platform: time
+      at: '01:00:00'
+  action:
+    - service: light.turn_off
+      entity_id: light.living
+
+##
+# BLINDS
+##
+
+- alias: 'Close blinds at dusk'
+  trigger:
+    - platform: numeric_state
+      entity_id: sun.sun
+      value_template: "{{ state_attr('sun.sun', 'elevation') }}"
+      below: -2.5
+  action:
+    - service: cover.close_cover
+      entity_id: cover.living_achteraan
+    - service: cover.close_cover
+      entity_id: cover.living_vooraan
+
+- alias: 'Open blinds at dawn'
+  trigger:
+    - platform: sun
+      event: sunrise
+      # offset: '+00:30:00'
+  action:
+    - service: cover.open_cover
+      entity_id: cover.living_achteraan
+    - service: cover.open_cover
+      entity_id: cover.living_vooraan

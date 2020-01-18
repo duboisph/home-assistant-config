@@ -1,0 +1,20 @@
+.*
+!/.gitignore
+
+# Folders
+custom_components/
+themes/
+deps/
+www/community/
+
+# Log & DB
+home-assistant.log
+home-assistant_v2.db
+
+# Discovered devices
+harmony_*.conf
+known_devices.yaml
+
+# Secrets
+ip_bans.yaml
+secrets.yaml

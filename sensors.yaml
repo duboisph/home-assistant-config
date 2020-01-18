@@ -1,0 +1,83 @@
+- platform: huesensor
+- platform: synologydsm
+  name: Thor
+  host: !secret synology_host
+  username: !secret synology_username
+  password: !secret synology_password
+  monitored_conditions:
+    - cpu_total_load
+    - memory_real_usage
+    - network_up
+    - network_down
+    - volume_percentage_used
+    - volume_disk_temp_max
+- platform: ophaalkalender
+  resources:
+    - restafval
+    - papier
+    - pmd
+  postcode: !secret address_postcode
+  streetname: !secret address_streetname
+  streetnumber: !secret address_streetnumber
+- platform: systemmonitor
+  resources:
+    - type: disk_use_percent
+      arg: '/'
+    - type: memory_use_percent
+    - type: processor_use
+- platform: command_line
+  name: convert_lovelace
+  command: 'python3 /config/json2yaml.py /config/.storage/lovelace /config/lovelace-ui.yaml'
+- platform: rest
+  resource: http://a0d7b954-wireguard
+  name: wireguard_sensor
+  value_template: TEST
+  json_attributes:
+    - Loki
+    - Freyja
+    - Fenrir
+- platform: template
+  sensors:
+    wireguard_loki_latest_handshake:
+      friendly_name: 'Loki latest handshake'
+      icon_template: 'mdi:handshake'
+      unit_of_measurement: s
+      value_template: '{{ states.sensor.wireguard_sensor.attributes["Loki"]["latest_handshake"] }}'
+    wireguard_loki_tx:
+      friendly_name: 'Loki sent'
+      icon_template: 'mdi:upload'
+      value_template: '{{ states.sensor.wireguard_sensor.attributes["Loki"]["transfer_tx"] | filesizeformat }}'
+    wireguard_loki_rx:
+      friendly_name: 'Loki received'
+      icon_template: 'mdi:download'
+      value_template: '{{ states.sensor.wireguard_sensor.attributes["Loki"]["transfer_rx"] | filesizeformat }}'
+- platform: template
+  sensors:
+    wireguard_freyja_latest_handshake:
+      friendly_name: 'Freyja latest handshake'
+      icon_template: 'mdi:handshake'
+      unit_of_measurement: s
+      value_template: '{{ states.sensor.wireguard_sensor.attributes["Freyja"]["latest_handshake"] }}'
+    wireguard_freyja_tx:
+      friendly_name: 'Freyja sent'
+      icon_template: 'mdi:upload'
+      value_template: '{{ states.sensor.wireguard_sensor.attributes["Freyja"]["transfer_tx"] | filesizeformat }}'
+    wireguard_freyja_rx:
+      friendly_name: 'Freyja received'
+      icon_template: 'mdi:download'
+      value_template: '{{ states.sensor.wireguard_sensor.attributes["Freyja"]["transfer_rx"] | filesizeformat }}'
+- platform: template
+  sensors:
+    wireguard_fenrir_latest_handshake:
+      friendly_name: 'Fenrir latest handshake'
+      icon_template: 'mdi:handshake'
+      unit_of_measurement: s
+      value_template: '{{ states.sensor.wireguard_sensor.attributes["Fenrir"]["latest_handshake"] }}'
+    wireguard_fenrir_tx:
+      friendly_name: 'Fenrir sent'
+      icon_template: 'mdi:upload'
+      value_template: '{{ states.sensor.wireguard_sensor.attributes["Fenrir"]["transfer_tx"] | filesizeformat }}'
+    wireguard_fenrir_rx:
+      friendly_name: 'Fenrir received'
+      icon_template: 'mdi:download'
+      value_template: '{{ states.sensor.wireguard_sensor.attributes["Fenrir"]["transfer_rx"] | filesizeformat }}'

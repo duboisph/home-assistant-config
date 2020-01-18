@@ -1,0 +1,6 @@
+person.philip:
+  entity_picture: /local/philip.jpg
+device_tracker.00_04_4b_54_70_5a:
+  friendly_name: Living TV
+device_tracker.00_04_4b_e4_aa_93:
+  friendly_name: Cinema TV
