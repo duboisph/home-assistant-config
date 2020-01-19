@@ -27,6 +27,10 @@ resources:
   url: /community_plugin/light-entity-card/light-entity-card.js
 - type: js
   url: /community_plugin/vertical-stack-in-card/vertical-stack-in-card.js
+- type: module
+  url: /community_plugin/circle-sensor-card/circle-sensor-card.js
+- type: module
+  url: /community_plugin/spotify-card/spotify-card.js
 title: Thuis
 views:
 - badges:
@@ -37,78 +41,112 @@ views:
   - entity: weather.thuis
     name: Weer
     type: custom:simple-weather-card
-  - artwork: cover
-    entity: media_player.spotify
-    hide:
-      power: true
-      source: false
-      volume: true
-    icon: mdi:spotify
-    type: custom:mini-media-player
   - entities:
-    - entities:
-      - light.vloerlamp
-      - light.plantenbak
-      - light.kerstboom
-      - light.oosterse_lamp
-      head:
-        entity: light.living
-        icon: mdi:sofa
-        name: Living
-        type: custom:slider-entity-row
-      type: custom:fold-entity-row
-    - entities:
-      - entity: light.hue_lightstrip_plus_1
-        name: LED Strip
-      - entity: light.ikea_ps_2017
-      - entity: switch.circadian_lighting_circadian_lighting
-      head:
-        entity: light.bureau
-        icon: mdi:desk
-        name: Bureau
-        type: custom:slider-entity-row
-      type: custom:fold-entity-row
-    - entities:
-      - entity: light.cinema_2
-        name: Spots
-      - entity: light.hue_iris_1
-        name: Hue Iris
-      head:
-        entity: light.cinema
-        icon: mdi:theater
-        name: Cinema
-        type: custom:slider-entity-row
-      type: custom:fold-entity-row
-    - entities:
-      - light.bolletjes
-      - light.nachtlamp_elke
-      - light.nachtlamp_philip
-      head:
-        entity: light.slaapkamer
-        icon: mdi:bed-king
-        name: Slaapkamer
-        type: custom:slider-entity-row
-      type: custom:fold-entity-row
-    - entities:
-      - entity: light.nachtlamp_xander
-        name: Nachtlamp
-      head:
-        entity: light.kinderkamer
-        icon: mdi:baby-bottle
-        name: Xander
-        type: custom:slider-entity-row
-      type: custom:fold-entity-row
+    - card:
+        head:
+          entity: light.living
+          icon: mdi:sofa
+          type: custom:slider-entity-row
+        type: custom:fold-entity-row
+      filter:
+        include:
+        - area: Living
+          domain: light
+      sort:
+        method: name
+      type: custom:auto-entities
+    - card:
+        head:
+          entity: light.bureau
+          icon: mdi:desk
+          type: custom:slider-entity-row
+        type: custom:fold-entity-row
+      filter:
+        include:
+        - area: Bureau
+          domain: light
+      sort:
+        method: name
+      type: custom:auto-entities
+    - card:
+        head:
+          entity: light.cinema
+          icon: mdi:theater
+          type: custom:slider-entity-row
+        type: custom:fold-entity-row
+      filter:
+        include:
+        - area: Cinema
+          domain: light
+      sort:
+        method: name
+      type: custom:auto-entities
+    - card:
+        head:
+          entity: light.slaapkamer
+          icon: mdi:bed-king
+          type: custom:slider-entity-row
+        type: custom:fold-entity-row
+      filter:
+        include:
+        - area: Slaapkamer
+          domain: light
+      sort:
+        method: name
+      type: custom:auto-entities
+    - card:
+        head:
+          entity: light.kinderkamer
+          icon: mdi:baby
+          type: custom:slider-entity-row
+        type: custom:fold-entity-row
+      filter:
+        include:
+        - area: Kinderkamer
+          domain: light
+      sort:
+        method: name
+      type: custom:auto-entities
     show_header_toggle: false
     title: Licht
     type: entities
-  - entities:
-    - entity: cover.keuken
-    - entity: cover.living_achteraan
-    - entity: cover.living_vooraan
-    show_header_toggle: false
-    title: Rolluiken
-    type: entities
-  - entity: camera.voordeur
+  - cards:
+    - artwork: cover
+      entity: media_player.spotify
+      hide:
+        power: true
+      shortcuts:
+        buttons:
+        - icon: mdi:sofa
+          id: Living
+          type: source
+        - icon: mdi:theater
+          id: Cinema
+          type: source
+        columns: 2
+      type: custom:mini-media-player
+    - entity: media_player.bureau
+      hide:
+        power: true
+      type: custom:mini-media-player
+    - entity: media_player.badkamer
+      hide:
+        power: true
+      type: custom:mini-media-player
+    type: vertical-stack
+  - card:
+      show_header_toggle: false
+      title: Rolluiken
+      type: entities
+    filter:
+      include:
+      - domain: cover
+    sort:
+      method: name
+    type: custom:auto-entities
+  - aspect_ratio: 50%
+    entity: camera.voordeur
+    name: Voordeur - Laatste beweging
     type: picture-entity
   icon: mdi:home
   path: default_view
@@ -118,23 +156,25 @@ views:
   - artwork: cover
     entity: media_player.living
     hide:
-      power: true
-      source: false
       volume: false
     icon: mdi:cast
     type: custom:mini-media-player
   - entities:
-    - entity: remote.living
+    - entity: remote.living_room
       name: Harmony
     show_header_toggle: false
     type: entities
-  - entities:
-    - entity: light.vloerlamp
-    - entity: light.plantenbak
-    - entity: light.oosterse_lamp
-    show_header_toggle: true
-    title: Lichten
-    type: entities
+  - card:
+      icon: mdi:lightbulb-group
+      title: Licht
+      type: entities
+    filter:
+      include:
+      - area: Living
+        domain: light
+    sort:
+      method: name
+    type: custom:auto-entities
   - brightness: true
     brightness_icon: weather-sunny
     color_picker: true
@@ -147,11 +187,16 @@ views:
     header: Living
     persist_features: false
     show_slider_percent: true
-    smooth_color_wheel: false
+    smooth_color_wheel: true
     temperature_icon: thermometer
     type: custom:light-entity-card
     white_icon: file-word-box
     white_value: true
+  - artwork: cover
+    entity: media_player.living_shieldtv
+    hide:
+      volume: false
+    type: custom:mini-media-player
   icon: mdi:sofa
   path: living
   title: Living
@@ -163,21 +208,23 @@ views:
       power: true
       source: false
       volume: false
-    icon: mdi:play-circle
     name: Sonos
     type: custom:mini-media-player
   - entities:
     - entity: sensor.samsung_m2020_series_192_168_5_120_toner_black
       name: Printer Toner
     type: entities
-  - entities:
-    - entity: light.bureau
-      name: Alle Lichten
-    - entity: light.hue_lightstrip_plus_1
-      name: LED Strip
-    - entity: light.ikea_ps_2017
-    show_header_toggle: false
-    type: entities
+  - card:
+      icon: mdi:lightbulb-group
+      title: Licht
+      type: entities
+    filter:
+      include:
+      - area: Bureau
+        domain: light
+    sort:
+      method: name
+    type: custom:auto-entities
   icon: mdi:desk
   path: bureau
   title: Bureau
@@ -196,38 +243,55 @@ views:
       name: Harmony
     show_header_toggle: false
     type: entities
-  - entities:
-    - entity: light.cinema_2
-      name: Spots
-    - entity: light.hue_iris_1
-      name: Hue Iris
-    show_header_toggle: true
-    title: Lichten
-    type: entities
+  - card:
+      icon: mdi:lightbulb-group
+      title: Licht
+      type: entities
+    filter:
+      include:
+      - area: Cinema
+        domain: light
+    sort:
+      method: name
+    type: custom:auto-entities
+  - artwork: cover
+    entity: media_player.cinema_shieldtv
+    hide:
+      volume: false
+    type: custom:mini-media-player
   icon: mdi:theater
   path: cinema
   title: Cinema
 - badges: []
   cards:
-  - entities:
-    - entity: light.slaapkamer
-      name: Alle Lichten
-    - entity: light.bolletjes
-    - entity: light.nachtlamp_elke
-    - entity: light.nachtlamp_philip
-    show_header_toggle: false
-    type: entities
+  - card:
+      icon: mdi:lightbulb-group
+      title: Licht
+      type: entities
+    filter:
+      include:
+      - area: Slaapkamer
+        domain: light
+    sort:
+      method: name
+    type: custom:auto-entities
   icon: mdi:bed-king
   path: slaapkamer
   title: Slaapkamer
 - badges: []
   cards:
-  - entities:
-    - entity: light.nachtlamp_xander
-      name: Nachtlamp
-    show_header_toggle: false
-    type: entities
-  icon: mdi:bed-single
+  - card:
+      icon: mdi:lightbulb-group
+      title: Licht
+      type: entities
+    filter:
+      include:
+      - area: Kinderkamer
+        domain: light
+    sort:
+      method: name
+    type: custom:auto-entities
+  icon: mdi:baby
   path: xander
   title: Xander
 - badges: []
@@ -238,7 +302,6 @@ views:
       power: true
       source: false
       volume: false
-    icon: mdi:play-circle
     name: Sonos
     type: custom:mini-media-player
   icon: mdi:shower
@@ -401,13 +464,26 @@ views:
     - entity: sensor.ophaalkalender_pmd
       name: P+MD
     type: entities
-  - entities:
-    - entity: device_tracker.hd1913
-    - entity: device_tracker.loki
-    - entity: device_tracker.iphone_van_elke
-    show_header_toggle: false
-    title: Devices
-    type: entities
+  - card:
+      type: entities
+    filter:
+      include:
+      - domain: device_tracker
+    sort:
+      method: name
+    type: custom:auto-entities
+  - card:
+      title: Lights on
+      type: glance
+    filter:
+      include:
+      - domain: light
+        options:
+          tap_action:
+            action: toggle
+        state: 'on'
+    show_empty: false
+    type: custom:auto-entities
   icon: ''
   path: misc
   title: Misc

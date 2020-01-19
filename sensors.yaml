@@ -1,4 +1,5 @@
 - platform: huesensor
+- platform: spotcast
 - platform: synologydsm
   name: Thor
   host: !secret synology_host

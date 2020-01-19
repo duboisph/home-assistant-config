@@ -1,6 +1,68 @@
 person.philip:
   entity_picture: /local/philip.jpg
-device_tracker.00_04_4b_54_70_5a:
-  friendly_name: Living TV
-device_tracker.00_04_4b_e4_aa_93:
-  friendly_name: Cinema TV
+light.bureau:
+  icon: mdi:lightbulb-group
+media_player.badkamer:
+  friendly_name: Badkamer Sonos
+  icon: mdi:speaker-wireless
+media_player.bureau:
+  friendly_name: Bureau Sonos
+  icon: mdi:speaker-wireless
+media_player.cinema:
+  friendly_name: Cinema ShieldTV
+light.cinema:
+  icon: mdi:lightbulb-group
+light.cinema_2:
+  icon: mdi:ceiling-light
+light.gelijkvloers:
+  icon: mdi:home-floor-0
+light.bolletjes:
+  icon: mdi:string-lights
+remote.home_theater:
+  friendly_name: Cinema Harmony
+light.hue_iris_1:
+  icon: mdi:lamp
+light.hue_lightstrip_plus_1:
+  icon: mdi:led-strip-variant
+light.huis:
+  icon: mdi:home-lightbulb
+light.ikea_ps_2017:
+  icon: mdi:lamp
+light.kerstboom:
+  icon: mdi:pine-tree
+light.kinderkamer:
+  icon: mdi:lightbulb-group
+light.living:
+  icon: mdi:lightbulb-group
+media_player.living:
+  friendly_name: Living ShieldTV
+remote.living:
+  friendly_name: Living Harmony
+light.nachtlamp_elke:
+  icon: mdi:lamp
+light.nachtlamp_philip:
+  icon: mdi:lamp
+light.nachtlamp_xander:
+  icon: mdi:lamp
+light.oosterse_lamp:
+  icon: mdi:floor-lamp-variant
+light.plantenbak:
+  icon: mdi:floor-lamp-variant
+light.slaapkamer:
+  icon: mdi:lightbulb-group
+light.slaapkamer_elke:
+  icon: mdi:lightbulb-group
+light.slaapkamer_philip:
+  icon: mdi:lightbulb-group
+light.verdieping_1:
+  icon: mdi:home-floor-1
+light.verdieping_2:
+  icon: mdi:home-floor-2
+light.vloerlamp:
+  icon: mdi:floor-lamp
+device_tracker.life360_elke:
+  friendly_name: Elke
+device_tracker.life360_philip_dubois:
+  friendly_name: Philip
+light.hue_lightstrip_plus_2:
+  icon: mdi:led-strip-variant

@@ -62,14 +62,14 @@ pi_hole:
   #   api_key: !secret pihole2_api_key
   #   name 'Pi-Hole #2'
 
-mikrotik:
-  - host: !secret mikrotik_host
-    username: !secret mikrotik_username
-    password: !secret mikrotik_password
-    ssl: true
-    method: dhcp
-    arp_ping: true
-    track_devices: true
+# mikrotik:
+#   - host: !secret mikrotik_host
+#     username: !secret mikrotik_username
+#     password: !secret mikrotik_password
+#     ssl: true
+#     method: dhcp
+#     arp_ping: true
+#     track_devices: false
 
 rfxtrx:
   device: /dev/serial/by-id/usb-RFXCOM_RFXtrx433XL_DO43QQZI-if00-port0
@@ -87,20 +87,13 @@ life360:
 
 speedtestdotnet:
 
-remote:
-  - platform: harmony
-    name: Living
-    activity: Kijk TV
-  - platform: harmony
-    name: Home Theater
-    activity: Kijk een Film
+spotcast:
+  username: !secret spotify_username
+  password: !secret spotify_password
 
 ##
 # DEVICES, ENTITIES, ...
 ##
-
-shell_command:
-  convert_lovelace: 'python3 /config/json2yaml.py /config/.storage/lovelace /config/lovelace-ui.yaml'
 
 binary_sensor:
   - platform: huesensor
@@ -120,6 +113,25 @@ media_player:
   - platform: spotify
     client_id: !secret spotify_client_id
     client_secret: !secret spotify_client_secret
+  - platform: androidtv
+    name: Living ShieldTV
+    host: !secret androidtv_living_host
+    device_class: androidtv
+  - platform: androidtv
+    name: Cinema ShieldTV
+    host: !secret androidtv_cinema_host
+    device_class: androidtv
+
+remote:
+  - platform: harmony
+    name: Livin Room
+    activity: Kijk TV
+  - platform: harmony
+    name: Home Theater
+    activity: Kijk een Film
+
+shell_command:
+  convert_lovelace: 'python3 /config/json2yaml.py /config/.storage/lovelace /config/lovelace-ui.yaml'
 
 ## -------------
 
