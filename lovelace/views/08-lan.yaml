@@ -1,0 +1,133 @@
+title: LAN
+icon: mdi:server-network
+path: lan
+badges: []
+cards:
+  - cards:
+      - entities:
+          - entity: switch.pihole_toggle
+            icon: "mdi:pi-hole"
+        type: entities
+      - cards:
+          - cards:
+              - entities:
+                  - sensor.pi_hole_ads_blocked_today
+                hour24: true
+                hours_to_show: 72
+                name: Ads Blocked
+                show:
+                  graph: line
+                type: "custom:mini-graph-card"
+              - entities:
+                  - sensor.pi_hole_ads_percentage_blocked_today
+                decimals: 0
+                hour24: true
+                hours_to_show: 72
+                name: Percentage
+                show:
+                  graph: line
+                type: "custom:mini-graph-card"
+              - entities:
+                  - sensor.pi_hole_dns_unique_clients
+                hour24: true
+                hours_to_show: 72
+                name: Clients
+                show:
+                  graph: none
+                type: "custom:mini-graph-card"
+            type: horizontal-stack
+        type: vertical-stack
+    title: Pi-Hole
+    type: "custom:vertical-stack-in-card"
+  - cards:
+      - entities:
+          - sensor.speedtest_ping
+        decimals: 0
+        hours_to_show: 72
+        icon: "mdi:server-network"
+        line_color: "#2980b9"
+        name: Ping
+        type: "custom:mini-graph-card"
+      - entities:
+          - sensor.speedtest_download
+        decimals: 0
+        hours_to_show: 72
+        icon: "mdi:download-network"
+        line_color: "#2980b9"
+        name: Download
+        type: "custom:mini-graph-card"
+      - entities:
+          - sensor.speedtest_upload
+        decimals: 0
+        hours_to_show: 72
+        icon: "mdi:upload-network"
+        line_color: "#2980b9"
+        name: Upload
+        type: "custom:mini-graph-card"
+    type: horizontal-stack
+  - cards:
+      - cards:
+          - align_icon: state
+            decimals: 0
+            entities:
+              - sensor.processor_use
+            hours_to_show: 72
+            icon: "mdi:cpu-64-bit"
+            line_color: "#389638"
+            name: CPU
+            show:
+              name: false
+            type: "custom:mini-graph-card"
+          - align: split
+            color: "#2980b9"
+            decimal: 0
+            entity: sensor.memory_use_percent
+            icon: "mdi:memory"
+            icon_position: inside
+            title: RAM
+            title_position: "off"
+            type: "custom:bar-card"
+          - align: split
+            color: "#2980b9"
+            decimal: 0
+            entity: sensor.disk_use_percent
+            icon: "mdi:harddisk"
+            icon_position: inside
+            title: HDD
+            title_position: "off"
+            type: "custom:bar-card"
+        title: Hel
+        type: "custom:vertical-stack-in-card"
+      - cards:
+          - align_icon: state
+            decimals: 0
+            entities:
+              - sensor.mikrotik_cpu_load
+            hours_to_show: 72
+            icon: "mdi:cpu-32-bit"
+            line_color: "#389638"
+            name: CPU
+            show:
+              name: false
+            type: "custom:mini-graph-card"
+          - align: split
+            color: "#2980b9"
+            decimal: 0
+            entity: sensor.mikrotik_memory_usage
+            icon: "mdi:memory"
+            icon_position: inside
+            title: RAM
+            title_position: "off"
+            type: "custom:bar-card"
+          - align: split
+            color: "#2980b9"
+            decimal: 0
+            entity: sensor.mikrotik_hdd_usage
+            icon: "mdi:harddisk"
+            icon_position: inside
+            title: HDD
+            title_position: "off"
+            type: "custom:bar-card"
+        title: Heimdallr
+        type: "custom:vertical-stack-in-card"
+    type: horizontal-stack

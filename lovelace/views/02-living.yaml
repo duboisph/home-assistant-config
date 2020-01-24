@@ -1,0 +1,49 @@
+title: Living
+icon: mdi:sofa
+path: living
+badges: []
+cards:
+  - artwork: cover
+    entity: media_player.living
+    hide:
+      volume: false
+    icon: "mdi:cast"
+    type: "custom:mini-media-player"
+  - entities:
+      - entity: remote.living_room
+        name: Harmony
+    show_header_toggle: false
+    type: entities
+  - card:
+      icon: "mdi:lightbulb-group"
+      title: Licht
+      type: entities
+    filter:
+      include:
+        - area: Living
+          domain: light
+    sort:
+      method: name
+    type: "custom:auto-entities"
+  - brightness: true
+    brightness_icon: weather-sunny
+    color_picker: true
+    color_temp: true
+    color_wheel: true
+    effects_list: true
+    entity: light.living
+    full_width_sliders: true
+    group: false
+    header: Living
+    persist_features: false
+    show_slider_percent: true
+    smooth_color_wheel: true
+    temperature_icon: thermometer
+    type: "custom:light-entity-card"
+    white_icon: file-word-box
+    white_value: true
+  - artwork: cover
+    entity: media_player.living_shieldtv
+    hide:
+      volume: false
+    type: "custom:mini-media-player"

@@ -1,0 +1,28 @@
+title: Bureau
+icon: mdi:desk
+path: office
+badges: []
+cards:
+  - artwork: cover
+    entity: media_player.bureau
+    hide:
+      power: true
+      source: false
+      volume: false
+    name: Sonos
+    type: "custom:mini-media-player"
+  - entities:
+      - entity: sensor.samsung_m2020_series_192_168_5_120_toner_black
+        name: Printer Toner
+    type: entities
+  - card:
+      icon: "mdi:lightbulb-group"
+      title: Licht
+      type: entities
+    filter:
+      include:
+        - area: Bureau
+          domain: light
+    sort:
+      method: name
+    type: "custom:auto-entities"

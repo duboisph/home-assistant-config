@@ -1,0 +1,34 @@
+title: Test
+icon: mdi:worker
+path: test
+badges:
+  - sensor.plex_living
+cards:
+  - entities:
+      - entity: sensor.ophaalkalender_restafval
+        name: Restafval
+      - entity: sensor.ophaalkalender_papier
+        name: Papier
+      - entity: sensor.ophaalkalender_pmd
+        name: P+MD
+    type: entities
+  - card:
+      type: entities
+    filter:
+      include:
+        - domain: device_tracker
+    sort:
+      method: name
+    type: "custom:auto-entities"
+  - card:
+      title: Lights on
+      type: glance
+    filter:
+      include:
+        - domain: light
+          options:
+            tap_action:
+              action: toggle
+          state: "on"
+    show_empty: false
+    type: "custom:auto-entities"

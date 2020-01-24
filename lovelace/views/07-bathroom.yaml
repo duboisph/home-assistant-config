@@ -1,0 +1,13 @@
+title: Badkamer
+icon: mdi:shower
+path: bathroom
+badges: []
+cards:
+  - artwork: cover
+    entity: media_player.badkamer
+    hide:
+      power: true
+      source: false
+      volume: false
+    name: Sonos
+    type: "custom:mini-media-player"

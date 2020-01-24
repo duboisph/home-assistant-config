@@ -1,0 +1,16 @@
+title: Slaapkamer
+icon: mdi:bed-king
+path: bedroom
+badges: []
+cards:
+  - card:
+      icon: "mdi:lightbulb-group"
+      title: Licht
+      type: entities
+    filter:
+      include:
+        - area: Slaapkamer
+          domain: light
+    sort:
+      method: name
+    type: "custom:auto-entities"
