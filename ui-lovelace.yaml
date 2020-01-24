@@ -1,0 +1,506 @@
+background: var(--background-image)
+custom_header:
+  background: "rgba(155, 155, 155, 0.25)"
+  compact_mode: true
+resources:
+  - type: module
+    url: /community_plugin/custom-header/custom-header.js
+  - type: module
+    url: /community_plugin/decluttering-card/decluttering-card.js
+  - type: js
+    url: /community_plugin/bar-card/bar-card.js
+  - type: module
+    url: /community_plugin/button-card/button-card.js
+  - type: module
+    url: /community_plugin/lovelace-auto-entities/auto-entities.js
+  - type: module
+    url: /community_plugin/mini-graph-card/mini-graph-card-bundle.js
+  - type: module
+    url: /community_plugin/mini-media-player/mini-media-player-bundle.js
+  - type: module
+    url: /community_plugin/simple-weather-card/simple-weather-card-bundle.js
+  - type: module
+    url: /community_plugin/lovelace-slider-entity-row/slider-entity-row.js
+  - type: module
+    url: /community_plugin/lovelace-fold-entity-row/fold-entity-row.js
+  - type: js
+    url: /community_plugin/light-entity-card/light-entity-card.js
+  - type: js
+    url: /community_plugin/vertical-stack-in-card/vertical-stack-in-card.js
+  - type: module
+    url: /community_plugin/circle-sensor-card/circle-sensor-card.js
+  - type: module
+    url: /community_plugin/lovelace-layout-card/layout-card.js
+title: Thuis
+views:
+  - badges:
+      - person.philip
+      - person.elke
+      - sun.sun
+    cards:
+      - type: "custom:simple-weather-card"
+        name: Weer
+        entity: weather.thuis
+      - entities:
+          - card:
+              head:
+                entity: light.living
+                hide_when_off: true
+                icon: "mdi:sofa"
+                toggle: true
+                type: "custom:slider-entity-row"
+              type: "custom:fold-entity-row"
+            filter:
+              include:
+                - area: Living
+                  domain: light
+            sort:
+              method: name
+            type: "custom:auto-entities"
+          - card:
+              head:
+                entity: light.bureau
+                hide_when_off: true
+                icon: "mdi:desk"
+                toggle: true
+                type: "custom:slider-entity-row"
+              type: "custom:fold-entity-row"
+            filter:
+              include:
+                - area: Bureau
+                  domain: light
+            sort:
+              method: name
+            type: "custom:auto-entities"
+          - card:
+              head:
+                entity: light.cinema
+                hide_when_off: true
+                icon: "mdi:theater"
+                toggle: true
+                type: "custom:slider-entity-row"
+              type: "custom:fold-entity-row"
+            filter:
+              include:
+                - area: Cinema
+                  domain: light
+            sort:
+              method: name
+            type: "custom:auto-entities"
+          - card:
+              head:
+                entity: light.slaapkamer
+                hide_when_off: true
+                icon: "mdi:bed-king"
+                toggle: true
+                type: "custom:slider-entity-row"
+              type: "custom:fold-entity-row"
+            filter:
+              include:
+                - area: Slaapkamer
+                  domain: light
+            sort:
+              method: name
+            type: "custom:auto-entities"
+          - card:
+              head:
+                entity: light.kinderkamer
+                hide_when_off: true
+                icon: "mdi:baby"
+                type: "custom:slider-entity-row"
+                toggle: true
+              type: "custom:fold-entity-row"
+            filter:
+              include:
+                - area: Kinderkamer
+                  domain: light
+            sort:
+              method: name
+            type: "custom:auto-entities"
+        show_header_toggle: false
+        title: Licht
+        type: entities
+      - type: entities
+        entities:
+          - artwork: cover
+            entity: media_player.spotify
+            group: true
+            hide:
+              power: true
+              shuffle: false
+            shortcuts:
+              buttons:
+                - icon: "mdi:playlist-music"
+                  id: "spotify:playlist:19Xl108bOw7ykXet1cxO8v"
+                  name: Shazam
+                  type: playlist
+                - icon: "mdi:playlist-music"
+                  id: "spotify:playlist:2Ps64TVbfmfX6jxWJnlX1j"
+                  name: ASOT
+                  type: playlist
+                - icon: "mdi:playlist-music"
+                  id: "spotify:playlist:5hC8A0idiKYqyTcxd1wAvN"
+                  name: Chill
+                  type: playlist
+              columns: 3
+            type: "custom:mini-media-player"
+          - entity: media_player.bureau
+            group: true
+            hide:
+              power: true
+              shuffle: false
+            type: "custom:mini-media-player"
+          - entity: media_player.badkamer
+            group: true
+            hide:
+              power: true
+              shuffle: false
+            type: "custom:mini-media-player"
+      - card:
+          show_header_toggle: false
+          title: Rolluiken
+          type: entities
+        filter:
+          include:
+            - domain: cover
+        sort:
+          method: name
+        type: "custom:auto-entities"
+      - aspect_ratio: 0%
+        camera_image: camera.voordeur
+        entities:
+          - entity: binary_sensor.voordeur_motion
+          - entity: binary_sensor.voordeur_ding
+        title: Voordeur - Laatste beweging
+        type: picture-glance
+    icon: "mdi:home"
+    path: default_view
+    title: ""
+  - badges: []
+    cards:
+      - artwork: cover
+        entity: media_player.living
+        hide:
+          volume: false
+        icon: "mdi:cast"
+        type: "custom:mini-media-player"
+      - entities:
+          - entity: remote.living_room
+            name: Harmony
+        show_header_toggle: false
+        type: entities
+      - card:
+          icon: "mdi:lightbulb-group"
+          title: Licht
+          type: entities
+        filter:
+          include:
+            - area: Living
+              domain: light
+        sort:
+          method: name
+        type: "custom:auto-entities"
+      - brightness: true
+        brightness_icon: weather-sunny
+        color_picker: true
+        color_temp: true
+        color_wheel: true
+        effects_list: true
+        entity: light.living
+        full_width_sliders: true
+        group: false
+        header: Living
+        persist_features: false
+        show_slider_percent: true
+        smooth_color_wheel: true
+        temperature_icon: thermometer
+        type: "custom:light-entity-card"
+        white_icon: file-word-box
+        white_value: true
+      - artwork: cover
+        entity: media_player.living_shieldtv
+        hide:
+          volume: false
+        type: "custom:mini-media-player"
+    icon: "mdi:sofa"
+    path: living
+    title: Living
+  - badges: []
+    cards:
+      - artwork: cover
+        entity: media_player.bureau
+        hide:
+          power: true
+          source: false
+          volume: false
+        name: Sonos
+        type: "custom:mini-media-player"
+      - entities:
+          - entity: sensor.samsung_m2020_series_192_168_5_120_toner_black
+            name: Printer Toner
+        type: entities
+      - card:
+          icon: "mdi:lightbulb-group"
+          title: Licht
+          type: entities
+        filter:
+          include:
+            - area: Bureau
+              domain: light
+        sort:
+          method: name
+        type: "custom:auto-entities"
+    icon: "mdi:desk"
+    path: bureau
+    title: Bureau
+  - badges: []
+    cards:
+      - artwork: cover
+        entity: media_player.cinema
+        hide:
+          power: true
+          source: false
+          volume: false
+        icon: "mdi:cast"
+        type: "custom:mini-media-player"
+      - entities:
+          - entity: remote.home_theater
+            name: Harmony
+        show_header_toggle: false
+        type: entities
+      - card:
+          icon: "mdi:lightbulb-group"
+          title: Licht
+          type: entities
+        filter:
+          include:
+            - area: Cinema
+              domain: light
+        sort:
+          method: name
+        type: "custom:auto-entities"
+      - artwork: cover
+        entity: media_player.cinema_shieldtv
+        hide:
+          volume: false
+        type: "custom:mini-media-player"
+    icon: "mdi:theater"
+    path: cinema
+    title: Cinema
+  - badges: []
+    cards:
+      - card:
+          icon: "mdi:lightbulb-group"
+          title: Licht
+          type: entities
+        filter:
+          include:
+            - area: Slaapkamer
+              domain: light
+        sort:
+          method: name
+        type: "custom:auto-entities"
+    icon: "mdi:bed-king"
+    path: slaapkamer
+    title: Slaapkamer
+  - badges: []
+    cards:
+      - card:
+          icon: "mdi:lightbulb-group"
+          title: Licht
+          type: entities
+        filter:
+          include:
+            - area: Kinderkamer
+              domain: light
+        sort:
+          method: name
+        type: "custom:auto-entities"
+    icon: "mdi:baby"
+    path: xander
+    title: Xander
+  - badges: []
+    cards:
+      - artwork: cover
+        entity: media_player.badkamer
+        hide:
+          power: true
+          source: false
+          volume: false
+        name: Sonos
+        type: "custom:mini-media-player"
+    icon: "mdi:shower"
+    path: badkamer
+    title: Badkamer
+  - badges: []
+    cards:
+      - cards:
+          - entities:
+              - entity: switch.pihole_toggle
+                icon: "mdi:pi-hole"
+            type: entities
+          - cards:
+              - cards:
+                  - entities:
+                      - sensor.pi_hole_ads_blocked_today
+                    hour24: true
+                    hours_to_show: 72
+                    name: Ads Blocked
+                    show:
+                      graph: line
+                    type: "custom:mini-graph-card"
+                  - entities:
+                      - sensor.pi_hole_ads_percentage_blocked_today
+                    decimals: 0
+                    hour24: true
+                    hours_to_show: 72
+                    name: Percentage
+                    show:
+                      graph: line
+                    type: "custom:mini-graph-card"
+                  - entities:
+                      - sensor.pi_hole_dns_unique_clients
+                    hour24: true
+                    hours_to_show: 72
+                    name: Clients
+                    show:
+                      graph: none
+                    type: "custom:mini-graph-card"
+                type: horizontal-stack
+            type: vertical-stack
+        title: Pi-Hole
+        type: "custom:vertical-stack-in-card"
+      - cards:
+          - entities:
+              - sensor.speedtest_ping
+            decimals: 0
+            hours_to_show: 72
+            icon: "mdi:server-network"
+            line_color: "#2980b9"
+            name: Ping
+            type: "custom:mini-graph-card"
+          - entities:
+              - sensor.speedtest_download
+            decimals: 0
+            hours_to_show: 72
+            icon: "mdi:download-network"
+            line_color: "#2980b9"
+            name: Download
+            type: "custom:mini-graph-card"
+          - entities:
+              - sensor.speedtest_upload
+            decimals: 0
+            hours_to_show: 72
+            icon: "mdi:upload-network"
+            line_color: "#2980b9"
+            name: Upload
+            type: "custom:mini-graph-card"
+        type: horizontal-stack
+      - cards:
+          - cards:
+              - align_icon: state
+                decimals: 0
+                entities:
+                  - sensor.processor_use
+                hours_to_show: 72
+                icon: "mdi:cpu-64-bit"
+                line_color: "#389638"
+                name: CPU
+                show:
+                  name: false
+                type: "custom:mini-graph-card"
+              - align: split
+                color: "#2980b9"
+                decimal: 0
+                entity: sensor.memory_use_percent
+                icon: "mdi:memory"
+                icon_position: inside
+                title: RAM
+                title_position: "off"
+                type: "custom:bar-card"
+              - align: split
+                color: "#2980b9"
+                decimal: 0
+                entity: sensor.disk_use_percent
+                icon: "mdi:harddisk"
+                icon_position: inside
+                title: HDD
+                title_position: "off"
+                type: "custom:bar-card"
+            title: Hel
+            type: "custom:vertical-stack-in-card"
+          - cards:
+              - align_icon: state
+                decimals: 0
+                entities:
+                  - sensor.mikrotik_cpu_load
+                hours_to_show: 72
+                icon: "mdi:cpu-32-bit"
+                line_color: "#389638"
+                name: CPU
+                show:
+                  name: false
+                type: "custom:mini-graph-card"
+              - align: split
+                color: "#2980b9"
+                decimal: 0
+                entity: sensor.mikrotik_memory_usage
+                icon: "mdi:memory"
+                icon_position: inside
+                title: RAM
+                title_position: "off"
+                type: "custom:bar-card"
+              - align: split
+                color: "#2980b9"
+                decimal: 0
+                entity: sensor.mikrotik_hdd_usage
+                icon: "mdi:harddisk"
+                icon_position: inside
+                title: HDD
+                title_position: "off"
+                type: "custom:bar-card"
+            title: Heimdallr
+            type: "custom:vertical-stack-in-card"
+        type: horizontal-stack
+    icon: "mdi:server-network"
+    path: lan
+    title: LAN
+  - icon: "mdi:remote"
+    title: Remote
+    path: remote
+    badges: []
+    cards: []
+  - badges:
+      - sensor.plex_living
+    cards:
+      - entities:
+          - entity: sensor.ophaalkalender_restafval
+            name: Restafval
+          - entity: sensor.ophaalkalender_papier
+            name: Papier
+          - entity: sensor.ophaalkalender_pmd
+            name: P+MD
+        type: entities
+      - card:
+          type: entities
+        filter:
+          include:
+            - domain: device_tracker
+        sort:
+          method: name
+        type: "custom:auto-entities"
+      - card:
+          title: Lights on
+          type: glance
+        filter:
+          include:
+            - domain: light
+              options:
+                tap_action:
+                  action: toggle
+              state: "on"
+        show_empty: false
+        type: "custom:auto-entities"
+    icon: ""
+    path: misc
+    title: Misc

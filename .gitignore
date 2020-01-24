@@ -3,8 +3,10 @@
 
 # Folders
 custom_components/
-themes/
 deps/
+downloads/
+themes/
+tts/
 www/community/
 
 # Log & DB

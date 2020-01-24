@@ -26,9 +26,6 @@
       arg: '/'
     - type: memory_use_percent
     - type: processor_use
-- platform: command_line
-  name: convert_lovelace
-  command: 'python3 /config/json2yaml.py /config/.storage/lovelace /config/lovelace-ui.yaml'
 - platform: rest
   resource: http://a0d7b954-wireguard
   name: wireguard_sensor

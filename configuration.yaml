@@ -20,6 +20,9 @@ http:
 frontend:
   themes: !include_dir_merge_named themes
 
+lovelace:
+  mode: yaml
+
 hacs:
   token: !secret hacs_token
   appdaemon: true
@@ -53,6 +56,9 @@ recorder:
 discovery:
   ignore:
     - homekit
+
+downloader:
+  download_dir: downloads
 
 pi_hole:
   - host: localhost:4865
@@ -129,9 +135,6 @@ remote:
   - platform: harmony
     name: Home Theater
     activity: Kijk een Film
-
-shell_command:
-  convert_lovelace: 'python3 /config/json2yaml.py /config/.storage/lovelace /config/lovelace-ui.yaml'
 
 ## -------------
 

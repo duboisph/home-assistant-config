@@ -13,7 +13,7 @@ media_player.cinema:
 light.cinema:
   icon: mdi:lightbulb-group
 light.cinema_2:
-  icon: mdi:ceiling-light
+  icon: mdi:wall-sconce-flat
 light.gelijkvloers:
   icon: mdi:home-floor-0
 light.bolletjes:
