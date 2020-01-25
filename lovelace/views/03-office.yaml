@@ -2,26 +2,27 @@ title: Bureau
 icon: mdi:desk
 path: office
 cards:
-  - artwork: cover
-    entity: media_player.bureau
-    hide:
-      power: true
-      source: false
-      volume: false
-    name: Sonos
-    type: "custom:mini-media-player"
-  - entities:
-      - entity: sensor.samsung_m2020_series_192_168_5_120_toner_black
-        name: Printer Toner
-    type: entities
-  - card:
-      icon: "mdi:lightbulb-group"
-      title: Licht
-      type: entities
+  - type: custom:auto-entities
+    card:
+      type: glance
+      # title: Lichten
     filter:
       include:
         - area: Bureau
           domain: light
     sort:
       method: name
-    type: "custom:auto-entities"
+
+  - type: custom:mini-media-player
+    entity: media_player.office_sonos
+    name: Sonos
+    artwork: cover
+    hide:
+      power: true
+      source: false
+      volume: false
+
+  - type: entities
+    entities:
+      - entity: sensor.samsung_m2020_series_192_168_5_120_toner_black
+        name: Printer Toner

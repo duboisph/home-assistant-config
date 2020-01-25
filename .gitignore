@@ -1,5 +1,6 @@
 .*
 !/.gitignore
+*.sh
 
 # Folders
 custom_components/
@@ -8,6 +9,7 @@ downloads/
 themes/
 tts/
 www/community/
+www/custom_ui/
 
 # Log & DB
 home-assistant.log

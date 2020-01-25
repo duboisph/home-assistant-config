@@ -1,0 +1,44 @@
+homeassistant:
+  customize:
+    media_player.badkamer:
+      friendly_name: Badkamer Sonos
+      icon: mdi:speaker-wireless
+    media_player.bureau:
+      friendly_name: Bureau Sonos
+      icon: mdi:speaker-wireless
+    media_player.cinema:
+      friendly_name: Cinema CC
+    media_player.living:
+      friendly_name: Living CC
+
+spotcast:
+  username: !secret spotify_username
+  password: !secret spotify_password
+
+media_player:
+  - platform: spotify
+    client_id: !secret spotify_client_id
+    client_secret: !secret spotify_client_secret
+  - platform: androidtv
+    name: Living ShieldTV
+    host: !secret androidtv_living_host
+    device_class: androidtv
+    apps:
+      be.vmma.vtm.zenderapp: VTM GO
+      com.amazon.amazonvideo.livingroom: Prime Video
+      com.google.android.youtube.tvkids: YouTube Kids
+      com.ted.android.tv: TED
+      tunein.player: TuneIn Radio
+  - platform: androidtv
+    name: Cinema ShieldTV
+    host: !secret androidtv_cinema_host
+    device_class: androidtv
+    apps:
+      be.vmma.vtm.zenderapp: VTM GO
+      com.amazon.amazonvideo.livingroom: Prime Video
+      com.google.android.youtube.tvkids: YouTube Kids
+      com.ted.android.tv: TED
+      tunein.player: TuneIn Radio
+
+sensor:
+  - platform: spotcast

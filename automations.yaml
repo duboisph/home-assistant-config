@@ -1,6 +1,7 @@
 #### SYSTEM ####################################################################
 
-- alias: "[SYSTEM] Set Lovelace theme on startup"
+- id: 6ce8d129779449029fbe9dc4673dce86
+  alias: "[SYSTEM] Set Lovelace theme on startup"
   trigger:
     - platform: homeassistant
       event: start
@@ -9,18 +10,20 @@
       data:
         name: sundown
 
-- alias: "[SYSTEM] Renew Let's Encrypt certificate"
+- id: fd49e0e7455f4119a5f2e4ff987c4386
+  alias: "[SYSTEM] Renew Let's Encrypt certificate"
   trigger:
     - platform: time
-      at: "00:00:00"
+      at: 00:00:00
   action:
     - service: hassio.addon_restart
       data:
         addon: core_letsencrypt
 
-#### LIGTHS ####################################################################
+#### LIGHTS ####################################################################
 
-- alias: "[LIGHTS] Turn on as the sun goes down"
+- id: ee2e10211bd44e598aaca7b5d21e2921
+  alias: "[LIGHTS] Turn on as the sun goes down"
   trigger:
     - platform: numeric_state
       entity_id: sun.sun
@@ -30,17 +33,19 @@
     - service: light.turn_on
       entity_id: light.living
 
-- alias: "[LIGHTS] Turn off after 1AM"
+- id: af145a171ff94101a9ab6071bc03bc1a
+  alias: "[LIGHTS] Turn off after 1AM"
   trigger:
     - platform: time
-      at: "01:00:00"
+      at: 01:00:00
   action:
     - service: light.turn_off
       entity_id: light.living
 
 #### BLINDS ####################################################################
 
-- alias: "[BLINDS] Close at dusk"
+- id: 4a5b6efaad7f42778a98b281df56ec3e
+  alias: "[BLINDS] Close at dusk"
   trigger:
     - platform: numeric_state
       entity_id: sun.sun
@@ -52,7 +57,8 @@
     - service: cover.close_cover
       entity_id: cover.living_vooraan
 
-- alias: "[BLINDS] Open at dawn"
+- id: 5d316590d65f406b83ba301c72ba4a16
+  alias: "[BLINDS] Open at dawn"
   trigger:
     - platform: sun
       event: sunrise
@@ -61,14 +67,18 @@
       entity_id: cover.living_achteraan
     - service: cover.open_cover
       entity_id: cover.living_vooraan
+    - service: cover.open_cover
+      entity_id: cover.keuken
 
 #### RING ######################################################################
 
-- alias: "[RING] Download last video"
+- id: 09684a612d3a48c78fb013d6c700ccbc
+  alias: "[RING] Download last video"
   trigger:
     - platform: template
-      value_template: "{{ is_state_attr('sensor.voordeur_last_activity',
-    'recording_status', 'ready') }}"
+      value_template:
+        "{{ is_state_attr('sensor.voordeur_last_activity', 'recording_status',
+        'ready') }}"
   action:
     - service: downloader.download_file
       data_template:

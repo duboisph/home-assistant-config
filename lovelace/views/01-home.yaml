@@ -6,18 +6,22 @@ badges:
   - person.elke
   - sun.sun
 cards:
-  - type: "custom:simple-weather-card"
+  - type: custom:simple-weather-card
     name: Weer
     entity: weather.thuis
-  - entities:
-      - type: "custom:auto-entities"
+
+  - type: entities
+    title: Lichten
+    show_header_toggle: false
+    entities:
+      - type: custom:auto-entities
         card:
-          type: "custom:fold-entity-row"
+          type: custom:fold-entity-row
           head:
-            type: "custom:slider-entity-row"
-            entity: light.living
+            type: custom:slider-entity-row
+            entity: light.living_lights
             hide_when_off: true
-            icon: "mdi:sofa"
+            icon: mdi:sofa
             toggle: true
         filter:
           include:
@@ -25,106 +29,107 @@ cards:
               domain: light
         sort:
           method: name
-      - card:
+      - type: custom:auto-entities
+        card:
+          type: custom:fold-entity-row
           head:
-            entity: light.bureau
+            type: custom:slider-entity-row
+            entity: light.office_lights
             hide_when_off: true
-            icon: "mdi:desk"
+            icon: mdi:desk
             toggle: true
-            type: "custom:slider-entity-row"
-          type: "custom:fold-entity-row"
         filter:
           include:
             - area: Bureau
               domain: light
         sort:
           method: name
-        type: "custom:auto-entities"
-      - card:
+      - type: custom:auto-entities
+        card:
+          type: custom:fold-entity-row
           head:
-            entity: light.cinema
+            type: custom:slider-entity-row
+            entity: light.theater_lights
             hide_when_off: true
-            icon: "mdi:theater"
+            icon: mdi:theater
             toggle: true
-            type: "custom:slider-entity-row"
-          type: "custom:fold-entity-row"
         filter:
           include:
             - area: Cinema
               domain: light
         sort:
           method: name
-        type: "custom:auto-entities"
-      - card:
+      - type: custom:auto-entities
+        card:
+          type: custom:fold-entity-row
           head:
-            entity: light.slaapkamer
+            type: custom:slider-entity-row
+            entity: light.bedroom_lights
             hide_when_off: true
-            icon: "mdi:bed-king"
+            icon: mdi:bed-king
             toggle: true
-            type: "custom:slider-entity-row"
-          type: "custom:fold-entity-row"
         filter:
           include:
             - area: Slaapkamer
               domain: light
         sort:
           method: name
-        type: "custom:auto-entities"
-      - card:
+      - type: custom:auto-entities
+        card:
+          type: custom:fold-entity-row
           head:
-            entity: light.kinderkamer
+            type: custom:slider-entity-row
+            entity: light.kids_room_lights
             hide_when_off: true
-            icon: "mdi:baby"
-            type: "custom:slider-entity-row"
+            icon: mdi:baby
             toggle: true
-          type: "custom:fold-entity-row"
         filter:
           include:
             - area: Kinderkamer
               domain: light
         sort:
           method: name
-        type: "custom:auto-entities"
-    show_header_toggle: false
-    title: Licht
-    type: entities
-  - type: entities
-    entities:
-      - artwork: cover
+
+  - type: vertical-stack
+    cards:
+      - type: custom:mini-media-player
+        artwork: cover
         entity: media_player.spotify
-        group: true
         hide:
           power: true
           shuffle: false
         shortcuts:
-          buttons:
-            - icon: "mdi:playlist-music"
-              id: "spotify:playlist:19Xl108bOw7ykXet1cxO8v"
-              name: Shazam
-              type: playlist
-            - icon: "mdi:playlist-music"
-              id: "spotify:playlist:2Ps64TVbfmfX6jxWJnlX1j"
-              name: ASOT
-              type: playlist
-            - icon: "mdi:playlist-music"
-              id: "spotify:playlist:5hC8A0idiKYqyTcxd1wAvN"
-              name: Chill
-              type: playlist
           columns: 3
-        type: "custom:mini-media-player"
-      - entity: media_player.bureau
-        group: true
-        hide:
-          power: true
-          shuffle: false
-        type: "custom:mini-media-player"
-      - entity: media_player.badkamer
-        group: true
-        hide:
-          power: true
-          shuffle: false
-        type: "custom:mini-media-player"
-  - card:
+          buttons:
+            - type: playlist
+              id: spotify:playlist:19Xl108bOw7ykXet1cxO8v
+              name: Shazam
+              icon: mdi:playlist-music
+            - type: playlist
+              id: spotify:playlist:2Ps64TVbfmfX6jxWJnlX1j
+              name: ASOT
+              icon: mdi:playlist-music
+            - type: playlist
+              id: spotify:playlist:5hC8A0idiKYqyTcxd1wAvN
+              name: Chill
+              icon: mdi:playlist-music
+      - type: entities
+        entities:
+          - type: custom:mini-media-player
+            entity: media_player.office_sonos
+            group: true
+            hide:
+              power: true
+              shuffle: false
+          - type: custom:mini-media-player
+            entity: media_player.bathroom_sonos
+            group: true
+            hide:
+              power: true
+              shuffle: false
+
+  - type: custom:auto-entities
+    card:
       show_header_toggle: false
       title: Rolluiken
       type: entities
@@ -133,11 +138,10 @@ cards:
         - domain: cover
     sort:
       method: name
-    type: "custom:auto-entities"
-  - aspect_ratio: 0%
+
+  - type: picture-glance
     camera_image: camera.voordeur
     entities:
       - entity: binary_sensor.voordeur_motion
       - entity: binary_sensor.voordeur_ding
     title: Voordeur - Laatste beweging
-    type: picture-glance

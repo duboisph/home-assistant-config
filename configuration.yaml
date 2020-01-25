@@ -9,6 +9,7 @@ homeassistant:
   unit_system: metric
   time_zone: Europe/Brussels
   customize: !include customize.yaml
+  packages: !include_dir_named packages
 
 http:
   base_url: !secret base_url
@@ -25,35 +26,15 @@ hacs:
   token: !secret hacs_token
   appdaemon: true
 
+customizer:
+  custom_ui: local
+
 #### INCLUDES ##################################################################
 
 automation: !include automations.yaml
-device_tracker: !include device_trackers.yaml
 group: !include groups.yaml
 scene: !include scenes.yaml
-sensor: !include sensors.yaml
 script: !include scripts.yaml
-switch: !include switches.yaml
-
-#### LOGGING, HISTORY, ETC #####################################################
-
-logger:
-  default: warning
-
-# TODO: Move to external MySQL?
-recorder:
-  purge_keep_days: 7
-  purge_interval: 1
-  #db_url: 'sqlite:///:memory:'
-  exclude:
-    domains:
-      - automation
-      - weblink
-      - updater
-    entities:
-      - sun.sun
-      - sensor.last_boot
-      - sensor.date
 
 #### INTEGRATIONS ##############################################################
 
@@ -64,91 +45,12 @@ discovery:
 downloader:
   download_dir: downloads
 
-pi_hole:
-  - host: localhost:4865
-    api_key: !secret pihole1_api_key
-  #   name: 'Pi-Hole #1'
-  # - host: !secret pihole2_host
-  #   api_key: !secret pihole2_api_key
-  #   name 'Pi-Hole #2'
-
-rfxtrx:
-  device: /dev/serial/by-id/usb-RFXCOM_RFXtrx433XL_DO43QQZI-if00-port0
-
-ring:
-  username: !secret ring_username
-  password: !secret ring_password
-
-life360:
-  accounts:
-    - username: !secret life360_username
-      password: !secret life360_password
-  circles:
-    include: [Family]
-
-speedtestdotnet:
-
-spotcast:
-  username: !secret spotify_username
-  password: !secret spotify_password
-
-#### DEVICES, ENTITIES, ...#####################################################
-
-binary_sensor:
-  - platform: huesensor
-
-cover:
-  - platform: rfxtrx
-    automatic_add: False
-    devices:
-      071a000001020300: # RFY SOMFY
-        name: Living vooraan
-      071a000001020301: # RFY SOMFY
-        name: Living achteraan
-      071a000001020302: # RFY SOMFY
-        name: Keuken
-
-media_player:
-  - platform: spotify
-    client_id: !secret spotify_client_id
-    client_secret: !secret spotify_client_secret
-  - platform: androidtv
-    name: Living ShieldTV
-    host: !secret androidtv_living_host
-    device_class: androidtv
-    apps:
-      be.vmma.vtm.zenderapp: VTM GO
-      com.amazon.amazonvideo.livingroom: Prime Video
-      com.google.android.youtube.tvkids: YouTube Kids
-      com.ted.android.tv: TED
-      tunein.player: TuneIn Radio
-  - platform: androidtv
-    name: Cinema ShieldTV
-    host: !secret androidtv_cinema_host
-    device_class: androidtv
-    apps:
-      be.vmma.vtm.zenderapp: VTM GO
-      com.amazon.amazonvideo.livingroom: Prime Video
-      com.google.android.youtube.tvkids: YouTube Kids
-      com.ted.android.tv: TED
-      tunein.player: TuneIn Radio
-
-remote:
-  - platform: harmony
-    name: Livin Room
-    activity: Kijk TV
-  - platform: harmony
-    name: Home Theater
-    activity: Kijk een Film
-
-#### OTHER #####################################################################
-
-input_select:
-  harmony_living:
-    name: Living Harmony
-    options:
-      - Zet uit
-      - Speel muziek
-      - Kijk TV
-    initial: Zet uit
-    icon: mdi:remote
+sensor:
+  - platform: ophaalkalender
+    resources:
+      - restafval
+      - papier
+      - pmd
+    postcode: !secret address_postcode
+    streetname: !secret address_streetname
+    streetnumber: !secret address_streetnumber

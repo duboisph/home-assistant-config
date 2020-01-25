@@ -2,32 +2,29 @@ title: Cinema
 icon: mdi:theater
 path: theater
 cards:
-  - artwork: cover
-    entity: media_player.cinema
-    hide:
-      power: true
-      source: false
-      volume: false
-    icon: "mdi:cast"
-    type: "custom:mini-media-player"
-  - entities:
-      - entity: remote.home_theater
-        name: Harmony
-    show_header_toggle: false
-    type: entities
-  - card:
-      icon: "mdi:lightbulb-group"
-      title: Licht
-      type: entities
+  - type: custom:auto-entities
+    card:
+      type: glance
+      # title: Lichten
     filter:
       include:
         - area: Cinema
           domain: light
     sort:
       method: name
-    type: "custom:auto-entities"
-  - artwork: cover
-    entity: media_player.cinema_shieldtv
-    hide:
-      volume: false
-    type: "custom:mini-media-player"
+
+  - type: vertical-stack
+    cards:
+      - type: entities
+        entities:
+          - entity: remote.home_theater
+            name: Harmony
+        show_header_toggle: false
+      - type: custom:mini-media-player
+        entity: media_player.cinema
+        hide:
+          volume: false
+      - type: custom:mini-media-player
+        entity: media_player.cinema_shieldtv
+        hide:
+          volume: false

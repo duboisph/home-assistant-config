@@ -1,0 +1,17 @@
+logger:
+  default: warning
+
+# TODO: Move to external MySQL?
+recorder:
+  purge_keep_days: 7
+  purge_interval: 1
+  #db_url: 'sqlite:///:memory:'
+  exclude:
+    domains:
+      - automation
+      - weblink
+      - updater
+    entities:
+      - sun.sun
+      - sensor.last_boot
+      - sensor.date
