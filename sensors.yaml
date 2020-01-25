@@ -1,5 +1,14 @@
 - platform: huesensor
 - platform: spotcast
+
+#### SERVERS ###################################################################
+
+- platform: systemmonitor
+  resources:
+    - type: disk_use_percent
+      arg: "/"
+    - type: memory_use_percent
+    - type: processor_use
 - platform: synologydsm
   name: Thor
   host: !secret synology_host
@@ -14,20 +23,9 @@
     - volume_status
     - volume_percentage_used
     - volume_disk_temp_max
-- platform: ophaalkalender
-  resources:
-    - restafval
-    - papier
-    - pmd
-  postcode: !secret address_postcode
-  streetname: !secret address_streetname
-  streetnumber: !secret address_streetnumber
-- platform: systemmonitor
-  resources:
-    - type: disk_use_percent
-      arg: "/"
-    - type: memory_use_percent
-    - type: processor_use
+
+#### WIREGUARD #################################################################
+
 - platform: rest
   resource: http://a0d7b954-wireguard
   name: wireguard_sensor
@@ -36,7 +34,6 @@
     - Loki
     - Freyja
     - Fenrir
-
 - platform: template
   sensors:
     wireguard_loki_latest_handshake:
@@ -79,16 +76,30 @@
       icon_template: "mdi:download"
       value_template: '{{ states.sensor.wireguard_sensor.attributes["Fenrir"]["transfer_rx"] | filesizeformat }}'
 
+#### HARMONY ###################################################################
+
 - platform: template
   sensors:
     harmony_living:
       value_template: >-
         {{ state_attr('remote.living_room', 'current_activity') }}
 
-# https://github.com/seangreen2/home_assistant/blob/master/sensors.yaml
+#### TRASH #####################################################################
+
+- platform: ophaalkalender
+  resources:
+    - restafval
+    - papier
+    - pmd
+  postcode: !secret address_postcode
+  streetname: !secret address_streetname
+  streetnumber: !secret address_streetnumber
+
+#### COUNT ENTITIES ############################################################
+
 - platform: template
   sensors:
-    #----- Count Automations
+    ## Count Automations
     count_automations:
       entity_id: sensor.date
       friendly_name: Automations
@@ -101,7 +112,7 @@
             {% endif %}
           {%- endfor -%}
         {%- endfor -%}
-    #----- Count Binary Sensors
+    ## Count Binary Sensors
     count_binary_sensors:
       entity_id: sensor.date
       friendly_name: Binary Sensors
@@ -114,7 +125,7 @@
             {% endif %}
           {%- endfor -%}
         {%- endfor -%}
-    #----- Count Lights
+    ## Count Lights
     count_lights:
       entity_id: sensor.date
       friendly_name: Lights
@@ -127,7 +138,7 @@
             {% endif %}
           {%- endfor -%}
         {%- endfor -%}
-    #----- Count Scripts
+    ## Count Scripts
     count_scripts:
       entity_id: sensor.date
       friendly_name: Scripts
@@ -140,7 +151,7 @@
             {% endif %}
           {%- endfor -%}
         {%- endfor -%}
-    #----- Count Sensors
+    ## Count Sensors
     count_sensors:
       entity_id: sensor.date
       friendly_name: Sensors
@@ -153,7 +164,7 @@
             {% endif %}
           {%- endfor -%}
         {%- endfor -%}
-    #----- Count Switches
+    ## Count Switches
     count_switches:
       entity_id: sensor.date
       friendly_name: Switches

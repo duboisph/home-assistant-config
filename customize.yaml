@@ -1,7 +1,9 @@
 person.philip:
   entity_picture: /local/philip.jpg
-light.bureau:
-  icon: mdi:lightbulb-group
+device_tracker.life360_elke:
+  friendly_name: Elke
+device_tracker.life360_philip_dubois:
+  friendly_name: Philip
 media_player.badkamer:
   friendly_name: Badkamer Sonos
   icon: mdi:speaker-wireless
@@ -9,7 +11,15 @@ media_player.bureau:
   friendly_name: Bureau Sonos
   icon: mdi:speaker-wireless
 media_player.cinema:
-  friendly_name: Cinema ShieldTV
+  friendly_name: Cinema CC
+media_player.living:
+  friendly_name: Living CC
+remote.living:
+  friendly_name: Living Harmony
+remote.home_theater:
+  friendly_name: Cinema Harmony
+light.bureau:
+  icon: mdi:lightbulb-group
 light.cinema:
   icon: mdi:lightbulb-group
 light.cinema_2:
@@ -18,8 +28,6 @@ light.gelijkvloers:
   icon: mdi:home-floor-0
 light.bolletjes:
   icon: mdi:string-lights
-remote.home_theater:
-  friendly_name: Cinema Harmony
 light.hue_iris_1:
   icon: mdi:lamp
 light.hue_lightstrip_plus_1:
@@ -34,10 +42,6 @@ light.kinderkamer:
   icon: mdi:lightbulb-group
 light.living:
   icon: mdi:lightbulb-group
-media_player.living:
-  friendly_name: Living ShieldTV
-remote.living:
-  friendly_name: Living Harmony
 light.nachtlamp_elke:
   icon: mdi:lamp
 light.nachtlamp_philip:
@@ -60,10 +64,6 @@ light.verdieping_2:
   icon: mdi:home-floor-2
 light.vloerlamp:
   icon: mdi:floor-lamp
-device_tracker.life360_elke:
-  friendly_name: Elke
-device_tracker.life360_philip_dubois:
-  friendly_name: Philip
 light.hue_lightstrip_plus_2:
   icon: mdi:led-strip-variant
 sensor.count_automations:

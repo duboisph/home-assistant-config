@@ -1,4 +1,6 @@
-- alias: 'Lovelace: Set theme on startup'
+#### SYSTEM ####################################################################
+
+- alias: "[SYSTEM] Set Lovelace theme on startup"
   trigger:
     - platform: homeassistant
       event: start
@@ -6,21 +8,19 @@
     - service: frontend.set_theme
       data:
         name: sundown
-       
-- alias: "Let's Encrypt: Renew"
+
+- alias: "[SYSTEM] Renew Let's Encrypt certificate"
   trigger:
     - platform: time
-      at: '00:00:00'
+      at: "00:00:00"
   action:
     - service: hassio.addon_restart
       data:
         addon: core_letsencrypt
- 
-##
-# LIGTHS
-##
 
-- alias: 'Turn lights on as the sun gets dimmer'
+#### LIGTHS ####################################################################
+
+- alias: "[LIGHTS] Turn on as the sun goes down"
   trigger:
     - platform: numeric_state
       entity_id: sun.sun
@@ -30,19 +30,17 @@
     - service: light.turn_on
       entity_id: light.living
 
-- alias: 'Turn lights off after 1AM'
+- alias: "[LIGHTS] Turn off after 1AM"
   trigger:
     - platform: time
-      at: '01:00:00'
+      at: "01:00:00"
   action:
     - service: light.turn_off
       entity_id: light.living
 
-##
-# BLINDS
-##
+#### BLINDS ####################################################################
 
-- alias: 'Close blinds at dusk'
+- alias: "[BLINDS] Close at dusk"
   trigger:
     - platform: numeric_state
       entity_id: sun.sun
@@ -54,7 +52,7 @@
     - service: cover.close_cover
       entity_id: cover.living_vooraan
 
-- alias: 'Open blinds at dawn'
+- alias: "[BLINDS] Open at dawn"
   trigger:
     - platform: sun
       event: sunrise
@@ -64,18 +62,16 @@
     - service: cover.open_cover
       entity_id: cover.living_vooraan
 
-##
-# RING
-##
+#### RING ######################################################################
 
-# - alias: 'Ring: Download last video'
-#   trigger:
-#     - platform: template
-#       value_template: '{{ is_state_attr(''sensor.voordeur_last_activity'',
-#     ''recording_status'', ''ready'') }}'
-#   action:
-#     - service: downloader.download_file
-#       data_template:
-#         url: "{{ state_attr('camera.voordeur', 'video_url') }}"
-#         subdir: "{{state_attr('camera.voordeur', 'friendly_name')}}"
-#         filename: "{{state_attr('camera.voordeur', 'friendly_name')}}"
+- alias: "[RING] Download last video"
+  trigger:
+    - platform: template
+      value_template: "{{ is_state_attr('sensor.voordeur_last_activity',
+    'recording_status', 'ready') }}"
+  action:
+    - service: downloader.download_file
+      data_template:
+        url: "{{ state_attr('camera.voordeur', 'video_url') }}"
+        subdir: "{{ state_attr('camera.voordeur', 'friendly_name') }}"
+        filename: "{{ state_attr('camera.voordeur', 'friendly_name') }}"

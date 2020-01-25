@@ -1,6 +1,4 @@
-##
-# CORE
-##
+#### CORE ######################################################################
 
 default_config:
 
@@ -27,9 +25,17 @@ hacs:
   token: !secret hacs_token
   appdaemon: true
 
-##
-# LOGGING, HISTORY, ETC
-##
+#### INCLUDES ##################################################################
+
+automation: !include automations.yaml
+device_tracker: !include device_trackers.yaml
+group: !include groups.yaml
+scene: !include scenes.yaml
+sensor: !include sensors.yaml
+script: !include scripts.yaml
+switch: !include switches.yaml
+
+#### LOGGING, HISTORY, ETC #####################################################
 
 logger:
   default: warning
@@ -49,9 +55,7 @@ recorder:
       - sensor.last_boot
       - sensor.date
 
-##
-# INTEGRATIONS
-##
+#### INTEGRATIONS ##############################################################
 
 discovery:
   ignore:
@@ -88,9 +92,7 @@ spotcast:
   username: !secret spotify_username
   password: !secret spotify_password
 
-##
-# DEVICES, ENTITIES, ...
-##
+#### DEVICES, ENTITIES, ...#####################################################
 
 binary_sensor:
   - platform: huesensor
@@ -114,10 +116,22 @@ media_player:
     name: Living ShieldTV
     host: !secret androidtv_living_host
     device_class: androidtv
+    apps:
+      be.vmma.vtm.zenderapp: VTM GO
+      com.amazon.amazonvideo.livingroom: Prime Video
+      com.google.android.youtube.tvkids: YouTube Kids
+      com.ted.android.tv: TED
+      tunein.player: TuneIn Radio
   - platform: androidtv
     name: Cinema ShieldTV
     host: !secret androidtv_cinema_host
     device_class: androidtv
+    apps:
+      be.vmma.vtm.zenderapp: VTM GO
+      com.amazon.amazonvideo.livingroom: Prime Video
+      com.google.android.youtube.tvkids: YouTube Kids
+      com.ted.android.tv: TED
+      tunein.player: TuneIn Radio
 
 remote:
   - platform: harmony
@@ -127,23 +141,7 @@ remote:
     name: Home Theater
     activity: Kijk een Film
 
-## -------------
-
-# Text to speech
-tts:
-  - platform: google_translate
-
-##
-# INCLUDES
-##
-
-automation: !include automations.yaml
-script: !include scripts.yaml
-scene: !include scenes.yaml
-device_tracker: !include device_trackers.yaml
-group: !include groups.yaml
-sensor: !include sensors.yaml
-switch: !include switches.yaml
+#### OTHER #####################################################################
 
 input_select:
   harmony_living:
