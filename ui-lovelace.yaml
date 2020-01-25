@@ -16,7 +16,5 @@ views:
   - !include lovelace/views/03-office.yaml
   - !include lovelace/views/04-theater.yaml
   - !include lovelace/views/05-bedroom.yaml
-  - !include lovelace/views/06-kidsroom.yaml
-  - !include lovelace/views/07-bathroom.yaml
   - !include lovelace/views/08-lan.yaml
   - !include lovelace/views/99-test.yaml

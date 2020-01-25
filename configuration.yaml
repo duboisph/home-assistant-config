@@ -68,15 +68,6 @@ pi_hole:
   #   api_key: !secret pihole2_api_key
   #   name 'Pi-Hole #2'
 
-# mikrotik:
-#   - host: !secret mikrotik_host
-#     username: !secret mikrotik_username
-#     password: !secret mikrotik_password
-#     ssl: true
-#     method: dhcp
-#     arp_ping: true
-#     track_devices: false
-
 rfxtrx:
   device: /dev/serial/by-id/usb-RFXCOM_RFXtrx433XL_DO43QQZI-if00-port0
 
@@ -109,9 +100,9 @@ cover:
     automatic_add: False
     devices:
       071a000001020300: # RFY SOMFY
-        name: Living Vooraan
+        name: Living vooraan
       071a000001020301: # RFY SOMFY
-        name: Living Achteraan
+        name: Living achteraan
       071a000001020302: # RFY SOMFY
         name: Keuken
 
@@ -153,3 +144,13 @@ device_tracker: !include device_trackers.yaml
 group: !include groups.yaml
 sensor: !include sensors.yaml
 switch: !include switches.yaml
+
+input_select:
+  harmony_living:
+    name: Living Harmony
+    options:
+      - Zet uit
+      - Speel muziek
+      - Kijk TV
+    initial: Zet uit
+    icon: mdi:remote

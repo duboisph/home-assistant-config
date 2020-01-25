@@ -1,1 +1,10 @@
 - platform: huesensor
+- platform: nmap_tracker
+  hosts: !secret nmap_tracker_hosts
+  exclude:
+    - !secret hass_host
+  interval_seconds: 20
+  consider_home: 360
+  home_interval: 10
+  new_device_defaults:
+    track_new_devices: true

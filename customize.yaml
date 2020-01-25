@@ -66,3 +66,15 @@ device_tracker.life360_philip_dubois:
   friendly_name: Philip
 light.hue_lightstrip_plus_2:
   icon: mdi:led-strip-variant
+sensor.count_automations:
+  icon: mdi:robot
+sensor.count_binary_sensors:
+  icon: mdi:contrast-circle
+sensor.count_lights:
+  icon: mdi:lightbulb-on
+sensor.count_scripts:
+  icon: mdi:script-text
+sensor.count_sensors:
+  icon: mdi:developer-board
+sensor.count_switches:
+  icon: mdi:light-switch

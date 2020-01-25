@@ -1,7 +1,6 @@
 title: Bureau
 icon: mdi:desk
 path: office
-badges: []
 cards:
   - artwork: cover
     entity: media_player.bureau

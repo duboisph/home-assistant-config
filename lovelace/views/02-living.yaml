@@ -1,7 +1,6 @@
 title: Living
 icon: mdi:sofa
 path: living
-badges: []
 cards:
   - artwork: cover
     entity: media_player.living

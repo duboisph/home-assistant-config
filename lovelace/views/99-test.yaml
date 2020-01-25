@@ -1,8 +1,6 @@
 title: Test
 icon: mdi:worker
 path: test
-badges:
-  - sensor.plex_living
 cards:
   - entities:
       - entity: sensor.ophaalkalender_restafval
@@ -12,6 +10,7 @@ cards:
       - entity: sensor.ophaalkalender_pmd
         name: P+MD
     type: entities
+
   - card:
       type: entities
     filter:
@@ -20,6 +19,7 @@ cards:
     sort:
       method: name
     type: "custom:auto-entities"
+
   - card:
       title: Lights on
       type: glance
@@ -32,3 +32,11 @@ cards:
           state: "on"
     show_empty: false
     type: "custom:auto-entities"
+
+  - type: entities
+    title: Entertainment
+    show_header_toggle: false
+    entities:
+      - sensor.harmony_living
+      - input_select.harmony_living
+      - input_number.harmony_living_volume

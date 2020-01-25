@@ -1,7 +1,6 @@
 title: Slaapkamer
 icon: mdi:bed-king
 path: bedroom
-badges: []
 cards:
   - card:
       icon: "mdi:lightbulb-group"

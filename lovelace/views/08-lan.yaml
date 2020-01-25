@@ -1,133 +1,197 @@
 title: LAN
 icon: mdi:server-network
 path: lan
-badges: []
+# badges:
+#   - sensor.plex_living
 cards:
-  - cards:
-      - entities:
-          - entity: switch.pihole_toggle
-            icon: "mdi:pi-hole"
-        type: entities
-      - cards:
-          - cards:
-              - entities:
-                  - sensor.pi_hole_ads_blocked_today
-                hour24: true
-                hours_to_show: 72
-                name: Ads Blocked
-                show:
-                  graph: line
-                type: "custom:mini-graph-card"
-              - entities:
-                  - sensor.pi_hole_ads_percentage_blocked_today
+  - type: vertical-stack
+    cards:
+      - type: horizontal-stack
+        cards:
+          - type: custom:mini-graph-card
+            entities:
+              - sensor.speedtest_ping
+            name: Ping
+            decimals: 0
+            hours_to_show: 72
+            # line_color: "#3498db"
+          - type: custom:mini-graph-card
+            entities:
+              - sensor.speedtest_download
+            name: Download
+            icon: mdi:download-network
+            decimals: 0
+            hours_to_show: 72
+            # line_color: "#3498db"
+          - type: custom:mini-graph-card
+            entities:
+              - sensor.speedtest_upload
+            name: Upload
+            icon: mdi:upload-network
+            decimals: 0
+            hours_to_show: 72
+            # line_color: "#3498db"
+      - type: vertical-stack
+        cards:
+          # - type: entities
+          #   entities:
+          #     - entity: switch.pihole_toggle
+          #       icon: mdi:pi-hole
+          - type: vertical-stack
+            cards:
+              - type: horizontal-stack
+                cards:
+                  # - type: custom:mini-graph-card
+                  #   entities:
+                  #     - sensor.pi_hole_ads_blocked_today
+                  #   name: Ads blocked
+                  #   hour24: true
+                  #   hours_to_show: 72
+                  #   show:
+                  #     graph: line
+                  - type: custom:mini-graph-card
+                    entities:
+                      - sensor.pi_hole_ads_percentage_blocked_today
+                    name: Ads blocked
+                    decimals: 0
+                    hour24: true
+                    hours_to_show: 72
+                    show:
+                      graph: line
+                  - type: custom:mini-graph-card
+                    entities:
+                      - sensor.pi_hole_dns_unique_clients
+                    name: Clients
+                    hour24: true
+                    hours_to_show: 72
+                    show:
+                      graph: none
+      - type: glance
+        entities:
+          - entity: sensor.count_automations
+          - entity: sensor.count_lights
+          - entity: sensor.count_scripts
+          - entity: sensor.count_sensors
+          - entity: sensor.count_switches
+
+  - type: vertical-stack
+    cards:
+      - type: horizontal-stack
+        cards:
+          - type: custom:vertical-stack-in-card
+            title: Hel
+            cards:
+              - type: custom:mini-graph-card
+                entities:
+                  - sensor.processor_use
+                name: CPU
+                icon: mdi:chip
+                align_icon: state
                 decimals: 0
-                hour24: true
                 hours_to_show: 72
-                name: Percentage
+                # line_color: "#389638"
                 show:
-                  graph: line
-                type: "custom:mini-graph-card"
-              - entities:
-                  - sensor.pi_hole_dns_unique_clients
-                hour24: true
+                  name: false
+              - type: custom:bar-card
+                entity: sensor.memory_use_percent
+                title: RAM
+                icon: mdi:memory
+                align: split
+                color: "#3498db"
+                icon_position: inside
+                title_position: "off"
+              - type: custom:bar-card
+                entity: sensor.disk_use_percent
+                title: HDD
+                icon: mdi:harddisk
+                align: split
+                color: "#3498db"
+                icon_position: inside
+                title_position: "off"
+          - type: custom:vertical-stack-in-card
+            title: Heimdallr
+            cards:
+              - type: custom:mini-graph-card
+                entities:
+                  - sensor.mikrotik_cpu_load
+                name: CPU
+                icon: mdi:chip
+                align_icon: state
+                decimals: 0
                 hours_to_show: 72
-                name: Clients
+                # line_color: "#389638"
                 show:
-                  graph: none
-                type: "custom:mini-graph-card"
-            type: horizontal-stack
-        type: vertical-stack
-    title: Pi-Hole
-    type: "custom:vertical-stack-in-card"
-  - cards:
-      - entities:
-          - sensor.speedtest_ping
-        decimals: 0
-        hours_to_show: 72
-        icon: "mdi:server-network"
-        line_color: "#2980b9"
-        name: Ping
-        type: "custom:mini-graph-card"
-      - entities:
-          - sensor.speedtest_download
-        decimals: 0
-        hours_to_show: 72
-        icon: "mdi:download-network"
-        line_color: "#2980b9"
-        name: Download
-        type: "custom:mini-graph-card"
-      - entities:
-          - sensor.speedtest_upload
-        decimals: 0
-        hours_to_show: 72
-        icon: "mdi:upload-network"
-        line_color: "#2980b9"
-        name: Upload
-        type: "custom:mini-graph-card"
-    type: horizontal-stack
-  - cards:
-      - cards:
-          - align_icon: state
-            decimals: 0
-            entities:
-              - sensor.processor_use
-            hours_to_show: 72
-            icon: "mdi:cpu-64-bit"
-            line_color: "#389638"
-            name: CPU
-            show:
-              name: false
-            type: "custom:mini-graph-card"
-          - align: split
-            color: "#2980b9"
-            decimal: 0
-            entity: sensor.memory_use_percent
-            icon: "mdi:memory"
-            icon_position: inside
-            title: RAM
-            title_position: "off"
-            type: "custom:bar-card"
-          - align: split
-            color: "#2980b9"
-            decimal: 0
-            entity: sensor.disk_use_percent
-            icon: "mdi:harddisk"
-            icon_position: inside
-            title: HDD
-            title_position: "off"
-            type: "custom:bar-card"
-        title: Hel
-        type: "custom:vertical-stack-in-card"
-      - cards:
-          - align_icon: state
-            decimals: 0
-            entities:
-              - sensor.mikrotik_cpu_load
-            hours_to_show: 72
-            icon: "mdi:cpu-32-bit"
-            line_color: "#389638"
-            name: CPU
-            show:
-              name: false
-            type: "custom:mini-graph-card"
-          - align: split
-            color: "#2980b9"
-            decimal: 0
-            entity: sensor.mikrotik_memory_usage
-            icon: "mdi:memory"
-            icon_position: inside
-            title: RAM
-            title_position: "off"
-            type: "custom:bar-card"
-          - align: split
-            color: "#2980b9"
-            decimal: 0
-            entity: sensor.mikrotik_hdd_usage
-            icon: "mdi:harddisk"
-            icon_position: inside
-            title: HDD
-            title_position: "off"
-            type: "custom:bar-card"
-        title: Heimdallr
-        type: "custom:vertical-stack-in-card"
-    type: horizontal-stack
+                  name: false
+              - type: custom:bar-card
+                entity: sensor.mikrotik_memory_usage
+                title: RAM
+                icon: mdi:memory
+                align: split
+                color: "#3498db"
+                icon_position: inside
+                title_position: "off"
+              - type: custom:bar-card
+                entity: sensor.mikrotik_hdd_usage
+                title: HDD
+                icon: mdi:harddisk
+                align: split
+                color: "#3498db"
+                icon_position: inside
+                title_position: "off"
+      - type: custom:vertical-stack-in-card
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: custom:vertical-stack-in-card
+                title: Thor
+                cards:
+                  - type: custom:mini-graph-card
+                    entities:
+                      - sensor.thor_cpu_load_total
+                    name: CPU
+                    icon: mdi:chip
+                    align_icon: state
+                    decimals: 0
+                    hours_to_show: 72
+                    # line_color: "#389638"
+                    show:
+                      name: false
+                  - type: custom:bar-card
+                    entity: sensor.thor_memory_usage_real
+                    title: RAM
+                    icon: mdi:memory
+                    align: split
+                    color: "#3498db"
+                    icon_position: inside
+                    title_position: "off"
+                  - type: custom:bar-card
+                    entity: sensor.thor_volume_used_volume_1
+                    title: HDD
+                    icon: mdi:harddisk
+                    align: split
+                    color: "#3498db"
+                    icon_position: inside
+                    title_position: "off"
+              - type: custom:vertical-stack-in-card
+                # title: Thor
+                cards:
+                  - type: custom:mini-graph-card
+                    entities:
+                      - entity: sensor.thor_network_up
+                        name: Up
+                      - entity: sensor.thor_network_down
+                        name: Down
+                    name: Network
+                    icon: mdi:network
+                    align_icon: state
+                    decimals: 0
+                    hours_to_show: 72
+                    show:
+                      name: false
+                  - type: entities
+                    entities:
+                      - entity: sensor.thor_status_smart_sda
+                        name: S.M.A.R.T.
+                        icon: mdi:harddisk
+                      - entity: sensor.thor_maximum_disk_temp_volume_1
+                        name: Disk temp.

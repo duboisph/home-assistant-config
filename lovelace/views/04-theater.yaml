@@ -1,7 +1,6 @@
 title: Cinema
 icon: mdi:theater
 path: theater
-badges: []
 cards:
   - artwork: cover
     entity: media_player.cinema
