@@ -4,5 +4,5 @@ binary_sensor:
 device_tracker:
   - platform: huesensor
 
-sensor:
+remote:
   - platform: huesensor
