@@ -10,6 +10,8 @@ device_tracker:
       track_new_devices: true
 
 speedtestdotnet:
+  scan_interval:
+    minutes: 120
 
 homeassistant:
   customize_glob:
@@ -19,192 +21,8 @@ homeassistant:
         hs_color: "if (state === 'Online') return [0, 0];
           else if (state === 'Unknown') return [40, 70];
           else if (state === 'Offline') return [0, 85];"
-  customize:
-    sensor.count_automations:
-      icon: mdi:robot
-    sensor.count_binary_sensors:
-      icon: mdi:contrast-circle
-    sensor.count_lights:
-      icon: mdi:lightbulb-on
-    sensor.count_scripts:
-      icon: mdi:script-text
-    sensor.count_sensors:
-      icon: mdi:developer-board
-    sensor.count_switches:
-      icon: mdi:light-switch
-    sensor.system_58z72z2:
-      icon: mdi:laptop-windows
-    sensor.system_ariel:
-      icon: mdi:laptop-windows
-    sensor.system_avr_x6200w:
-      icon: mdi:speaker
-    sensor.system_cinema_harmony:
-      icon: mdi:remote
-    sensor.system_cinema_tv:
-      icon: mdi:android
-    sensor.system_fenrir:
-      icon: mdi:laptop-windows
-    sensor.system_freyja:
-      icon: mdi:cellphone-android
-    sensor.system_heimdallr:
-      icon: mdi:router
-    sensor.system_heimdallr_ap1:
-      icon: mdi:router-wireless
-    sensor.system_hel:
-      icon: mdi:raspberry-pi
-    sensor.system_iphone_van_elke:
-      icon: mdi:cellphone-iphone
-    sensor.system_kindle:
-      icon: mdi:book-open
-    sensor.system_living_harmony:
-      icon: mdi:remote
-    sensor.system_living_tv:
-      icon: mdi:android
-    sensor.system_loki:
-      icon: mdi:tablet-ipad
-    sensor.system_nintendoswitch:
-      icon: mdi:nintendo-switch
-    sensor.system_philips_hue:
-      icon: mdi:home-lightbulb
-    sensor.system_printer:
-      icon: mdi:printer-wireless
-    sensor.system_ps4pro:
-      icon: mdi:playstation
-    sensor.system_ring:
-      icon: mdi:doorbell-video
-    sensor.system_ringchime:
-      icon: mdi:bell
-    sensor.system_sonos_connect:
-      icon: mdi:speaker-wireless
-    sensor.system_sonos_play1:
-      icon: mdi:speaker-wireless
-    sensor.system_thor:
-      icon: mdi:nas
-    sensor.system_ubp_x800:
-      icon: mdi:disc-player
 
 sensor:
-  #### CONNECTED DEVICES #######################################################
-
-  - platform: template
-    sensors:
-      system_58z72z2:
-        friendly_name: Werklaptop Elke
-        entity_id: device_tracker.nmap_58z72z2
-        value_template: >
-          {% if is_state('device_tracker.nmap_58z72z2', 'home') %}
-            Online
-          {% elif is_state('device_tracker.nmap_58z72z2_2', 'home') %}
-            Online
-          {% else %}
-            Offline
-          {% endif %}
-      system_ariel:
-        friendly_name: Laptop Elke
-        entity_id: device_tracker.nmap_ariel
-        value_template: "{{ 'Online' if is_state('device_tracker.nmap_ariel', 'home') else 'Offline' }}"
-      system_avr_x6200w:
-        friendly_name: Cinema AVR
-        entity_id: device_tracker.nmap_avr_x6200w
-        value_template: "{{ 'Online' if is_state('device_tracker.nmap_avr_x6200w', 'home') else 'Offline' }}"
-      system_cinema_harmony:
-        friendly_name: Cinema Harmony
-        entity_id: device_tracker.nmap_cinema_harmony
-        value_template: "{{ 'Online' if is_state('device_tracker.nmap_cinema_harmony', 'home') else 'Offline' }}"
-      system_cinema_tv:
-        friendly_name: Cinema TV
-        entity_id: device_tracker.nmap_cinema_tv
-        value_template: "{{ 'Online' if is_state('device_tracker.nmap_cinema_tv:', 'home') else 'Offline' }}"
-      system_fenrir:
-        friendly_name: Fenrir
-        entity_id:
-          - device_tracker.nmap_fenrir
-          - device_tracker.nmap_fenrir_2
-        value_template: >
-          {% if is_state('device_tracker.nmap_fenrir', 'home') %}
-            Online
-          {% elif is_state('device_tracker.nmap_fenrir_2', 'home') %}
-            Online
-          {% else %}
-            Offline
-          {% endif %}
-      system_freyja:
-        friendly_name: Freyja
-        entity_id: device_tracker.nmap_freyja
-        value_template: "{{ 'Online' if is_state('device_tracker.nmap_freyja', 'home') else 'Offline' }}"
-      system_heimdallr:
-        friendly_name: Heimdallr
-        entity_id: device_tracker.nmap_heimdallr
-        value_template: "{{ 'Online' if is_state('device_tracker.nmap_heimdallr', 'home') else 'Offline' }}"
-      system_heimdallr_ap1:
-        friendly_name: Heimdallr AP1
-        entity_id: device_tracker.nmap_heimdallr_ap1
-        value_template: "{{ 'Online' if is_state('device_tracker.nmap_heimdallr_ap1', 'home') else 'Offline' }}"
-      system_hel:
-        friendly_name: Hel
-        entity_id: device_tracker.nmap_hel
-        value_template: "{{ 'Online' if is_state('device_tracker.nmap_hel', 'home') else 'Offline' }}"
-      system_iphone_van_elke:
-        friendly_name: iPhone Elke
-        entity_id: device_tracker.nmap_iphone_van_elke
-        value_template: "{{ 'Online' if is_state('device_tracker.nmap_iphone_van_elke', 'home') else 'Offline' }}"
-      system_kindle:
-        friendly_name: Kindle
-        entity_id: device_tracker.nmap_kindle
-        value_template: "{{ 'Online' if is_state('device_tracker.nmap_kindle', 'home') else 'Offline' }}"
-      system_living_harmony:
-        friendly_name: Living Harmony
-        entity_id: device_tracker.nmap_living_harmony
-        value_template: "{{ 'Online' if is_state('device_tracker.nmap_living_harmony', 'home') else 'Offline' }}"
-      system_living_tv:
-        friendly_name: Living TV
-        entity_id: device_tracker.nmap_living_tv
-        value_template: "{{ 'Online' if is_state('device_tracker.nmap_living_tv', 'home') else 'Offline' }}"
-      system_loki:
-        friendly_name: Loki
-        entity_id: device_tracker.nmap_loki
-        value_template: "{{ 'Online' if is_state('device_tracker.nmap_loki', 'home') else 'Offline' }}"
-      system_nintendoswitch:
-        friendly_name: Nintendo Switch
-        entity_id: device_tracker.nmap_nintendoswitch
-        value_template: "{{ 'Online' if is_state('device_tracker.nmap_nintendoswitch', 'home') else 'Offline' }}"
-      system_philips_hue:
-        friendly_name: Hue Bridge
-        entity_id: device_tracker.nmap_philips_hue
-        value_template: "{{ 'Online' if is_state('device_tracker.nmap_philips_hue', 'home') else 'Offline' }}"
-      system_printer:
-        friendly_name: Printer
-        entity_id: device_tracker.nmap_printer
-        value_template: "{{ 'Online' if is_state('device_tracker.nmap_printer', 'home') else 'Offline' }}"
-      system_ps4pro:
-        friendly_name: PS4 Pro
-        entity_id: device_tracker.nmap_ps4pro
-        value_template: "{{ 'Online' if is_state('device_tracker.nmap_ps4pro', 'home') else 'Offline' }}"
-      system_ring:
-        friendly_name: Ring
-        entity_id: device_tracker.nmap_ring
-        value_template: "{{ 'Online' if is_state('device_tracker.nmap_ring', 'home') else 'Offline' }}"
-      system_ringchime:
-        friendly_name: Ring Chime
-        entity_id: device_tracker.nmap_ringchime
-        value_template: "{{ 'Online' if is_state('device_tracker.nmap_ringchime', 'home') else 'Offline' }}"
-      system_sonos_connect:
-        friendly_name: Sonos CONNECT
-        entity_id: device_tracker.nmap_sonos_connect
-        value_template: "{{ 'Online' if is_state('device_tracker.nmap_sonos_connect', 'home') else 'Offline' }}"
-      system_sonos_play1:
-        friendly_name: Sonos PLAY:1
-        entity_id: device_tracker.nmap_sonos_play1
-        value_template: "{{ 'Online' if is_state('device_tracker.nmap_sonos_play1', 'home') else 'Offline' }}"
-      system_thor:
-        friendly_name: Thor
-        entity_id: device_tracker.nmap_thor
-        value_template: "{{ 'Online' if is_state('device_tracker.nmap_thor', 'home') else 'Offline' }}"
-      system_ubp_x800:
-        friendly_name: Cinema Blu-Ray player
-        entity_id: device_tracker.nmap_ubp_x800
-        value_template: "{{ 'Online' if is_state('device_tracker.nmap_ubp_x800', 'home') else 'Offline' }}"
-
   #### SERVER MONITORING #######################################################
 
   - platform: systemmonitor
@@ -228,6 +46,199 @@ sensor:
       - volume_percentage_used
       - volume_disk_temp_max
 
+  #### CONNECTED DEVICES #######################################################
+
+  - platform: template
+    sensors:
+      system_58z72z2:
+        entity_id:
+          - device_tracker.nmap_58z72z2
+          - device_tracker.nmap_58z72z2_2
+        friendly_name: Werklaptop Elke
+        icon_template: mdi:laptop-windows
+        value_template: >
+          {% if is_state('device_tracker.nmap_58z72z2', 'home') %}
+            Online
+          {% elif is_state('device_tracker.nmap_58z72z2_2', 'home') %}
+            Online
+          {% else %}
+            Offline
+          {% endif %}
+      system_ariel:
+        entity_id: device_tracker.nmap_ariel
+        friendly_name: Laptop Elke
+        icon_template: mdi:laptop-windows
+        value_template: "{{ 'Online' if is_state('device_tracker.nmap_ariel', 'home') else 'Offline' }}"
+      system_avr_x6200w:
+        entity_id: device_tracker.nmap_avr_x6200w
+        friendly_name: Cinema AVR
+        icon_template: mdi:speaker
+        value_template: "{{ 'Online' if is_state('device_tracker.nmap_avr_x6200w', 'home') else 'Offline' }}"
+      system_cinema_harmony:
+        entity_id: device_tracker.nmap_cinema_harmony
+        friendly_name: Cinema Harmony
+        icon_template: mdi:remote
+        value_template: "{{ 'Online' if is_state('device_tracker.nmap_cinema_harmony', 'home') else 'Offline' }}"
+      system_cinema_tv:
+        entity_id: device_tracker.nmap_cinema_tv
+        friendly_name: Cinema TV
+        icon_template: mdi:android
+        value_template: "{{ 'Online' if is_state('device_tracker.nmap_cinema_tv:', 'home') else 'Offline' }}"
+      system_fenrir:
+        entity_id:
+          - device_tracker.nmap_fenrir
+          - device_tracker.nmap_fenrir_2
+        friendly_name: Fenrir
+        icon_template: mdi:laptop-windows
+        value_template: >
+          {% if is_state('device_tracker.nmap_fenrir', 'home') %}
+            Online
+          {% elif is_state('device_tracker.nmap_fenrir_2', 'home') %}
+            Online
+          {% else %}
+            Offline
+          {% endif %}
+      system_freyja:
+        entity_id: device_tracker.nmap_freyja
+        friendly_name: Freyja
+        icon_template: mdi:cellphone-android
+        value_template: "{{ 'Online' if is_state('device_tracker.nmap_freyja', 'home') else 'Offline' }}"
+      system_heimdallr:
+        entity_id: device_tracker.nmap_heimdallr
+        friendly_name: Heimdallr
+        icon_template: mdi:router
+        value_template: "{{ 'Online' if is_state('device_tracker.nmap_heimdallr', 'home') else 'Offline' }}"
+      system_heimdallr_ap1:
+        friendly_name: Access Point
+        icon_template: mdi:router-wireless
+        entity_id: device_tracker.nmap_heimdallr_ap1
+        value_template: "{{ 'Online' if is_state('device_tracker.nmap_heimdallr_ap1', 'home') else 'Offline' }}"
+      system_hel:
+        entity_id: device_tracker.nmap_hel
+        friendly_name: Hel
+        icon_template: mdi:raspberry-pi
+        value_template: "{{ 'Online' if is_state('device_tracker.nmap_hel', 'home') else 'Offline' }}"
+      system_iphone_van_elke:
+        entity_id: device_tracker.nmap_iphone_van_elke
+        friendly_name: iPhone Elke
+        icon_template: mdi:cellphone-iphone
+        value_template: "{{ 'Online' if is_state('device_tracker.nmap_iphone_van_elke', 'home') else 'Offline' }}"
+      system_kindle:
+        entity_id: device_tracker.nmap_kindle
+        friendly_name: Kindle
+        icon_template: mdi:book-open
+        value_template: "{{ 'Online' if is_state('device_tracker.nmap_kindle', 'home') else 'Offline' }}"
+      system_living_harmony:
+        entity_id: device_tracker.nmap_living_harmony
+        friendly_name: Living Harmony
+        icon_template: mdi:remote
+        value_template: "{{ 'Online' if is_state('device_tracker.nmap_living_harmony', 'home') else 'Offline' }}"
+      system_living_tv:
+        entity_id: device_tracker.nmap_living_tv
+        friendly_name: Living TV
+        icon_template: mdi:android
+        value_template: "{{ 'Online' if is_state('device_tracker.nmap_living_tv', 'home') else 'Offline' }}"
+      system_loki:
+        entity_id: device_tracker.nmap_loki
+        friendly_name: Loki
+        icon_template: mdi:tablet-ipad
+        value_template: "{{ 'Online' if is_state('device_tracker.nmap_loki', 'home') else 'Offline' }}"
+      system_nintendoswitch:
+        entity_id: device_tracker.nmap_nintendoswitch
+        friendly_name: Nintendo Switch
+        icon_template: mdi:nintendo-switch
+        value_template: "{{ 'Online' if is_state('device_tracker.nmap_nintendoswitch', 'home') else 'Offline' }}"
+      system_philips_hue:
+        entity_id: device_tracker.nmap_philips_hue
+        friendly_name: Hue Bridge
+        icon_template: mdi:home-lightbulb
+        value_template: "{{ 'Online' if is_state('device_tracker.nmap_philips_hue', 'home') else 'Offline' }}"
+      system_printer:
+        entity_id: device_tracker.nmap_printer
+        friendly_name: Printer
+        icon_template: mdi:printer-wireless
+        value_template: "{{ 'Online' if is_state('device_tracker.nmap_printer', 'home') else 'Offline' }}"
+      system_ps4pro:
+        entity_id: device_tracker.nmap_ps4pro
+        friendly_name: PS4 Pro
+        icon_template: mdi:playstation
+        value_template: "{{ 'Online' if is_state('device_tracker.nmap_ps4pro', 'home') else 'Offline' }}"
+      system_ring:
+        entity_id: device_tracker.nmap_ring
+        friendly_name: Ring
+        icon_template: mdi:doorbell-video
+        value_template: "{{ 'Online' if is_state('device_tracker.nmap_ring', 'home') else 'Offline' }}"
+      system_ringchime:
+        entity_id: device_tracker.nmap_ringchime
+        friendly_name: Ring Chime
+        icon_template: mdi:bell
+        value_template: "{{ 'Online' if is_state('device_tracker.nmap_ringchime', 'home') else 'Offline' }}"
+      system_sonos_connect:
+        entity_id: device_tracker.nmap_sonos_connect
+        friendly_name: Sonos CONNECT
+        icon_template: mdi:speaker-wireless
+        value_template: "{{ 'Online' if is_state('device_tracker.nmap_sonos_connect', 'home') else 'Offline' }}"
+      system_sonos_play1:
+        entity_id: device_tracker.nmap_sonos_play1
+        friendly_name: Sonos PLAY:1
+        icon_template: mdi:speaker-wireless
+        value_template: "{{ 'Online' if is_state('device_tracker.nmap_sonos_play1', 'home') else 'Offline' }}"
+      system_thor:
+        entity_id: device_tracker.nmap_thor
+        friendly_name: Thor
+        icon_template: mdi:nas
+        value_template: "{{ 'Online' if is_state('device_tracker.nmap_thor', 'home') else 'Offline' }}"
+      system_ubp_x800:
+        entity_id: device_tracker.nmap_ubp_x800
+        friendly_name: Cinema Blu-Ray player
+        icon_template: mdi:disc-player
+        value_template: "{{ 'Online' if is_state('device_tracker.nmap_ubp_x800', 'home') else 'Offline' }}"
+
+  #### COUNT ENTITIES ##########################################################
+
+  - platform: template
+    sensors:
+      count_automations:
+        entity_id: sensor.date
+        friendly_name: Automations
+        icon_template: mdi:robot
+        value_template: "{{ states.automation | count }}"
+      count_binary_sensors:
+        entity_id: sensor.date
+        friendly_name: Binary Sensors
+        icon_template: mdi:contrast-circle
+        value_template: "{{ states.binary_sensor | count }}"
+      count_device_trackers:
+        entity_id: sensor.date
+        friendly_name: Device Trackers
+        icon_template: mdi:radar
+        value_template: "{{ states.device_tracker | count }}"
+      count_lights:
+        entity_id: sensor.date
+        friendly_name: Lights
+        icon_template: mdi:lightbulb-group
+        value_template: "{{ states.light | count }}"
+      count_scripts:
+        entity_id: sensor.date
+        friendly_name: Scripts
+        icon_template: mdi:script-text
+        value_template: "{{ states.script | count }}"
+      count_sensors:
+        entity_id: sensor.date
+        friendly_name: Sensors
+        icon_template: mdi:leak
+        value_template: "{{ states.sensor | count }}"
+      count_switches:
+        entity_id: sensor.date
+        friendly_name: Switches
+        icon_template: mdi:light-switch
+        value_template: "{{ states.switch | count }}"
+      count_zones:
+        entity_id: sensor.date
+        friendly_name: Zones
+        icon_template: mdi:map-marker-radius
+        value_template: "{{ states.zone | count }}"
+
   #### WIREGUARD ###############################################################
 
   - platform: rest
@@ -241,124 +252,41 @@ sensor:
   - platform: template
     sensors:
       wireguard_loki_latest_handshake:
-        friendly_name: "Loki latest handshake"
-        icon_template: "mdi:handshake"
+        friendly_name: Loki latest handshak
+        icon_template: mdi:handshake
         unit_of_measurement: s
-        value_template: '{{ states.sensor.wireguard_sensor.attributes["Loki"]["latest_handshake"] }}'
+        value_template: "{{ states.sensor.wireguard_sensor.attributes['Loki']['latest_handshake'] }}"
       wireguard_loki_tx:
-        friendly_name: "Loki sent"
-        icon_template: "mdi:upload"
-        value_template: '{{ states.sensor.wireguard_sensor.attributes["Loki"]["transfer_tx"] | filesizeformat }}'
+        friendly_name: Loki sent
+        icon_template: mdi:upload
+        value_template: "{{ states.sensor.wireguard_sensor.attributes['Loki']['transfer_tx'] | filesizeformat }}"
       wireguard_loki_rx:
-        friendly_name: "Loki received"
-        icon_template: "mdi:download"
-        value_template: '{{ states.sensor.wireguard_sensor.attributes["Loki"]["transfer_rx"] | filesizeformat }}'
+        friendly_name: Loki received
+        icon_template: mdi:download
+        value_template: "{{ states.sensor.wireguard_sensor.attributes['Loki']['transfer_rx'] | filesizeformat }}"
       wireguard_freyja_latest_handshake:
-        friendly_name: "Freyja latest handshake"
-        icon_template: "mdi:handshake"
+        friendly_name: Freyja latest handshake
+        icon_template: mdi:handshake
         unit_of_measurement: s
-        value_template: '{{ states.sensor.wireguard_sensor.attributes["Freyja"]["latest_handshake"] }}'
+        value_template: "{{ states.sensor.wireguard_sensor.attributes['Freyja']['latest_handshake'] }}"
       wireguard_freyja_tx:
-        friendly_name: "Freyja sent"
-        icon_template: "mdi:upload"
-        value_template: '{{ states.sensor.wireguard_sensor.attributes["Freyja"]["transfer_tx"] | filesizeformat }}'
+        friendly_name: Freyja sent
+        icon_template: mdi:upload
+        value_template: "{{ states.sensor.wireguard_sensor.attributes['Freyja']['transfer_tx'] | filesizeformat }}"
       wireguard_freyja_rx:
-        friendly_name: "Freyja received"
-        icon_template: "mdi:download"
-        value_template: '{{ states.sensor.wireguard_sensor.attributes["Freyja"]["transfer_rx"] | filesizeformat }}'
+        friendly_name: Freyja received
+        icon_template: mdi:download
+        value_template: "{{ states.sensor.wireguard_sensor.attributes['Freyja']['transfer_rx'] | filesizeformat }}"
       wireguard_fenrir_latest_handshake:
-        friendly_name: "Fenrir latest handshake"
-        icon_template: "mdi:handshake"
+        friendly_name: Fenrir latest handshake
+        icon_template: mdi:handshake
         unit_of_measurement: s
-        value_template: '{{ states.sensor.wireguard_sensor.attributes["Fenrir"]["latest_handshake"] }}'
+        value_template: "{{ states.sensor.wireguard_sensor.attributes['Fenrir']['latest_handshake'] }}"
       wireguard_fenrir_tx:
-        friendly_name: "Fenrir sent"
-        icon_template: "mdi:upload"
-        value_template: '{{ states.sensor.wireguard_sensor.attributes["Fenrir"]["transfer_tx"] | filesizeformat }}'
+        friendly_name: Fenrir sent
+        icon_template: mdi:upload
+        value_template: "{{ states.sensor.wireguard_sensor.attributes['Fenrir']['transfer_tx'] | filesizeformat }}"
       wireguard_fenrir_rx:
-        friendly_name: "Fenrir received"
-        icon_template: "mdi:download"
-        value_template: '{{ states.sensor.wireguard_sensor.attributes["Fenrir"]["transfer_rx"] | filesizeformat }}'
-
-  #### COUNT ENTITIES ##########################################################
-
-  - platform: template
-    sensors:
-      ## Count Automations
-      count_automations:
-        entity_id: sensor.date
-        friendly_name: Automations
-        value_template: >
-          {%- set domains = ['automation'] -%}
-          {%- for domain in domains -%}
-            {%- for item in states[domain] -%}
-              {% if loop.first %}
-                {{loop.length}}
-              {% endif %}
-            {%- endfor -%}
-          {%- endfor -%}
-      ## Count Binary Sensors
-      count_binary_sensors:
-        entity_id: sensor.date
-        friendly_name: Binary Sensors
-        value_template: >
-          {%- set domains = ['binary_sensor'] -%}
-          {%- for domain in domains -%}
-            {%- for item in states[domain] -%}
-              {% if loop.first %}
-                {{loop.length}}
-              {% endif %}
-            {%- endfor -%}
-          {%- endfor -%}
-      ## Count Lights
-      count_lights:
-        entity_id: sensor.date
-        friendly_name: Lights
-        value_template: >
-          {%- set domains = ['light'] -%}
-          {%- for domain in domains -%}
-            {%- for item in states[domain] -%}
-              {% if loop.first %}
-                {{loop.length}}
-              {% endif %}
-            {%- endfor -%}
-          {%- endfor -%}
-      ## Count Scripts
-      count_scripts:
-        entity_id: sensor.date
-        friendly_name: Scripts
-        value_template: >
-          {%- set domains = ['script'] -%}
-          {%- for domain in domains -%}
-            {%- for item in states[domain] -%}
-              {% if loop.first %}
-                {{loop.length}}
-              {% endif %}
-            {%- endfor -%}
-          {%- endfor -%}
-      ## Count Sensors
-      count_sensors:
-        entity_id: sensor.date
-        friendly_name: Sensors
-        value_template: >
-          {%- set domains = ['sensor'] -%}
-          {%- for domain in domains -%}
-            {%- for item in states[domain] -%}
-              {% if loop.first %}
-                {{loop.length}}
-              {% endif %}
-            {%- endfor -%}
-          {%- endfor -%}
-      ## Count Switches
-      count_switches:
-        entity_id: sensor.date
-        friendly_name: Switches
-        value_template: >
-          {%- set domains = ['switch'] -%}
-          {%- for domain in domains -%}
-            {%- for item in states[domain] -%}
-              {% if loop.first %}
-                {{loop.length}}
-              {% endif %}
-            {%- endfor -%}
-          {%- endfor -%}
+        friendly_name: Fenrir received
+        icon_template: mdi:download
+        value_template: "{{ states.sensor.wireguard_sensor.attributes['Fenrir']['transfer_rx'] | filesizeformat }}"
