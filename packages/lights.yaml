@@ -30,28 +30,28 @@ homeassistant:
     ## Light groups
     light.living_lights:
       friendly_name: Living
-      icon: mdi:lightbulb-group
+      icon: mdi:sofa
     light.office_lights:
       friendly_name: Bureau
-      icon: mdi:lightbulb-group
+      icon: mdi:desk
     light.theater_lights:
       friendly_name: Cinema
-      icon: mdi:lightbulb-group
+      icon: mdi:theater
     light.bedroom_lights:
       friendly_name: Slaapkamer
-      icon: mdi:lightbulb-group
+      icon: mdi:bed-king
     light.kids_room_lights:
       friendly_name: Kinderkamer
-      icon: mdi:lightbulb-group
+      icon: mdi:baby
     light.downstairs_lights:
       friendly_name: Beneden
-      icon: mdi:lightbulb-group
+      icon: mdi:home-floor-g
     light.upstairs_lights:
       friendly_name: Boven
-      icon: mdi:lightbulb-group
+      icon: mdi:home-floor-1
     light.attic_lights:
       friendly_name: Zolder
-      icon: mdi:lightbulb-group
+      icon: mdi:home-floor-2
 
 light:
   - platform: group
@@ -81,7 +81,6 @@ light:
     name: Kids' Room Lights
     entities:
       - light.nachtlamp_xander
-
   - platform: group
     name: Downstairs Lights
     entities:

@@ -17,10 +17,10 @@ cards:
     filter:
       include:
         - domain: light
+          state: "on"
           options:
             tap_action:
               action: toggle
-          state: "on"
     show_empty: false
     type: "custom:auto-entities"
 

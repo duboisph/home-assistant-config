@@ -17,7 +17,6 @@ cards:
             type: custom:slider-entity-row
             entity: light.living_lights
             hide_when_off: true
-            icon: mdi:sofa
             toggle: true
         filter:
           include:
@@ -32,7 +31,6 @@ cards:
             type: custom:slider-entity-row
             entity: light.office_lights
             hide_when_off: true
-            icon: mdi:desk
             toggle: true
         filter:
           include:
@@ -47,7 +45,6 @@ cards:
             type: custom:slider-entity-row
             entity: light.theater_lights
             hide_when_off: true
-            icon: mdi:theater
             toggle: true
         filter:
           include:
@@ -62,7 +59,6 @@ cards:
             type: custom:slider-entity-row
             entity: light.bedroom_lights
             hide_when_off: true
-            icon: mdi:bed-king
             toggle: true
         filter:
           include:
@@ -77,7 +73,6 @@ cards:
             type: custom:slider-entity-row
             entity: light.kids_room_lights
             hide_when_off: true
-            icon: mdi:baby
             toggle: true
         filter:
           include:
