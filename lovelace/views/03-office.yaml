@@ -15,14 +15,15 @@ cards:
           type: glance
           show_name: true
           show_state: false
-          tap_action:
-            action: toggle
-          hold_action:
-            action: more-info
         filter:
           include:
             - area: Bureau
               domain: light
+              options:
+                tap_action:
+                  action: toggle
+                hold_action:
+                  action: more-info
         sort:
           method: name
 
