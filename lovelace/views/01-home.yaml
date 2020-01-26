@@ -1,10 +1,6 @@
 title: Home
 icon: mdi:home
 path: home
-badges:
-  - person.philip
-  - person.elke
-  - sun.sun
 cards:
   - type: custom:simple-weather-card
     name: Weer
@@ -142,6 +138,16 @@ cards:
   - type: picture-glance
     camera_image: camera.front_door
     entities:
+      - entity: binary_sensor.front_door_motion
       - entity: sensor.front_door_last_motion
+        icon: mdi:motion-sensor
+      - entity: binary_sensor.front_door_ding
       - entity: sensor.front_door_last_ding
-    title: Voordeur - Laatste beweging
+        icon: mdi:bell-ring-outline
+    title: Voordeur
+
+  - type: glance
+    entities:
+      - entity: person.philip
+      - entity: person.elke
+    show_name: false
