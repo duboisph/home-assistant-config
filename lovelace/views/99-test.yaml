@@ -12,15 +12,6 @@ cards:
     type: entities
 
   - card:
-      type: entities
-    filter:
-      include:
-        - domain: device_tracker
-    sort:
-      method: name
-    type: "custom:auto-entities"
-
-  - card:
       title: Lights on
       type: glance
     filter:

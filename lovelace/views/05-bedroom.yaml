@@ -2,13 +2,26 @@ title: Slaapkamer
 icon: mdi:bed-king
 path: bedroom
 cards:
-  - type: custom:auto-entities
-    card:
-      type: glance
-      # title: Lichten
-    filter:
-      include:
-        - area: Slaapkamer
-          domain: light
-    sort:
-      method: name
+  - type: custom:vertical-stack-in-card
+    cards:
+      - type: custom:light-entity-card
+        entity: light.bedroom_lights
+        header: Lichten
+        full_width_sliders: true
+        show_slider_percent: false
+        smooth_color_wheel: true
+      - type: custom:auto-entities
+        card:
+          type: glance
+          show_name: true
+          show_state: false
+          tap_action:
+            action: toggle
+          hold_action:
+            action: more-info
+        filter:
+          include:
+            - area: Slaapkamer
+              domain: light
+        sort:
+          method: name

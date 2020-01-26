@@ -8,7 +8,7 @@ badges:
 cards:
   - type: custom:simple-weather-card
     name: Weer
-    entity: weather.thuis
+    entity: weather.home
 
   - type: entities
     title: Lichten
@@ -140,8 +140,8 @@ cards:
       method: name
 
   - type: picture-glance
-    camera_image: camera.voordeur
+    camera_image: camera.front_door
     entities:
-      - entity: binary_sensor.voordeur_motion
-      - entity: binary_sensor.voordeur_ding
+      - entity: sensor.front_door_last_motion
+      - entity: sensor.front_door_last_ding
     title: Voordeur - Laatste beweging
