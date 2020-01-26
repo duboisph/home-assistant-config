@@ -1,15 +1,15 @@
-homeassistant:
-  customize:
-    media_player.badkamer:
-      friendly_name: Badkamer Sonos
-      icon: mdi:speaker-wireless
-    media_player.bureau:
-      friendly_name: Bureau Sonos
-      icon: mdi:speaker-wireless
-    media_player.cinema:
-      friendly_name: Cinema CC
-    media_player.living:
-      friendly_name: Living CC
+# homeassistant:
+#   customize:
+#     media_player.bathroom_sonos:
+#       friendly_name: Badkamer Sonos
+#       icon: mdi:speaker-wireless
+#     media_player.office_sonos:
+#       friendly_name: Bureau Sonos
+#       icon: mdi:speaker-wireless
+#     media_player.theater:
+#       friendly_name: Cinema CC
+#     media_player.living:
+#       friendly_name: Living CC
 
 spotcast:
   username: !secret spotify_username

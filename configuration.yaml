@@ -39,8 +39,6 @@ script: !include scripts.yaml
 #### INTEGRATIONS ##############################################################
 
 discovery:
-  ignore:
-    - homekit
 
 downloader:
   download_dir: downloads

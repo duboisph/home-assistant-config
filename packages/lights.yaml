@@ -1,26 +1,5 @@
 homeassistant:
   customize:
-    ## Hue rooms/zones
-    light.beneden:
-      icon: mdi:home-floor-0
-    light.boven:
-      icon: mdi:home-floor-1
-    light.bureau:
-      icon: mdi:lightbulb-group
-    light.cinema:
-      icon: mdi:lightbulb-group
-    light.kinderkamer:
-      icon: mdi:lightbulb-group
-    light.living:
-      icon: mdi:lightbulb-group
-    light.slaapkamer:
-      icon: mdi:lightbulb-group
-    light.slaapkamer_elke:
-      icon: mdi:lightbulb-group
-    light.slaapkamer_philip:
-      icon: mdi:lightbulb-group
-    light.zolder:
-      icon: mdi:home-floor-2
     ## Single lights
     light.cinema_spots:
       icon: mdi:wall-sconce-flat
@@ -61,7 +40,7 @@ homeassistant:
     light.bedroom_lights:
       friendly_name: Slaapkamer
       icon: mdi:lightbulb-group
-    light.kidsroom_lights:
+    light.kids_room_lights:
       friendly_name: Kinderkamer
       icon: mdi:lightbulb-group
     light.downstairs_lights:
