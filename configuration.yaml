@@ -42,13 +42,3 @@ discovery:
 
 downloader:
   download_dir: downloads
-
-sensor:
-  - platform: ophaalkalender
-    resources:
-      - restafval
-      - papier
-      - pmd
-    postcode: !secret address_postcode
-    streetname: !secret address_streetname
-    streetnumber: !secret address_streetnumber

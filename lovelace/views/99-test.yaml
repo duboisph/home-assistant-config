@@ -2,15 +2,6 @@ title: Test
 icon: mdi:worker
 path: test
 cards:
-  - entities:
-      - entity: sensor.ophaalkalender_restafval
-        name: Restafval
-      - entity: sensor.ophaalkalender_papier
-        name: Papier
-      - entity: sensor.ophaalkalender_pmd
-        name: P+MD
-    type: entities
-
   - card:
       title: Lights on
       type: glance
