@@ -1,6 +1,6 @@
 #### SYSTEM ####################################################################
 
-- id: 6ce8d129779449029fbe9dc4673dce86
+- id: system_set_lovelace_theme_on_startup
   alias: "[SYSTEM] Set Lovelace theme on startup"
   trigger:
     - platform: homeassistant
@@ -10,7 +10,7 @@
       data:
         name: sundown
 
-- id: fd49e0e7455f4119a5f2e4ff987c4386
+- id: system_renew_letsencrypt_certificate
   alias: "[SYSTEM] Renew Let's Encrypt certificate"
   trigger:
     - platform: time
@@ -20,59 +20,23 @@
       data:
         addon: core_letsencrypt
 
-#### LIGHTS ####################################################################
-
-- id: ee2e10211bd44e598aaca7b5d21e2921
-  alias: "[LIGHTS] Turn on as the sun goes down"
-  trigger:
-    - platform: numeric_state
-      entity_id: sun.sun
-      value_template: "{{ state_attr('sun.sun', 'elevation') }}"
-      below: 1.5
-  action:
-    - service: light.turn_on
-      entity_id: light.living
-
-- id: af145a171ff94101a9ab6071bc03bc1a
-  alias: "[LIGHTS] Turn off after 1AM"
+- id: system_take_weekly_snapshot
+  alias: "[SYSTEM] Take weekly snapshot"
   trigger:
     - platform: time
-      at: 01:00:00
+      at: 02:00:00
+  condition:
+    - condition: time
+      weekday:
+        - sun
   action:
-    - service: light.turn_off
-      entity_id: light.living
-
-#### BLINDS ####################################################################
-
-- id: 4a5b6efaad7f42778a98b281df56ec3e
-  alias: "[BLINDS] Close at dusk"
-  trigger:
-    - platform: numeric_state
-      entity_id: sun.sun
-      value_template: "{{ state_attr('sun.sun', 'elevation') }}"
-      below: -2.5
-  action:
-    - service: cover.close_cover
-      entity_id: cover.living_achteraan
-    - service: cover.close_cover
-      entity_id: cover.living_vooraan
-
-- id: 5d316590d65f406b83ba301c72ba4a16
-  alias: "[BLINDS] Open at dawn"
-  trigger:
-    - platform: sun
-      event: sunrise
-  action:
-    - service: cover.open_cover
-      entity_id: cover.living_achteraan
-    - service: cover.open_cover
-      entity_id: cover.living_vooraan
-    - service: cover.open_cover
-      entity_id: cover.keuken
+    - service: hassio.snapshot_full
+      data_template:
+        name: Backup_{{ now().strftime('%Y-%m-%d') }}
 
 #### RING ######################################################################
 
-- id: 09684a612d3a48c78fb013d6c700ccbc
+- id: ring_download_last_video
   alias: "[RING] Download last video"
   trigger:
     - platform: template

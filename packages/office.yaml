@@ -1,0 +1,106 @@
+#### CUSTOMIZE #################################################################
+
+homeassistant:
+  customize:
+    light.office_lights:
+      friendly_name: Bureau
+      icon: mdi:desk
+    light.lightstrip_1:
+      icon: mdi:led-strip-variant
+    light.lightstrip_2:
+      icon: mdi:led-strip-variant
+    light.ikea_ps_2017:
+      icon: mdi:lamp
+
+#### LIGHTS ####################################################################
+
+light:
+  - platform: group
+    name: Office Lights
+    entities:
+      - light.ikea_ps_2017
+      - light.lightstrip_1
+      - light.lightstrip_2
+
+#### SCENES ####################################################################
+
+scene:
+  - name: Office Work
+    entities:
+      light.office_lights:
+        state: "on"
+        brightness: 227
+        color_temp: 301
+        hs_color:
+          - 140.455
+          - 58.627
+  - name: Office Energize
+    entities:
+      light.office_lights:
+        state: "on"
+        brightness: 254
+        color_temp: 156
+        hs_color:
+          - 173.333
+          - 3.529
+  - name: Office Relax
+    entities:
+      light.office_lights:
+        state: "on"
+        brightness: 144
+        color_temp: 447
+        hs_color:
+          - 36.568
+          - 66.275
+  - name: Office Savannah Sunset
+    entities:
+      light.office_lights:
+        state: "on"
+        brightness: 200
+        color_temp: 382
+        hs_color:
+          - 16.925
+          - 78.431
+
+#### AUTOMATIONS ###############################################################
+
+automation:
+  - id: lights_office_set_work_scene_via_remote
+    alias: "[LIGHTS - Office] Set Work scene via remote"
+    trigger:
+      - platform: state
+        entity_id: remote.bureau
+        to: left_upper_release
+    action:
+      - service: scene.turn_on
+        entity_id: scene.office_work
+
+  - id: lights_office_set_relax_scene_via_remote
+    alias: "[LIGHTS - Office] Set Relax scene via remote"
+    trigger:
+      - platform: state
+        entity_id: remote.bureau
+        to: left_lower_release
+    action:
+      - service: scene.turn_on
+        entity_id: scene.office_relax
+
+  - id: lights_office_set_savannah_sunset_scene_via_remote
+    alias: "[LIGHTS - Office] Set Savannah Sunset scene via remote"
+    trigger:
+      - platform: state
+        entity_id: remote.bureau
+        to: right_upper_release
+    action:
+      - service: scene.turn_on
+        entity_id: scene.office_savannah_sunset
+
+  - id: lights_office_turn_off_via_remote
+    alias: "[LIGHTS - Office] Turn off via remote"
+    trigger:
+      - platform: state
+        entity_id: remote.bureau
+        to: right_lower_release
+    action:
+      - service: light.turn_off
+        entity_id: light.office_lights

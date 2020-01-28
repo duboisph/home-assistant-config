@@ -1,8 +1,0 @@
-binary_sensor:
-  - platform: huesensor
-
-device_tracker:
-  - platform: huesensor
-
-remote:
-  - platform: huesensor

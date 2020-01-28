@@ -1,3 +1,5 @@
+#### CUSTOMIZE #################################################################
+
 homeassistant:
   customize:
     ## Single lights
@@ -6,12 +8,6 @@ homeassistant:
     light.bolletjes:
       icon: mdi:string-lights
     light.iris_1:
-      icon: mdi:lamp
-    light.lightstrip_1:
-      icon: mdi:led-strip-variant
-    light.lightstrip_2:
-      icon: mdi:led-strip-variant
-    light.ikea_ps_2017:
       icon: mdi:lamp
     light.kerstboom:
       icon: mdi:pine-tree
@@ -31,9 +27,6 @@ homeassistant:
     light.living_lights:
       friendly_name: Living
       icon: mdi:sofa
-    light.office_lights:
-      friendly_name: Bureau
-      icon: mdi:desk
     light.theater_lights:
       friendly_name: Cinema
       icon: mdi:theater
@@ -53,6 +46,8 @@ homeassistant:
       friendly_name: Zolder
       icon: mdi:home-floor-2
 
+#### GROUPS ####################################################################
+
 light:
   - platform: group
     name: Living Lights
@@ -60,12 +55,6 @@ light:
       - light.oosterse_lamp
       - light.plantenzuil
       - light.vloerlamp
-  - platform: group
-    name: Office Lights
-    entities:
-      - light.ikea_ps_2017
-      - light.lightstrip_1
-      - light.lightstrip_2
   - platform: group
     name: Theater Lights
     entities:
@@ -102,3 +91,26 @@ light:
       - light.bolletjes
       - light.nachtlamp_elke
       - light.nachtlamp_philip
+
+#### AUTOMATIONS ###############################################################
+
+automation:
+  - id: lights_turn_on_at_sunset
+    alias: "[LIGHTS] Turn on as the sun goes down"
+    trigger:
+      - platform: numeric_state
+        entity_id: sun.sun
+        value_template: "{{ state_attr('sun.sun', 'elevation') }}"
+        below: 1.5
+    action:
+      - service: light.turn_on
+        entity_id: light.living
+
+  - id: lights_turn_off_after_1am
+    alias: "[LIGHTS] Turn off after 1AM"
+    trigger:
+      - platform: time
+        at: 01:00:00
+    action:
+      - service: light.turn_off
+        entity_id: light.living

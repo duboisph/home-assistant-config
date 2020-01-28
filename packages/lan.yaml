@@ -13,6 +13,8 @@ speedtestdotnet:
   scan_interval:
     minutes: 120
 
+#### CUSTOMIZE #################################################################
+
 homeassistant:
   customize_glob:
     sensor.system_*:
