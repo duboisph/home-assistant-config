@@ -2,32 +2,25 @@
 
 homeassistant:
   customize:
-    light.office_lights:
+    light.office:
       friendly_name: Bureau
       icon: mdi:desk
-    light.lightstrip_1:
+    light.office_lightstrip_1:
+      friendly_name: LED-strip 1
       icon: mdi:led-strip-variant
-    light.lightstrip_2:
+    light.office_lightstrip_2:
+      friendly_name: LED-strip 2
       icon: mdi:led-strip-variant
-    light.ikea_ps_2017:
+    light.office_ikea_ps_2017:
+      friendly_name: IKEA PS 2017
       icon: mdi:lamp
-
-#### LIGHTS ####################################################################
-
-light:
-  - platform: group
-    name: Office Lights
-    entities:
-      - light.ikea_ps_2017
-      - light.lightstrip_1
-      - light.lightstrip_2
 
 #### SCENES ####################################################################
 
 scene:
   - name: Office Work
     entities:
-      light.office_lights:
+      light.office:
         state: "on"
         brightness: 227
         color_temp: 301
@@ -36,7 +29,7 @@ scene:
           - 58.627
   - name: Office Energize
     entities:
-      light.office_lights:
+      light.office:
         state: "on"
         brightness: 254
         color_temp: 156
@@ -45,7 +38,7 @@ scene:
           - 3.529
   - name: Office Relax
     entities:
-      light.office_lights:
+      light.office:
         state: "on"
         brightness: 144
         color_temp: 447
@@ -54,7 +47,7 @@ scene:
           - 66.275
   - name: Office Savannah Sunset
     entities:
-      light.office_lights:
+      light.office:
         state: "on"
         brightness: 200
         color_temp: 382
@@ -64,13 +57,21 @@ scene:
 
 #### AUTOMATIONS ###############################################################
 
+## deCONZ events
+# 1XXX  Button #1 up to #8
+# XXX1  Button hold
+# XXX2  Button short release
+# XXX3  Button long release
+
 automation:
   - id: lights_office_set_work_scene_via_remote
     alias: "[LIGHTS - Office] Set Work scene via remote"
     trigger:
-      - platform: state
-        entity_id: remote.bureau
-        to: left_upper_release
+      - platform: event
+        event_type: deconz_event
+        event_data:
+          id: office
+          event: 1002 # left_upper_short_release
     action:
       - service: scene.turn_on
         entity_id: scene.office_work
@@ -78,9 +79,11 @@ automation:
   - id: lights_office_set_relax_scene_via_remote
     alias: "[LIGHTS - Office] Set Relax scene via remote"
     trigger:
-      - platform: state
-        entity_id: remote.bureau
-        to: left_lower_release
+      - platform: event
+        event_type: deconz_event
+        event_data:
+          id: office
+          event: 2002 # left_lower_short_release
     action:
       - service: scene.turn_on
         entity_id: scene.office_relax
@@ -88,9 +91,11 @@ automation:
   - id: lights_office_set_savannah_sunset_scene_via_remote
     alias: "[LIGHTS - Office] Set Savannah Sunset scene via remote"
     trigger:
-      - platform: state
-        entity_id: remote.bureau
-        to: right_upper_release
+      - platform: event
+        event_type: deconz_event
+        event_data:
+          id: office
+          event: 3002 # right_upper_short_release
     action:
       - service: scene.turn_on
         entity_id: scene.office_savannah_sunset
@@ -98,9 +103,11 @@ automation:
   - id: lights_office_turn_off_via_remote
     alias: "[LIGHTS - Office] Turn off via remote"
     trigger:
-      - platform: state
-        entity_id: remote.bureau
-        to: right_lower_release
+      - platform: event
+        event_type: deconz_event
+        event_data:
+          id: office
+          event: 4002 # right_lower_short_release
     action:
       - service: light.turn_off
-        entity_id: light.office_lights
+        entity_id: light.office

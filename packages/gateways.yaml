@@ -1,10 +1,2 @@
 rfxtrx:
   device: /dev/serial/by-id/usb-RFXCOM_RFXtrx433XL_DO43QQZI-if00-port0
-
-# https://github.com/robmarkcole/Hue-sensors-HASS
-binary_sensor:
-  - platform: huesensor
-device_tracker:
-  - platform: huesensor
-remote:
-  - platform: huesensor

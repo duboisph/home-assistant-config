@@ -1,0 +1,13 @@
+#### CUSTOMIZE #################################################################
+
+homeassistant:
+  customize:
+    light.theater:
+      friendly_name: Cinema
+      icon: mdi:theater
+    light.theater_spots:
+      friendly_name: Spots
+      icon: mdi:wall-sconce-flat
+    light.theater_iris:
+      friendly_name: Iris
+      icon: mdi:lamp

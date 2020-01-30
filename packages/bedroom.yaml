@@ -1,0 +1,22 @@
+#### CUSTOMIZE #################################################################
+
+homeassistant:
+  customize:
+    light.bedroom:
+      friendly_name: Slaapkamer
+      icon: mdi:bed-king
+    light.bedroom_elke:
+      friendly_name: Slaapkamer (Elke)
+      icon: mdi:human-female
+    light.bedroom_philip:
+      friendly_name: Slaapkamer (Philip)
+      icon: mdi:human-male
+    light.night_light_elke:
+      friendly_name: Nachtlamp Elke
+      icon: mdi:lamp
+    light.night_light_philip:
+      friendly_name: Nachtlamp Philip
+      icon: mdi:lamp
+    switch.bedroom_string_lights:
+      friendly_name: Bolletjes
+      icon: mdi:string-lights

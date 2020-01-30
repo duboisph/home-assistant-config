@@ -3,8 +3,8 @@ custom_header:
   background: "rgba(155, 155, 155, 0.25)"
   compact_mode: true
   hidden_tab_redirect: false
-  hide_tabs:
-    - test
+  # hide_tabs:
+  #   - test
   hide_config: true
   hide_help: true
   hide_unused: false

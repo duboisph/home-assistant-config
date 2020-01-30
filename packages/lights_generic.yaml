@@ -2,47 +2,20 @@
 
 homeassistant:
   customize:
-    ## Single lights
-    light.cinema_spots:
-      icon: mdi:wall-sconce-flat
-    light.bolletjes:
-      icon: mdi:string-lights
-    light.iris_1:
-      icon: mdi:lamp
-    light.kerstboom:
-      icon: mdi:pine-tree
-    light.nachtlamp_elke:
-      icon: mdi:lamp
-    light.nachtlamp_philip:
-      icon: mdi:lamp
-    light.nachtlamp_xander:
-      icon: mdi:lamp
-    light.oosterse_lamp:
-      icon: mdi:floor-lamp-variant
-    light.plantenzuil:
-      icon: mdi:floor-lamp-variant
-    light.vloerlamp:
-      icon: mdi:floor-lamp
-    ## Light groups
-    light.living_lights:
-      friendly_name: Living
-      icon: mdi:sofa
-    light.theater_lights:
-      friendly_name: Cinema
-      icon: mdi:theater
-    light.bedroom_lights:
-      friendly_name: Slaapkamer
-      icon: mdi:bed-king
-    light.kids_room_lights:
+    light.kids_room:
       friendly_name: Kinderkamer
       icon: mdi:baby
-    light.downstairs_lights:
+    light.night_light_xander:
+      friendly_name: Nachtlamp Xander
+      icon: mdi:lamp
+
+    light.downstairs:
       friendly_name: Beneden
       icon: mdi:home-floor-g
-    light.upstairs_lights:
+    light.upstairs:
       friendly_name: Boven
       icon: mdi:home-floor-1
-    light.attic_lights:
+    light.attic:
       friendly_name: Zolder
       icon: mdi:home-floor-2
 
@@ -50,67 +23,16 @@ homeassistant:
 
 light:
   - platform: group
-    name: Living Lights
+    name: Downstairs
     entities:
-      - light.oosterse_lamp
-      - light.plantenzuil
-      - light.vloerlamp
+      - light.living
   - platform: group
-    name: Theater Lights
+    name: Upstairs
     entities:
-      - light.cinema_spots
-      - light.iris_1
+      - light.kids_room
+      - light.theater
   - platform: group
-    name: Bedroom Lights
+    name: Attic
     entities:
-      - light.bolletjes
-      - light.nachtlamp_elke
-      - light.nachtlamp_philip
-  - platform: group
-    name: Kids' Room Lights
-    entities:
-      - light.nachtlamp_xander
-  - platform: group
-    name: Downstairs Lights
-    entities:
-      - light.oosterse_lamp
-      - light.plantenzuil
-      - light.vloerlamp
-  - platform: group
-    name: Upstairs Lights
-    entities:
-      - light.cinema_spots
-      - light.iris_1
-      - light.nachtlamp_xander
-  - platform: group
-    name: Attic Lights
-    entities:
-      - light.ikea_ps_2017
-      - light.lightstrip_1
-      - light.lightstrip_2
-      - light.bolletjes
-      - light.nachtlamp_elke
-      - light.nachtlamp_philip
-
-#### AUTOMATIONS ###############################################################
-
-automation:
-  - id: lights_turn_on_at_sunset
-    alias: "[LIGHTS] Turn on as the sun goes down"
-    trigger:
-      - platform: numeric_state
-        entity_id: sun.sun
-        value_template: "{{ state_attr('sun.sun', 'elevation') }}"
-        below: 1.5
-    action:
-      - service: light.turn_on
-        entity_id: light.living
-
-  - id: lights_turn_off_after_1am
-    alias: "[LIGHTS] Turn off after 1AM"
-    trigger:
-      - platform: time
-        at: 01:00:00
-    action:
-      - service: light.turn_off
-        entity_id: light.living
+      - light.bedroom
+      - light.office

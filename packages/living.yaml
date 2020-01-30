@@ -1,0 +1,39 @@
+#### CUSTOMIZE #################################################################
+
+homeassistant:
+  customize:
+    light.living:
+      friendly_name: Living
+      icon: mdi:sofa
+    light.living_eastern_lamp:
+      friendly_name: Oosterse lamp
+      icon: mdi:floor-lamp-variant
+    light.Living_plant_lamp:
+      friendly_name: Plantenzuil
+      icon: mdi:floor-lamp-variant
+    switch.living_floor_lamp:
+      friendly_name: Vloerlamp
+      icon: mdi:floor-lamp
+
+#### AUTOMATIONS ###############################################################
+
+automation:
+  - id: lights_turn_on_at_sunset
+    alias: "[LIGHTS - Living] Turn on as the sun goes down"
+    trigger:
+      - platform: numeric_state
+        entity_id: sun.sun
+        value_template: "{{ state_attr('sun.sun', 'elevation') }}"
+        below: 1.5
+    action:
+      - service: light.turn_on
+        entity_id: light.living
+
+  - id: lights_turn_off_after_1am
+    alias: "[LIGHTS - Living] Turn off after 1AM"
+    trigger:
+      - platform: time
+        at: 01:00:00
+    action:
+      - service: light.turn_off
+        entity_id: light.living
