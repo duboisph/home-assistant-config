@@ -148,11 +148,6 @@ sensor:
         friendly_name: Switch
         icon_template: mdi:nintendo-switch
         value_template: "{{ 'Online' if is_state('device_tracker.nmap_nintendoswitch', 'home') else 'Offline' }}"
-      system_philips_hue:
-        entity_id: device_tracker.nmap_philips_hue
-        friendly_name: Hue Bridge
-        icon_template: mdi:home-lightbulb
-        value_template: "{{ 'Online' if is_state('device_tracker.nmap_philips_hue', 'home') else 'Offline' }}"
       system_printer:
         entity_id: device_tracker.nmap_printer
         friendly_name: Printer

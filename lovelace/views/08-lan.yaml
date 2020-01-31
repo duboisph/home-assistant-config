@@ -204,7 +204,6 @@ cards:
           - sensor.system_heimdallr_ap1
           - sensor.system_thor
           - sensor.system_hel
-          - sensor.system_philips_hue
           - sensor.system_printer
           - sensor.system_ring
           - sensor.system_ringchime
