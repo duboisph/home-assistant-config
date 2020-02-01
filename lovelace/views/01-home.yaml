@@ -2,10 +2,6 @@ title: Home
 icon: mdi:home
 path: home
 cards:
-  # - type: custom:simple-weather-card
-  #   name: Weer
-  #   entity: weather.home
-
   - type: vertical-stack
     cards:
       - type: entities
@@ -102,7 +98,8 @@ cards:
                   - sensor.living_temperature
                 name: Living
                 decimals: 1
-                hours_to_show: 24
+                hours_to_show: 72
+                points_per_hour: 0.25
                 font_size_header: 13
                 font_size: 90
               - type: custom:mini-graph-card
@@ -110,7 +107,8 @@ cards:
                   - sensor.office_temperature
                 name: Bureau
                 decimals: 1
-                hours_to_show: 24
+                hours_to_show: 72
+                points_per_hour: 0.25
                 font_size_header: 13
                 font_size: 90
           - type: horizontal-stack
@@ -120,7 +118,8 @@ cards:
                   - sensor.bedroom_temperature
                 name: Slaapkamer
                 decimals: 1
-                hours_to_show: 24
+                hours_to_show: 72
+                points_per_hour: 0.25
                 font_size_header: 13
                 font_size: 90
               - type: custom:mini-graph-card
@@ -128,7 +127,8 @@ cards:
                   - sensor.kids_room_temperature
                 name: Kinderkamer
                 decimals: 1
-                hours_to_show: 24
+                hours_to_show: 72
+                points_per_hour: 0.25
                 font_size_header: 13
                 font_size: 90
 
@@ -181,6 +181,16 @@ cards:
               power: true
               shuffle: false
 
+  - type: custom:simple-weather-card
+    name: Weer
+    entity: weather.home
+
+  - type: glance
+    entities:
+      - entity: person.philip
+      - entity: person.elke
+    show_name: false
+
   - type: picture-glance
     camera_image: camera.front_door
     entities:
@@ -191,9 +201,3 @@ cards:
       - entity: sensor.front_door_last_ding
         icon: mdi:bell-ring-outline
     title: Voordeur
-
-  - type: glance
-    entities:
-      - entity: person.philip
-      - entity: person.elke
-    show_name: false
