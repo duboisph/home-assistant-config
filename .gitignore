@@ -18,6 +18,7 @@ home-assistant_v2.db
 # Discovered devices
 harmony_*.conf
 known_devices.yaml
+emulated_hue_ids.json
 
 # Secrets
 ip_bans.yaml

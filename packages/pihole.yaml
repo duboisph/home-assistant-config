@@ -5,13 +5,3 @@ pi_hole:
   # - host: !secret pihole2_host
   #   api_key: !secret pihole2_api_key
   #   name 'Pi-Hole #2'
-
-switch:
-  - platform: command_line
-    switches:
-      pihole_toggle:
-        friendly_name: Pi-Hole
-        command_on: 'curl -X GET "http://localhost:4865/admin/api.php?enable&auth="'
-        command_off: 'curl -X GET "http://localhost:4865/admin/api.php?disable=300&auth="'
-        command_state: 'curl -X GET "http://localhost:4865/admin/api.php?status&auth="'
-        value_template: '{{ value_json.status == "enabled" }}'
