@@ -22,6 +22,11 @@ frontend:
 lovelace:
   mode: yaml
 
+discovery:
+
+downloader:
+  download_dir: downloads
+
 hacs:
   token: !secret hacs_token
   appdaemon: true
@@ -35,10 +40,3 @@ automation: !include automations.yaml
 group: !include groups.yaml
 scene: !include scenes.yaml
 script: !include scripts.yaml
-
-#### INTEGRATIONS ##############################################################
-
-discovery:
-
-downloader:
-  download_dir: downloads
