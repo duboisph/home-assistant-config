@@ -15,10 +15,18 @@ homeassistant:
       friendly_name: IKEA PS 2017
       icon: mdi:lamp
 
+#### CIRCADIAN LIGHTING ########################################################
+
+switch:
+  - platform: circadian_lighting
+    name: Office
+    lights_xy:
+      - light.office
+
 #### SCENES ####################################################################
 
 scene:
-  - name: Office Work
+  - name: Office Green
     entities:
       light.office:
         state: "on"
@@ -64,8 +72,8 @@ scene:
 # XXX3  Button long release
 
 automation:
-  - id: lights_office_set_work_scene_via_remote
-    alias: "[LIGHTS - Office] Set Work scene via remote"
+  - id: lights_office_set_circadian_lighting_via_remote
+    alias: "[LIGHTS - Office] Turn on Circadian Lighting via remote"
     trigger:
       - platform: event
         event_type: deconz_event
@@ -73,8 +81,10 @@ automation:
           id: office
           event: 1002 # left_upper_short_release
     action:
-      - service: scene.turn_on
-        entity_id: scene.office_work
+      - service: script.activate_circadian_lighting
+        data:
+          circadian_lighting: switch.circadian_lighting_office
+          light: light.office
 
   - id: lights_office_set_relax_scene_via_remote
     alias: "[LIGHTS - Office] Set Relax scene via remote"
@@ -85,11 +95,13 @@ automation:
           id: office
           event: 2002 # left_lower_short_release
     action:
-      - service: scene.turn_on
-        entity_id: scene.office_relax
+      - service: script.activate_scene
+        data:
+          circadian_lighting: switch.circadian_lighting_office
+          scene: scene.office_relax
 
-  - id: lights_office_set_savannah_sunset_scene_via_remote
-    alias: "[LIGHTS - Office] Set Savannah Sunset scene via remote"
+  - id: lights_office_set_green_scene_via_remote
+    alias: "[LIGHTS - Office] Set Green scene via remote"
     trigger:
       - platform: event
         event_type: deconz_event
@@ -97,8 +109,10 @@ automation:
           id: office
           event: 3002 # right_upper_short_release
     action:
-      - service: scene.turn_on
-        entity_id: scene.office_savannah_sunset
+      - service: script.activate_scene
+        data:
+          circadian_lighting: switch.circadian_lighting_office
+          scene: scene.office_green
 
   - id: lights_office_turn_off_via_remote
     alias: "[LIGHTS - Office] Turn off via remote"
@@ -109,5 +123,7 @@ automation:
           id: office
           event: 4002 # right_lower_short_release
     action:
+      - service: switch.turn_off
+        entity_id: switch.circadian_lighting_office
       - service: light.turn_off
         entity_id: light.office

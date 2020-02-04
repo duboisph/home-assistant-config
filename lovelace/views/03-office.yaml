@@ -2,37 +2,79 @@ title: Bureau
 icon: mdi:desk
 path: office
 cards:
-  - type: custom:vertical-stack-in-card
+  - type: vertical-stack
     cards:
-      - type: custom:light-entity-card
-        entity: light.office
-        header: Lichten
-        full_width_sliders: true
-        show_slider_percent: false
-        smooth_color_wheel: true
-      - type: custom:auto-entities
-        card:
-          type: glance
-          show_name: true
-          show_state: false
-        filter:
-          include:
-            - area: Bureau
-              domain: light
-              options:
-                tap_action:
-                  action: toggle
-                hold_action:
-                  action: more-info
-            - area: Bureau
-              domain: switch
-              options:
-                tap_action:
-                  action: toggle
-                hold_action:
-                  action: more-info
-        sort:
-          method: name
+      - type: custom:vertical-stack-in-card
+        cards:
+          - type: custom:light-entity-card
+            entity: light.office
+            header: Lichten
+            color_picker: false
+            color_wheel: false
+            effects_list: false
+            full_width_sliders: true
+            show_slider_percent: false
+          - type: custom:auto-entities
+            card:
+              type: glance
+              show_name: true
+              show_state: false
+            filter:
+              include:
+                - area: Bureau
+                  domain: light
+                  options:
+                    tap_action:
+                      action: toggle
+                    hold_action:
+                      action: more-info
+                - area: Bureau
+                  domain: switch
+                  options:
+                    tap_action:
+                      action: toggle
+                    hold_action:
+                      action: more-info
+            sort:
+              method: name
+      - type: horizontal-stack
+        cards:
+          - type: custom:button-card
+            entity: switch.circadian_lighting_office
+            name: Circadian
+            tap_action:
+              action: call-service
+              service: script.activate_circadian_lighting
+              service_data:
+                circadian_lighting: switch.circadian_lighting_office
+                light: light.office
+          - type: custom:button-card
+            entity: scene.office_green
+            name: Green
+            tap_action:
+              action: call-service
+              service: script.activate_scene
+              service_data:
+                circadian_lighting: switch.circadian_lighting_office
+                scene: scene.office_green
+          - type: custom:button-card
+            entity: scene.office_energize
+            name: Energize
+            tap_action:
+              action: call-service
+              service: script.activate_scene
+              service_data:
+                circadian_lighting: switch.circadian_lighting_office
+                scene: scene.office_energize
+          - type: custom:button-card
+            entity: scene.office_relax
+            name: Relax
+            tap_action:
+              action: call-service
+              service: script.activate_scene
+              service_data:
+                circadian_lighting: switch.circadian_lighting_office
+                scene: scene.office_relax
 
   - type: horizontal-stack
     cards:
