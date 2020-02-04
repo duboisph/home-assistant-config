@@ -4,6 +4,59 @@ path: home
 cards:
   - type: vertical-stack
     cards:
+      - type: glance
+        entities:
+          - entity: person.philip
+          - entity: person.elke
+        show_name: false
+      - type: custom:simple-weather-card
+        name: Weer
+        entity: weather.home
+      - type: custom:vertical-stack-in-card
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: custom:mini-graph-card
+                entities:
+                  - sensor.living_temperature
+                name: Living
+                decimals: 1
+                hours_to_show: 72
+                points_per_hour: 0.25
+                font_size_header: 13
+                font_size: 90
+              - type: custom:mini-graph-card
+                entities:
+                  - sensor.office_temperature
+                name: Bureau
+                decimals: 1
+                hours_to_show: 72
+                points_per_hour: 0.25
+                font_size_header: 13
+                font_size: 90
+          - type: horizontal-stack
+            cards:
+              - type: custom:mini-graph-card
+                entities:
+                  - sensor.bedroom_temperature
+                name: Slaapkamer
+                decimals: 1
+                hours_to_show: 72
+                points_per_hour: 0.25
+                font_size_header: 13
+                font_size: 90
+              - type: custom:mini-graph-card
+                entities:
+                  - sensor.kids_room_temperature
+                name: Kinderkamer
+                decimals: 1
+                hours_to_show: 72
+                points_per_hour: 0.25
+                font_size_header: 13
+                font_size: 90
+
+  - type: vertical-stack
+    cards:
       - type: entities
         title: Lichten
         show_header_toggle: false
@@ -88,60 +141,16 @@ cards:
                   domain: switch
             sort:
               method: name
-
-      - type: custom:vertical-stack-in-card
-        cards:
-          - type: horizontal-stack
-            cards:
-              - type: custom:mini-graph-card
-                entities:
-                  - sensor.living_temperature
-                name: Living
-                decimals: 1
-                hours_to_show: 72
-                points_per_hour: 0.25
-                font_size_header: 13
-                font_size: 90
-              - type: custom:mini-graph-card
-                entities:
-                  - sensor.office_temperature
-                name: Bureau
-                decimals: 1
-                hours_to_show: 72
-                points_per_hour: 0.25
-                font_size_header: 13
-                font_size: 90
-          - type: horizontal-stack
-            cards:
-              - type: custom:mini-graph-card
-                entities:
-                  - sensor.bedroom_temperature
-                name: Slaapkamer
-                decimals: 1
-                hours_to_show: 72
-                points_per_hour: 0.25
-                font_size_header: 13
-                font_size: 90
-              - type: custom:mini-graph-card
-                entities:
-                  - sensor.kids_room_temperature
-                name: Kinderkamer
-                decimals: 1
-                hours_to_show: 72
-                points_per_hour: 0.25
-                font_size_header: 13
-                font_size: 90
-
-  - type: custom:auto-entities
-    card:
-      show_header_toggle: false
-      title: Rolluiken
-      type: entities
-    filter:
-      include:
-        - domain: cover
-    sort:
-      method: name
+      - type: custom:auto-entities
+        card:
+          show_header_toggle: false
+          title: Rolluiken
+          type: entities
+        filter:
+          include:
+            - domain: cover
+        sort:
+          method: name
 
   - type: vertical-stack
     cards:
@@ -180,16 +189,6 @@ cards:
             hide:
               power: true
               shuffle: false
-
-  - type: custom:simple-weather-card
-    name: Weer
-    entity: weather.home
-
-  - type: glance
-    entities:
-      - entity: person.philip
-      - entity: person.elke
-    show_name: false
 
   - type: picture-glance
     camera_image: camera.front_door

@@ -31,34 +31,25 @@ cards:
             # line_color: "#3498db"
       - type: vertical-stack
         cards:
-          - type: vertical-stack
+          - type: horizontal-stack
             cards:
-              - type: horizontal-stack
-                cards:
-                  - type: custom:mini-graph-card
-                    entities:
-                      - sensor.pi_hole_ads_percentage_blocked_today
-                    name: Ads blocked
-                    decimals: 0
-                    hour24: true
-                    hours_to_show: 72
-                    show:
-                      graph: line
-                  - type: custom:mini-graph-card
-                    entities:
-                      - sensor.pi_hole_dns_unique_clients
-                    name: Clients
-                    hour24: true
-                    hours_to_show: 72
-                    show:
-                      graph: none
-      - type: glance
-        entities:
-          - sensor.count_automations
-          - sensor.count_lights
-          - sensor.count_scripts
-          - sensor.count_sensors
-          - sensor.count_switches
+              - type: custom:mini-graph-card
+                entities:
+                  - sensor.pi_hole_ads_percentage_blocked_today
+                name: Ads blocked
+                decimals: 0
+                hour24: true
+                hours_to_show: 72
+                show:
+                  graph: line
+              - type: custom:mini-graph-card
+                entities:
+                  - sensor.pi_hole_dns_unique_clients
+                name: Clients
+                hour24: true
+                hours_to_show: 72
+                show:
+                  graph: none
 
   - type: vertical-stack
     cards:
@@ -215,3 +206,10 @@ cards:
           - sensor.system_loki
           - sensor.system_kindle
         show_state: false
+      - type: glance
+        entities:
+          - entity: sensor.count_automations
+          - entity: sensor.count_lights
+          - entity: sensor.count_scripts
+          - entity: sensor.count_sensors
+          - entity: sensor.count_switches

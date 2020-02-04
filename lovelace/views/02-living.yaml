@@ -7,9 +7,11 @@ cards:
       - type: custom:light-entity-card
         entity: light.living
         header: Lichten
+        color_picker: false
+        color_wheel: false
+        effects_list: false
         full_width_sliders: true
         show_slider_percent: false
-        smooth_color_wheel: true
       - type: custom:auto-entities
         card:
           type: glance

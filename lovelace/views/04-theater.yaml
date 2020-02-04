@@ -7,6 +7,7 @@ cards:
       - type: custom:light-entity-card
         entity: light.theater
         header: Lichten
+        effects_list: false
         full_width_sliders: true
         show_slider_percent: false
         smooth_color_wheel: true
