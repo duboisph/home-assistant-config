@@ -12,7 +12,7 @@ cards:
       - type: custom:simple-weather-card
         name: Weer
         entity: weather.home
-      - type: custom:vertical-stack-in-card
+      - type: vertical-stack
         cards:
           - type: horizontal-stack
             cards:

@@ -2,69 +2,71 @@ title: Living
 icon: mdi:sofa
 path: living
 cards:
-  - type: custom:vertical-stack-in-card
+  - type: vertical-stack
     cards:
-      - type: custom:light-entity-card
-        entity: light.living
-        header: Lichten
-        color_picker: false
-        color_wheel: false
-        effects_list: false
-        full_width_sliders: true
-        show_slider_percent: false
-      - type: custom:auto-entities
-        card:
-          type: glance
-          show_name: true
-          show_state: false
-        filter:
-          include:
-            - area: Living
-              domain: light
-              options:
-                tap_action:
-                  action: toggle
-                hold_action:
-                  action: more-info
-            - area: Living
-              domain: switch
-              options:
-                tap_action:
-                  action: toggle
-                hold_action:
-                  action: more-info
-        sort:
-          method: name
+      - type: custom:vertical-stack-in-card
+        cards:
+          - type: custom:light-entity-card
+            entity: light.living
+            header: Lichten
+            color_picker: false
+            color_wheel: false
+            effects_list: false
+            full_width_sliders: true
+            show_slider_percent: false
+          - type: custom:auto-entities
+            card:
+              type: glance
+              show_name: true
+              show_state: false
+            filter:
+              include:
+                - area: Living
+                  domain: light
+                  options:
+                    tap_action:
+                      action: toggle
+                    hold_action:
+                      action: more-info
+                - area: Living
+                  domain: switch
+                  options:
+                    tap_action:
+                      action: toggle
+                    hold_action:
+                      action: more-info
+            sort:
+              method: name
 
-  - type: horizontal-stack
-    cards:
-      - type: custom:mini-graph-card
-        entities:
-          - sensor.living_temperature
-        name: Temperatuur
-        decimals: 1
-        hours_to_show: 72
-        points_per_hour: 0.25
-        font_size_header: 13
-        font_size: 90
-      - type: custom:mini-graph-card
-        entities:
-          - sensor.living_humidity
-        name: Vochtigheid
-        decimals: 1
-        hours_to_show: 72
-        points_per_hour: 0.25
-        font_size_header: 13
-        font_size: 90
-      - type: custom:mini-graph-card
-        entities:
-          - sensor.living_pressure
-        name: Luchtdruk
-        decimals: 0
-        hours_to_show: 72
-        points_per_hour: 0.25
-        font_size_header: 13
-        font_size: 90
+      - type: horizontal-stack
+        cards:
+          - type: custom:mini-graph-card
+            entities:
+              - sensor.living_temperature
+            name: Temperatuur
+            decimals: 1
+            hours_to_show: 72
+            points_per_hour: 0.25
+            font_size_header: 13
+            font_size: 90
+          - type: custom:mini-graph-card
+            entities:
+              - sensor.living_humidity
+            name: Vochtigheid
+            decimals: 1
+            hours_to_show: 72
+            points_per_hour: 0.25
+            font_size_header: 13
+            font_size: 90
+          - type: custom:mini-graph-card
+            entities:
+              - sensor.living_pressure
+            name: Luchtdruk
+            decimals: 0
+            hours_to_show: 72
+            points_per_hour: 0.25
+            font_size_header: 13
+            font_size: 90
 
   - type: vertical-stack
     cards:
