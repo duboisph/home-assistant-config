@@ -1,0 +1,40 @@
+---
+hello_world:
+  module: hello
+  class: HelloWorld
+
+dimmer_bedroom_philip:
+  module: hue_dimmer_switch_deconz
+  class: HueDimmerSwitch
+  entities:
+    switch: bedroom_philip
+    light: light.bedroom_philip
+  advanced:
+    short_press_on_release:
+      action_type: turn_on
+      entity: light.bedroom_philip
+      parameters:
+        brightness: 128
+    long_press_on_release:
+      action_type: turn_on
+      entity: light.bedroom_philip
+      parameters:
+        brightness: 255
+
+dimmer_bedroom_elke:
+  module: hue_dimmer_switch_deconz
+  class: HueDimmerSwitch
+  entities:
+    switch: bedroom_elke
+    light: light.bedroom_elke
+  advanced:
+    short_press_on_release:
+      action_type: turn_on
+      entity: light.bedroom_elke
+      parameters:
+        brightness: 128
+    long_press_on_release:
+      action_type: turn_on
+      entity: light.bedroom_elke
+      parameters:
+        brightness: 255
