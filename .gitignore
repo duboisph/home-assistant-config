@@ -23,3 +23,7 @@ emulated_hue_ids.json
 # Secrets
 ip_bans.yaml
 secrets.yaml
+
+# Ignore appdaemon folder, except apps.yaml
+appdaemon/
+!appdaemon/apps/apps.yaml
