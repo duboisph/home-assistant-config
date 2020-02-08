@@ -1,5 +1,9 @@
+# Ignore most .files
 .*
 !/.gitignore
+!.HA_VERSION
+
+# Scripts
 *.sh
 
 # Folders
@@ -13,7 +17,7 @@ www/custom_ui/
 
 # Log & DB
 home-assistant.log
-home-assistant_v2.db
+home-assistant_v2.db*
 
 # Discovered devices
 harmony_*.conf

@@ -1,7 +1,8 @@
+spotify:
+  client_id: !secret spotify_client_id
+  client_secret: !secret spotify_client_secret
+
 media_player:
-  - platform: spotify
-    client_id: !secret spotify_client_id
-    client_secret: !secret spotify_client_secret
   - platform: androidtv
     name: Living ShieldTV
     host: !secret androidtv_living_host
