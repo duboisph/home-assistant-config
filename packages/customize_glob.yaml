@@ -1,0 +1,4 @@
+homeassistant:
+  customize_glob:
+    scene.*:
+      icon: mdi:palette-swatch

@@ -35,35 +35,35 @@ cards:
         sort:
           method: name
 
-  # - type: horizontal-stack
-  #   cards:
-  #     - type: custom:mini-graph-card
-  #       entities:
-  #         - sensor.theater_temperature
-  #       name: Temperatuur
-  #       decimals: 1
-  #       hours_to_show: 72
-  #       points_per_hour: 0.25
-  #       font_size_header: 13
-  #       font_size: 90
-  #     - type: custom:mini-graph-card
-  #       entities:
-  #         - sensor.theater_humidity
-  #       name: Vochtigheid
-  #       decimals: 1
-  #       hours_to_show: 72
-  #       points_per_hour: 0.25
-  #       font_size_header: 13
-  #       font_size: 90
-  #     - type: custom:mini-graph-card
-  #       entities:
-  #         - sensor.theater_pressure
-  #       name: Luchtdruk
-  #       decimals: 0
-  #       hours_to_show: 72
-  #       points_per_hour: 0.25
-  #       font_size_header: 13
-  #       font_size: 90
+  - type: horizontal-stack
+    cards:
+      - type: custom:mini-graph-card
+        entities:
+          - sensor.theater_temperature
+        name: Temperatuur
+        decimals: 1
+        hours_to_show: 72
+        points_per_hour: 0.25
+        font_size_header: 13
+        font_size: 90
+      - type: custom:mini-graph-card
+        entities:
+          - sensor.theater_humidity
+        name: Vochtigheid
+        decimals: 1
+        hours_to_show: 72
+        points_per_hour: 0.25
+        font_size_header: 13
+        font_size: 90
+      - type: custom:mini-graph-card
+        entities:
+          - sensor.theater_pressure
+        name: Luchtdruk
+        decimals: 0
+        hours_to_show: 72
+        points_per_hour: 0.25
+        font_size_header: 13
+        font_size: 90
 
   - type: vertical-stack
     cards:
