@@ -1,16 +1,48 @@
 logger:
-  default: warning
+  default: info
 
-# TODO: Move to external MySQL?
 recorder:
-  purge_keep_days: 7
+  db_url: !secret recorder_db_url
+  purge_keep_days: 14
   purge_interval: 1
   exclude:
     domains:
-      - automation
-      - weblink
+      - alert
+      # - automation
+      - calendar
+      - camera
+      - device_tracker
+      - group
+      - script
+      - sun
       - updater
+      - weblink
     entities:
-      - sun.sun
-      - sensor.last_boot
+      - binary_sensor.updater
       - sensor.date
+      - sensor.time
+      - sensor.last_boot
+      - sensor.current_version
+      - sensor.version_available
+  include:
+    entities:
+      - device_tracker.life360_elke
+      - device_tracker.life360_philip
+      - device_tracker.aurora
+      - device_tracker.freyja
+      - device_tracker.loki
+      - device_tracker.nmap_ariel
+      - device_tracker.nmap_aurora
+      - device_tracker.nmap_fenrir
+      - device_tracker.nmap_fenrir_2
+      - device_tracker.nmap_freyja
+      - device_tracker.nmap_loki
+
+# influxdb:
+#   host: a0d7b954-influxdb
+#   port: 8086
+#   database: homeassistant
+#   username: !secret influxdb_username
+#   password: !secret influxdb_password
+#   max_retries: 3
+#   default_measurement: state
