@@ -3,11 +3,6 @@
 default_config:
 
 homeassistant:
-  name: Thuis
-  latitude: !secret home_latitude
-  longitude: !secret home_longitude
-  unit_system: metric
-  time_zone: Europe/Brussels
   customize: !include customize.yaml
   packages: !include_dir_named packages
 
@@ -26,10 +21,6 @@ discovery:
 
 downloader:
   download_dir: downloads
-
-hacs:
-  token: !secret hacs_token
-  appdaemon: true
 
 customizer:
   custom_ui: local

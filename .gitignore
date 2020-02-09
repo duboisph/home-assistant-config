@@ -10,6 +10,8 @@
 custom_components/
 deps/
 downloads/
+glances/
+node-red/
 themes/
 tts/
 www/community/
