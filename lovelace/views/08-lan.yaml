@@ -65,7 +65,7 @@ cards:
                 icon: mdi:chip
                 align_icon: state
                 decimals: 0
-                hours_to_show: 72
+                hours_to_show: 48
                 # line_color: "#389638"
                 show:
                   name: false
@@ -95,7 +95,7 @@ cards:
                 icon: mdi:chip
                 align_icon: state
                 decimals: 0
-                hours_to_show: 72
+                hours_to_show: 48
                 # line_color: "#389638"
                 show:
                   name: false
@@ -129,7 +129,7 @@ cards:
                     icon: mdi:chip
                     align_icon: state
                     decimals: 0
-                    hours_to_show: 72
+                    hours_to_show: 48
                     # line_color: "#389638"
                     show:
                       name: false
@@ -162,7 +162,7 @@ cards:
                     icon: mdi:network
                     align_icon: state
                     decimals: 0
-                    hours_to_show: 72
+                    hours_to_show: 48
                     show:
                       name: false
                   - type: entities
@@ -187,9 +187,9 @@ cards:
           - sensor.system_living_tv
           - sensor.system_living_harmony
           - sensor.system_avr_x6200w
-          - sensor.system_cinema_tv
+          - sensor.system_theater_tv
           - sensor.system_ubp_x800
-          - sensor.system_cinema_harmony
+          - sensor.system_theater_harmony
           - sensor.system_sonos_connect
           - sensor.system_sonos_play1
           - sensor.system_ps4pro

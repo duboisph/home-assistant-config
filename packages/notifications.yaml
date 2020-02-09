@@ -1,0 +1,16 @@
+notify:
+  - name: all
+    platform: group
+    services:
+      - service: mobile_app_aurora
+      - service: mobile_app_freyja
+      - service: mobile_app_loki
+  - name: philip
+    platform: group
+    services:
+      - service: mobile_app_freyja
+      - service: mobile_app_loki
+  - name: elke
+    platform: group
+    services:
+      - service: mobile_app_aurora
