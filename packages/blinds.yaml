@@ -29,7 +29,11 @@ automation:
       - platform: numeric_state
         entity_id: sun.sun
         value_template: "{{ state_attr('sun.sun', 'elevation') }}"
-        below: -2.5
+        below: -3
+    condition:
+      - condition: time
+        after: "16:30:00"
+        before: "23:00:00"
     action:
       - service: cover.close_cover
         entity_id: cover.living_back
@@ -41,6 +45,9 @@ automation:
     trigger:
       - platform: sun
         event: sunrise
+    condition:
+      - condition: time
+        before: "10:00:00"
     action:
       - service: cover.open_cover
         entity_id: cover.living_back
