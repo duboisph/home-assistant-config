@@ -32,36 +32,21 @@ scene:
         state: "on"
         brightness: 227
         color_temp: 301
-        hs_color:
-          - 140.455
-          - 58.627
-  - name: Office Energize
-    entities:
-      light.office:
-        state: "on"
-        brightness: 254
-        color_temp: 156
-        hs_color:
-          - 173.333
-          - 3.529
+        hs_color: [140.455, 58.627]
   - name: Office Relax
     entities:
       light.office:
         state: "on"
         brightness: 144
         color_temp: 447
-        hs_color:
-          - 36.568
-          - 66.275
+        hs_color: [36.568, 66.275]
   - name: Office Savannah Sunset
     entities:
       light.office:
         state: "on"
         brightness: 200
         color_temp: 382
-        hs_color:
-          - 16.925
-          - 78.431
+        hs_color: [16.925, 78.431]
 
 #### AUTOMATIONS ###############################################################
 

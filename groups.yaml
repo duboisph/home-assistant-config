@@ -1,5 +1,5 @@
 family:
   name: Family
   entities:
-    - person.philip
     - person.elke
+    - person.philip
