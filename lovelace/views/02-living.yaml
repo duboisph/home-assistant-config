@@ -37,7 +37,35 @@ cards:
                       action: more-info
             sort:
               method: name
-
+      - type: horizontal-stack
+        cards:
+          - type: custom:button-card
+            entity: switch.circadian_lighting_living
+            name: Circadian
+            tap_action:
+              action: call-service
+              service: script.activate_circadian_lighting
+              service_data:
+                circadian_lighting: switch.circadian_lighting_living
+                light: light.living
+          - type: custom:button-card
+            entity: scene.living_relax
+            name: Relax
+            tap_action:
+              action: call-service
+              service: script.activate_scene
+              service_data:
+                circadian_lighting: switch.circadian_lighting_living
+                scene: scene.living_relax
+          - type: custom:button-card
+            entity: scene.living_romantic
+            name: Romantic
+            tap_action:
+              action: call-service
+              service: script.activate_scene
+              service_data:
+                circadian_lighting: switch.circadian_lighting_living
+                scene: scene.living_romantic
       - type: horizontal-stack
         cards:
           - type: custom:mini-graph-card
@@ -70,11 +98,39 @@ cards:
 
   - type: vertical-stack
     cards:
-      - type: entities
-        entities:
-          - entity: remote.living_room
-            name: Harmony
-        show_header_toggle: false
+      - type: custom:harmony-card
+        name: Remote
+        entity: remote.living_room
+        volume_device: Soundbar
+        scale: 1.25
+        activities:
+          - name: Speel muziek
+            device: SHIELD TV
+          - name: Kijk TV
+            device: SHIELD TV
+        buttons:
+          dpad_up:
+            hide: true
+          dpad_down:
+            hide: true
+          dpad_left:
+            hide: true
+          dpad_right:
+            hide: true
+          dpad_center:
+            hide: true
+          xbox:
+            hide: true
+          back:
+            hide: true
+          a:
+            hide: true
+          b:
+            hide: true
+          x:
+            hide: true
+          y:
+            hide: true
       - type: custom:mini-media-player
         entity: media_player.living
         hide:

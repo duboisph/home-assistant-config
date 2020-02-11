@@ -129,8 +129,6 @@ cards:
             points_per_hour: 0.25
             font_size_header: 13
             font_size: 90
-      - type: horizontal-stack
-        cards:
           - type: custom:mini-graph-card
             entities:
               - sensor.bedroom_temperature
@@ -140,6 +138,8 @@ cards:
             points_per_hour: 0.25
             font_size_header: 13
             font_size: 90
+      - type: horizontal-stack
+        cards:
           - type: custom:mini-graph-card
             entities:
               - sensor.kids_room_temperature
@@ -149,8 +149,6 @@ cards:
             points_per_hour: 0.25
             font_size_header: 13
             font_size: 90
-      - type: horizontal-stack
-        cards:
           - type: custom:mini-graph-card
             entities:
               - sensor.bathroom_temperature

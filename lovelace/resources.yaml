@@ -26,3 +26,5 @@
   url: /community_plugin/circle-sensor-card/circle-sensor-card.js
 - type: module
   url: /community_plugin/lovelace-layout-card/layout-card.js
+- type: module
+  url: "/community_plugin/harmony-card/harmony-card.js"

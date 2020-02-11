@@ -3,13 +3,11 @@ custom_header:
   background: "rgba(155, 155, 155, 0.25)"
   compact_mode: true
   hidden_tab_redirect: false
-  # hide_tabs:
-  #   - test
   hide_config: true
   hide_help: true
   hide_unused: false
 resources: !include lovelace/resources.yaml
-title: Thuis
+title: Home
 views:
   - !include lovelace/views/01-home.yaml
   - !include lovelace/views/02-living.yaml
@@ -17,4 +15,5 @@ views:
   - !include lovelace/views/04-theater.yaml
   - !include lovelace/views/05-bedroom.yaml
   - !include lovelace/views/08-lan.yaml
+  - !include lovelace/views/90-automations.yaml
   - !include lovelace/views/99-test.yaml

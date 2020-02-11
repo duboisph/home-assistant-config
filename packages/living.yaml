@@ -15,6 +15,35 @@ homeassistant:
       friendly_name: Vloerlamp
       icon: mdi:floor-lamp
 
+#### CIRCADIAN LIGHTING ########################################################
+
+switch:
+  - platform: circadian_lighting
+    name: Living
+    lights_xy:
+      - light.living
+
+# brightness: 254
+# color_temp: 366
+
+#### SCENES ####################################################################
+
+scene:
+  - name: Living Relax
+    entities:
+      light.living:
+        state: on
+        brightness: 200
+        color_temp: 447
+        # kelvin: 2700
+        hs_color: [36.568, 66.275]
+  - name: Living Romantic
+    entities:
+      light.living:
+        state: on
+        brightness: 128
+        kelvin: 1800
+
 #### AUTOMATIONS ###############################################################
 
 automation:
@@ -26,8 +55,10 @@ automation:
         value_template: "{{ state_attr('sun.sun', 'elevation') }}"
         below: 1.5
     action:
-      - service: light.turn_on
-        entity_id: light.living
+      - service: script.activate_scene
+        data:
+          circadian_lighting: switch.circadian_lighting_living
+          scene: scene.living_relax
 
   - id: lights_turn_off_after_1am
     alias: "[LIGHTS - Living] Turn off after 1AM"

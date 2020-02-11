@@ -58,15 +58,6 @@ cards:
                 circadian_lighting: switch.circadian_lighting_office
                 scene: scene.office_green
           - type: custom:button-card
-            entity: scene.office_energize
-            name: Energize
-            tap_action:
-              action: call-service
-              service: script.activate_scene
-              service_data:
-                circadian_lighting: switch.circadian_lighting_office
-                scene: scene.office_energize
-          - type: custom:button-card
             entity: scene.office_relax
             name: Relax
             tap_action:
@@ -75,6 +66,15 @@ cards:
               service_data:
                 circadian_lighting: switch.circadian_lighting_office
                 scene: scene.office_relax
+          - type: custom:button-card
+            entity: scene.office_savannah_sunset
+            name: Savannah Sunset
+            tap_action:
+              action: call-service
+              service: script.activate_scene
+              service_data:
+                circadian_lighting: switch.circadian_lighting_office
+                scene: scene.office_savannah_sunset
 
   - type: vertical-stack
     cards:

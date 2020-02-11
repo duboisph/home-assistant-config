@@ -18,6 +18,8 @@ script:
       - service: light.turn_on
         data_template:
           entity_id: "{{ light }}"
+          brightness_pct: "{{ state_attr(circadian_lighting, 'brightness') | int }}"
+
   activate_scene:
     alias: Activate Scene
     description: Activate a scene while disabling Circadian Lighting
