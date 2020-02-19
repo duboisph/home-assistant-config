@@ -33,19 +33,3 @@
     - service: hassio.snapshot_full
       data_template:
         name: Backup_{{ now().strftime('%Y-%m-%d') }}
-
-#### RING ######################################################################
-
-- id: ring_download_last_video
-  alias: "[RING] Download last video"
-  trigger:
-    - platform: template
-      value_template:
-        "{{ is_state_attr('sensor.voordeur_last_activity', 'recording_status',
-        'ready') }}"
-  action:
-    - service: downloader.download_file
-      data_template:
-        url: "{{ state_attr('camera.voordeur', 'video_url') }}"
-        subdir: "{{ state_attr('camera.voordeur', 'friendly_name') }}"
-        filename: "{{ state_attr('camera.voordeur', 'friendly_name') }}"
