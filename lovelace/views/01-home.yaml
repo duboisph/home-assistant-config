@@ -117,7 +117,7 @@ cards:
             name: Living
             decimals: 1
             hours_to_show: 72
-            points_per_hour: 0.25
+            points_per_hour: 0.5
             font_size_header: 13
             font_size: 90
           - type: custom:mini-graph-card
@@ -126,7 +126,7 @@ cards:
             name: Bureau
             decimals: 1
             hours_to_show: 72
-            points_per_hour: 0.25
+            points_per_hour: 0.5
             font_size_header: 13
             font_size: 90
           - type: custom:mini-graph-card
@@ -135,7 +135,7 @@ cards:
             name: Slaapkamer
             decimals: 1
             hours_to_show: 72
-            points_per_hour: 0.25
+            points_per_hour: 0.5
             font_size_header: 13
             font_size: 90
       - type: horizontal-stack
@@ -146,7 +146,7 @@ cards:
             name: Kinderkamer
             decimals: 1
             hours_to_show: 72
-            points_per_hour: 0.25
+            points_per_hour: 0.5
             font_size_header: 13
             font_size: 90
           - type: custom:mini-graph-card
@@ -155,7 +155,7 @@ cards:
             name: Badkamer
             decimals: 1
             hours_to_show: 72
-            points_per_hour: 0.25
+            points_per_hour: 0.5
             font_size_header: 13
             font_size: 90
           - type: custom:mini-graph-card
@@ -164,15 +164,26 @@ cards:
             name: Cinema
             decimals: 1
             hours_to_show: 72
-            points_per_hour: 0.25
+            points_per_hour: 0.5
             font_size_header: 13
             font_size: 90
+
+      - type: picture-glance
+        camera_image: camera.front_door
+        entities:
+          - entity: binary_sensor.front_door_motion
+          - entity: sensor.front_door_last_motion
+            icon: mdi:motion-sensor
+          - entity: binary_sensor.front_door_ding
+          - entity: sensor.front_door_last_ding
+            icon: mdi:bell-ring-outline
+        title: Voordeur
 
   - type: vertical-stack
     cards:
       - type: custom:mini-media-player
-        artwork: cover
         entity: media_player.spotify
+        artwork: cover
         hide:
           power: true
           shuffle: false
@@ -191,28 +202,23 @@ cards:
               id: spotify:playlist:5hC8A0idiKYqyTcxd1wAvN
               name: Chill
               icon: mdi:playlist-music
-      - type: entities
-        entities:
-          - type: custom:mini-media-player
-            entity: media_player.office_sonos
-            group: true
-            hide:
-              power: true
-              shuffle: false
-          - type: custom:mini-media-player
-            entity: media_player.bathroom_sonos
-            group: true
-            hide:
-              power: true
-              shuffle: false
-
-  - type: picture-glance
-    camera_image: camera.front_door
-    entities:
-      - entity: binary_sensor.front_door_motion
-      - entity: sensor.front_door_last_motion
-        icon: mdi:motion-sensor
-      - entity: binary_sensor.front_door_ding
-      - entity: sensor.front_door_last_ding
-        icon: mdi:bell-ring-outline
-    title: Voordeur
+      - type: custom:mini-media-player
+        entity: media_player.office_sonos
+        artwork: cover
+        group: true
+        hide:
+          power: true
+          shuffle: false
+      - type: custom:mini-media-player
+        entity: media_player.bathroom_sonos
+        artwork: cover
+        group: true
+        hide:
+          power: true
+          shuffle: false
+      # - type: vertical-stack
+      #   cards:
+      #     - type: media-control
+      #       entity: media_player.office_sonos
+      #     - type: media-control
+      #       entity: media_player.bathroom_sonos

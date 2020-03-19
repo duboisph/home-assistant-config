@@ -30,6 +30,7 @@ switch:
 
 scene:
   - name: Living Relax
+    # icon: mdi:foo
     entities:
       light.living:
         state: on
@@ -38,6 +39,7 @@ scene:
         # kelvin: 2700
         hs_color: [36.568, 66.275]
   - name: Living Romantic
+    # icon: mdi:foo
     entities:
       light.living:
         state: on

@@ -1,8 +1,4 @@
 ---
-hello_world:
-  module: hello
-  class: HelloWorld
-
 dimmer_bedroom_philip:
   module: hue_dimmer_switch_deconz
   class: HueDimmerSwitch
@@ -38,3 +34,8 @@ dimmer_bedroom_elke:
       entity: light.bedroom_elke
       parameters:
         brightness: 255
+
+ench:
+  module: ench
+  class: EnCh
+  notify: notify.philip

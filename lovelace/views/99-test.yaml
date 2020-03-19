@@ -14,11 +14,3 @@ cards:
               action: toggle
     show_empty: false
     type: "custom:auto-entities"
-
-  - type: entities
-    title: Entertainment
-    show_header_toggle: false
-    entities:
-      - sensor.harmony_living
-      - input_select.harmony_living
-      - input_number.harmony_living_volume

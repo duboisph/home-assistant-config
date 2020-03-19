@@ -6,7 +6,6 @@ custom_header:
   hide_config: true
   hide_help: true
   hide_unused: false
-resources: !include lovelace/resources.yaml
 title: Home
 views:
   - !include lovelace/views/01-home.yaml
