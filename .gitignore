@@ -17,9 +17,10 @@ tts/
 www/community/
 www/custom_ui/
 
-# Log & DB
+# Log, DB, dump
 home-assistant.log
 home-assistant_v2.db*
+core
 
 # Discovered devices
 harmony_*.conf
