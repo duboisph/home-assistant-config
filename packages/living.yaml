@@ -23,9 +23,6 @@ switch:
     lights_xy:
       - light.living
 
-# brightness: 254
-# color_temp: 366
-
 #### SCENES ####################################################################
 
 scene:

@@ -1,7 +1,3 @@
 pi_hole:
   - host: localhost:4865
     api_key: !secret pihole1_api_key
-  #   name: 'Pi-Hole #1'
-  # - host: !secret pihole2_host
-  #   api_key: !secret pihole2_api_key
-  #   name 'Pi-Hole #2'

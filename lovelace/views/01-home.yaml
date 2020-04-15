@@ -16,11 +16,7 @@ cards:
           - type: custom:auto-entities
             card:
               type: custom:fold-entity-row
-              head:
-                type: custom:slider-entity-row
-                entity: light.living
-                hide_when_off: true
-                toggle: true
+              head: light.living
             filter:
               include:
                 - area: Living
@@ -32,11 +28,7 @@ cards:
           - type: custom:auto-entities
             card:
               type: custom:fold-entity-row
-              head:
-                type: custom:slider-entity-row
-                entity: light.office
-                hide_when_off: true
-                toggle: true
+              head: light.office
             filter:
               include:
                 - area: Bureau
@@ -48,11 +40,7 @@ cards:
           - type: custom:auto-entities
             card:
               type: custom:fold-entity-row
-              head:
-                type: custom:slider-entity-row
-                entity: light.theater
-                hide_when_off: true
-                toggle: true
+              head: light.theater
             filter:
               include:
                 - area: Cinema
@@ -64,11 +52,7 @@ cards:
           - type: custom:auto-entities
             card:
               type: custom:fold-entity-row
-              head:
-                type: custom:slider-entity-row
-                entity: light.bedroom
-                hide_when_off: true
-                toggle: true
+              head: light.bedroom
             filter:
               include:
                 - area: Slaapkamer

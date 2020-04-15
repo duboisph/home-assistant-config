@@ -303,7 +303,7 @@ automation:
           - sensor.system_ringchime
           # - sensor.system_living_tv
           - sensor.system_living_harmony
-          - sensor.system_avr_x6200w
+          # - sensor.system_avr_x6200w
           # - sensor.system_theater_tv
           # - sensor.system_ubp_x800
           - sensor.system_theater_harmony

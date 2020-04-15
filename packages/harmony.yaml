@@ -1,31 +1,8 @@
+#### CUSTOMIZE #################################################################
+
 homeassistant:
   customize:
     remote.living_room:
       friendly_name: Living Harmony
     remote.home_theater:
       friendly_name: Cinema Harmony
-
-remote:
-  - platform: harmony
-    name: Livin Room
-    activity: Kijk TV
-  - platform: harmony
-    name: Home Theater
-    activity: Kijk een Film
-
-sensor:
-  - platform: template
-    sensors:
-      harmony_living:
-        value_template: >
-          {{ state_attr('remote.living_room', 'current_activity') }}
-
-input_select:
-  harmony_living:
-    name: Living Harmony
-    options:
-      - Zet uit
-      - Speel muziek
-      - Kijk TV
-    initial: Zet uit
-    icon: mdi:remote
