@@ -3,8 +3,8 @@ device_tracker:
     hosts: !secret nmap_tracker_hosts
     exclude:
       - !secret hass_host
-    interval_seconds: 20
-    consider_home: 360
+    interval_seconds: 60
+    consider_home: 300
     home_interval: 10
     new_device_defaults:
       track_new_devices: true
@@ -19,8 +19,9 @@ homeassistant:
   customize_glob:
     sensor.system_*:
       templates:
-        hs_color: "if (state === 'Online') return [0, 0];
-          else return [357, 71];"
+        icon_color: >
+          if (state === 'Online') return 'white';
+          else return 'rgb(225, 75, 76)';
 
 sensor:
   #### SERVER MONITORING #######################################################
