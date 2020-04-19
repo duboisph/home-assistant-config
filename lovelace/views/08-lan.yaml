@@ -29,148 +29,124 @@ cards:
             decimals: 0
             hours_to_show: 72
             # line_color: "#3498db"
-      - type: vertical-stack
+      - type: horizontal-stack
         cards:
-          - type: horizontal-stack
+          - type: custom:mini-graph-card
+            entities:
+              - sensor.pi_hole_ads_percentage_blocked_today
+            name: Ads blocked
+            decimals: 0
+            hour24: true
+            hours_to_show: 72
+            show:
+              graph: line
+          - type: custom:mini-graph-card
+            entities:
+              - sensor.pi_hole_dns_unique_clients
+            name: Clients
+            hour24: true
+            hours_to_show: 72
+            show:
+              graph: none
+
+      - type: horizontal-stack
+        cards:
+          # - type: custom:stack-in-card
+          #   mode: vertical
+          - type: vertical-stack
+            # title: Heimdallr
             cards:
               - type: custom:mini-graph-card
                 entities:
-                  - sensor.pi_hole_ads_percentage_blocked_today
-                name: Ads blocked
+                  - sensor.mikrotik_cpu_load
+                name: Heimdallr
+                icon: mdi:chip
+                # align_icon: state
                 decimals: 0
-                hour24: true
-                hours_to_show: 72
-                show:
-                  graph: line
+                hours_to_show: 48
+                # line_color: "#389638"
+              - type: custom:bar-card
+                entity: sensor.mikrotik_memory_usage
+                entity_row: true
+                icon: mdi:memory
+                align: split
+                color: "#3498db"
+                positions:
+                  icon: inside
+                  title: "off"
+              - type: custom:bar-card
+                entity: sensor.mikrotik_hdd_usage
+                entity_row: true
+                icon: mdi:harddisk
+                align: split
+                color: "#3498db"
+                positions:
+                  icon: inside
+                  title: "off"
+          # - type: custom:stack-in-card
+          #   mode: vertical
+          - type: vertical-stack
+            # title: Hel
+            cards:
               - type: custom:mini-graph-card
                 entities:
-                  - sensor.pi_hole_dns_unique_clients
-                name: Clients
-                hour24: true
-                hours_to_show: 72
-                show:
-                  graph: none
-      - type: vertical-stack
-        cards:
-          - type: horizontal-stack
+                  - sensor.processor_use
+                name: Hel
+                icon: mdi:chip
+                # align_icon: state
+                decimals: 0
+                hours_to_show: 48
+                # line_color: "#389638"
+              - type: custom:bar-card
+                entity: sensor.memory_use_percent
+                entity_row: true
+                icon: mdi:memory
+                align: split
+                color: "#3498db"
+                positions:
+                  icon: inside
+                  title: "off"
+              - type: custom:bar-card
+                entity: sensor.disk_use_percent
+                entity_row: true
+                icon: mdi:harddisk
+                align: split
+                color: "#3498db"
+                positions:
+                  icon: inside
+                  title: "off"
+          # - type: custom:stack-in-card
+          #   mode: vertical
+          - type: vertical-stack
+            # title: Thor
             cards:
-              - type: custom:vertical-stack-in-card
-                title: Heimdallr
-                cards:
-                  - type: custom:mini-graph-card
-                    entities:
-                      - sensor.mikrotik_cpu_load
-                    name: CPU
-                    icon: mdi:chip
-                    align_icon: state
-                    decimals: 0
-                    hours_to_show: 48
-                    # line_color: "#389638"
-                    show:
-                      name: false
-                  - type: custom:bar-card
-                    entity: sensor.mikrotik_memory_usage
-                    title: RAM
-                    icon: mdi:memory
-                    align: split
-                    color: "#3498db"
-                    icon_position: inside
-                    title_position: "off"
-                  - type: custom:bar-card
-                    entity: sensor.mikrotik_hdd_usage
-                    title: HDD
-                    icon: mdi:harddisk
-                    align: split
-                    color: "#3498db"
-                    icon_position: inside
-                    title_position: "off"
-              - type: custom:vertical-stack-in-card
-                title: Hel
-                cards:
-                  - type: custom:mini-graph-card
-                    entities:
-                      - sensor.processor_use
-                    name: CPU
-                    icon: mdi:chip
-                    align_icon: state
-                    decimals: 0
-                    hours_to_show: 48
-                    # line_color: "#389638"
-                    show:
-                      name: false
-                  - type: custom:bar-card
-                    entity: sensor.memory_use_percent
-                    title: RAM
-                    icon: mdi:memory
-                    align: split
-                    color: "#3498db"
-                    icon_position: inside
-                    title_position: "off"
-                  - type: custom:bar-card
-                    entity: sensor.disk_use_percent
-                    title: HDD
-                    icon: mdi:harddisk
-                    align: split
-                    color: "#3498db"
-                    icon_position: inside
-                    title_position: "off"
-          - type: custom:vertical-stack-in-card
-            cards:
-              - type: horizontal-stack
-                cards:
-                  - type: custom:vertical-stack-in-card
-                    title: Thor
-                    cards:
-                      - type: custom:mini-graph-card
-                        entities:
-                          - sensor.thor_cpu_load_total
-                        name: CPU
-                        icon: mdi:chip
-                        align_icon: state
-                        decimals: 0
-                        hours_to_show: 48
-                        # line_color: "#389638"
-                        show:
-                          name: false
-                      - type: custom:bar-card
-                        entity: sensor.thor_memory_usage_real
-                        title: RAM
-                        icon: mdi:memory
-                        align: split
-                        color: "#3498db"
-                        icon_position: inside
-                        title_position: "off"
-                      - type: custom:bar-card
-                        entity: sensor.thor_volume_used_volume_1
-                        title: HDD
-                        icon: mdi:harddisk
-                        align: split
-                        color: "#3498db"
-                        icon_position: inside
-                        title_position: "off"
-                  - type: custom:vertical-stack-in-card
-                    # title: Thor
-                    cards:
-                      - type: custom:mini-graph-card
-                        entities:
-                          - entity: sensor.thor_network_up
-                            name: Up
-                          - entity: sensor.thor_network_down
-                            name: Down
-                        name: Network
-                        icon: mdi:network
-                        align_icon: state
-                        decimals: 0
-                        hours_to_show: 48
-                        show:
-                          name: false
-                      - type: entities
-                        entities:
-                          - entity: sensor.thor_status_smart_sda
-                            name: S.M.A.R.T.
-                            icon: mdi:harddisk
-                          - entity: sensor.thor_maximum_disk_temp_volume_1
-                            name: Disk temp.
+              - type: custom:mini-graph-card
+                entities:
+                  - sensor.thor_cpu_load_total
+                name: Thor
+                icon: mdi:chip
+                # align_icon: state
+                decimals: 0
+                hours_to_show: 48
+                # line_color: "#389638"
+              - type: custom:bar-card
+                entity: sensor.thor_memory_usage_real
+                entity_row: true
+                icon: mdi:memory
+                align: split
+                color: "#3498db"
+                positions:
+                  icon: inside
+                  title: "off"
+              - type: custom:bar-card
+                entity: sensor.thor_volume_used_volume_1
+                entity_row: true
+                icon: mdi:harddisk
+                align: split
+                color: "#3498db"
+                positions:
+                  icon: inside
+                  title: "off"
 
   - type: vertical-stack
     cards:

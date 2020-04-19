@@ -27,7 +27,7 @@ switch:
 
 scene:
   - name: Office Green
-    # icon: mdi:foo
+    icon: mdi:palette-swatch
     entities:
       light.office:
         state: "on"
@@ -35,7 +35,7 @@ scene:
         color_temp: 301
         hs_color: [140.455, 58.627]
   - name: Office Relax
-    # icon: mdi:foo
+    icon: mdi:palette-swatch
     entities:
       light.office:
         state: "on"
@@ -43,7 +43,7 @@ scene:
         color_temp: 447
         hs_color: [36.568, 66.275]
   - name: Office Savannah Sunset
-    # icon: mdi:foo
+    icon: mdi:palette-swatch
     entities:
       light.office:
         state: "on"

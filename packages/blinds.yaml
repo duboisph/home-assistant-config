@@ -1,3 +1,6 @@
+rfxtrx:
+  device: /dev/serial/by-id/usb-RFXCOM_RFXtrx433XL_DO43QQZI-if00-port0
+
 cover:
   - platform: rfxtrx
     automatic_add: False
@@ -29,7 +32,7 @@ automation:
       - platform: numeric_state
         entity_id: sun.sun
         value_template: "{{ state_attr('sun.sun', 'elevation') }}"
-        below: -4.5
+        below: -4.0
     condition:
       - condition: time
         after: "16:30:00"

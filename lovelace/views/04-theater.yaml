@@ -2,74 +2,74 @@ title: Cinema
 icon: mdi:theater
 path: theater
 cards:
-  - type: vertical-stack
+  - type: custom:stack-in-card
+    mode: vertical
     cards:
-      - type: custom:vertical-stack-in-card
-        cards:
-          - type: custom:light-entity-card
-            entity: light.theater
-            header: Lichten
-            effects_list: false
-            full_width_sliders: true
-            show_slider_percent: false
-            smooth_color_wheel: true
-          - type: custom:auto-entities
-            card:
-              type: glance
-              show_name: true
-              show_state: false
-            filter:
-              include:
-                - area: Cinema
-                  domain: light
-                  options:
-                    tap_action:
-                      action: toggle
-                    hold_action:
-                      action: more-info
-                - area: Cinema
-                  domain: switch
-                  options:
-                    tap_action:
-                      action: toggle
-                    hold_action:
-                      action: more-info
-            sort:
-              method: name
-      - type: horizontal-stack
-        cards:
-          - type: custom:mini-graph-card
-            entities:
-              - sensor.theater_temperature
-            name: Temperatuur
-            decimals: 1
-            hours_to_show: 72
-            points_per_hour: 0.25
-            font_size_header: 13
-            font_size: 90
-          - type: custom:mini-graph-card
-            entities:
-              - sensor.theater_humidity
-            name: Vochtigheid
-            decimals: 1
-            hours_to_show: 72
-            points_per_hour: 0.25
-            font_size_header: 13
-            font_size: 90
-          - type: custom:mini-graph-card
-            entities:
-              - sensor.theater_pressure
-            name: Luchtdruk
-            decimals: 0
-            hours_to_show: 72
-            points_per_hour: 0.25
-            font_size_header: 13
-            font_size: 90
+      - type: custom:light-entity-card
+        entity: light.theater
+        header: Lichten
+        effects_list: false
+        full_width_sliders: true
+        show_slider_percent: false
+        smooth_color_wheel: true
+      - type: custom:auto-entities
+        card:
+          type: glance
+          show_name: true
+          show_state: false
+        filter:
+          include:
+            - area: Cinema
+              domain: light
+              options:
+                tap_action:
+                  action: toggle
+                hold_action:
+                  action: more-info
+            - area: Cinema
+              domain: switch
+              options:
+                tap_action:
+                  action: toggle
+                hold_action:
+                  action: more-info
+        sort:
+          method: name
 
-  - type: vertical-stack
+  - type: horizontal-stack
+    cards:
+      - type: custom:mini-graph-card
+        entities:
+          - sensor.theater_temperature
+        name: Temperatuur
+        decimals: 1
+        hours_to_show: 72
+        points_per_hour: 0.25
+        font_size_header: 13
+        font_size: 90
+      - type: custom:mini-graph-card
+        entities:
+          - sensor.theater_humidity
+        name: Vochtigheid
+        decimals: 1
+        hours_to_show: 72
+        points_per_hour: 0.25
+        font_size_header: 13
+        font_size: 90
+      - type: custom:mini-graph-card
+        entities:
+          - sensor.theater_pressure
+        name: Luchtdruk
+        decimals: 0
+        hours_to_show: 72
+        points_per_hour: 0.25
+        font_size_header: 13
+        font_size: 90
+
+  - type: custom:stack-in-card
+    mode: vertical
     cards:
       - type: custom:harmony-card
-        name: Remote
         entity: remote.home_theater
         volume_device: Receiver
         scale: 1.25
@@ -80,8 +80,6 @@ cards:
             device: SHIELD TV
           - name: Speel PS4
             device: PlayStation 4
-          - name: Speel Switch
-            device: Switch
         buttons:
           dpad_up:
             hide: true
@@ -106,10 +104,9 @@ cards:
           y:
             hide: true
       - type: custom:mini-media-player
-        entity: media_player.theater
-        hide:
-          volume: false
-      - type: custom:mini-media-player
         entity: media_player.theater_shieldtv
+        # entity: media_player.theater
+        name: Shield TV
+        artwork: none
         hide:
-          volume: false
+          volume: true

@@ -2,13 +2,14 @@ title: Home
 icon: mdi:home
 path: home
 cards:
+  - type: glance
+    entities:
+      - entity: person.philip
+      - entity: person.elke
+    show_name: false
+
   - type: vertical-stack
     cards:
-      - type: glance
-        entities:
-          - entity: person.philip
-          - entity: person.elke
-        show_name: false
       - type: entities
         title: Lichten
         show_header_toggle: false

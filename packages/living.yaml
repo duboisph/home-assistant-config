@@ -27,16 +27,15 @@ switch:
 
 scene:
   - name: Living Relax
-    # icon: mdi:foo
+    icon: mdi:palette-swatch
     entities:
       light.living:
         state: on
         brightness: 200
         color_temp: 447
-        # kelvin: 2700
         hs_color: [36.568, 66.275]
   - name: Living Romantic
-    # icon: mdi:foo
+    icon: mdi:palette-swatch
     entities:
       light.living:
         state: on
@@ -52,7 +51,7 @@ automation:
       - platform: numeric_state
         entity_id: sun.sun
         value_template: "{{ state_attr('sun.sun', 'elevation') }}"
-        below: 1.5
+        below: 2.0
     action:
       - service: script.activate_scene
         data:

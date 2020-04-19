@@ -15,4 +15,3 @@ views:
   - !include lovelace/views/05-bedroom.yaml
   - !include lovelace/views/08-lan.yaml
   - !include lovelace/views/90-automations.yaml
-  - !include lovelace/views/99-test.yaml
