@@ -32,7 +32,7 @@ automation:
       - platform: numeric_state
         entity_id: sun.sun
         value_template: "{{ state_attr('sun.sun', 'elevation') }}"
-        below: -4.0
+        below: -2.5
     condition:
       - condition: time
         after: "16:30:00"
