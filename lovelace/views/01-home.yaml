@@ -91,9 +91,9 @@ cards:
 
   - type: vertical-stack
     cards:
-      - type: custom:simple-weather-card
-        name: Weer
+      - type: weather-forecast
         entity: weather.home
+        show_forecast: false
       - type: horizontal-stack
         cards:
           - type: custom:mini-graph-card
