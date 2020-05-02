@@ -66,3 +66,65 @@ automation:
     action:
       - service: light.turn_off
         entity_id: light.living
+
+  ## deCONZ events
+  # 1XXX  Button #1 up to #8
+  # XXX1  Button hold
+  # XXX2  Button short release
+  # XXX3  Button long release
+
+  - id: lights_living_set_circadian_lighting_via_remote
+    alias: "[LIGHTS - Living] Turn on Circadian Lighting via remote"
+    trigger:
+      - platform: event
+        event_type: deconz_event
+        event_data:
+          id: living
+          event: 1002 # left_upper_short_release
+    action:
+      - service: script.activate_circadian_lighting
+        data:
+          circadian_lighting: switch.circadian_lighting_living
+          light: light.Living
+
+  - id: lights_living_set_relax_scene_via_remote
+    alias: "[LIGHTS - Living] Set Relax scene via remote"
+    trigger:
+      - platform: event
+        event_type: deconz_event
+        event_data:
+          id: living
+          event: 2002 # left_lower_short_release
+    action:
+      - service: script.activate_scene
+        data:
+          circadian_lighting: switch.circadian_lighting_living
+          scene: scene.Living_relax
+
+  - id: lights_living_set_romantic_scene_via_remote
+    alias: "[LIGHTS - Living] Set Romantic scene via remote"
+    trigger:
+      - platform: event
+        event_type: deconz_event
+        event_data:
+          id: living
+          event: 3002 # right_upper_short_release
+    action:
+      - service: script.activate_scene
+        data:
+          circadian_lighting: switch.circadian_lighting_living
+          scene: scene.Living_romantic
+
+  - id: lights_living_turn_off_via_remote
+    alias: "[LIGHTS - Living] Turn off via remote"
+    trigger:
+      - platform: event
+        event_type: deconz_event
+        event_data:
+          id: living
+          event: 4002 # right_lower_short_release
+    action:
+      - service: switch.turn_off
+        entity_id: switch.circadian_lighting_living
+      - service: light.turn_off
+        entity_id: light.Living
