@@ -1,13 +1,4 @@
-device_tracker:
-  - platform: nmap_tracker
-    hosts: !secret nmap_tracker_hosts
-    exclude:
-      - !secret hass_host
-    interval_seconds: 60
-    consider_home: 300
-    scan_options: " --privileged -sn "
-    new_device_defaults:
-      track_new_devices: true
+#### INTEGRATIONS ##############################################################
 
 speedtestdotnet:
   scan_interval:
@@ -17,11 +8,27 @@ speedtestdotnet:
 
 homeassistant:
   customize_glob:
-    sensor.system_*:
+    device_tracker.*:
       templates:
         icon_color: >
-          if (state === 'Online') return 'white';
+          if (state === 'home') return 'white';
           else return 'rgb(225, 75, 76)';
+
+#### GROUPS ####################################################################
+
+group:
+  device_58z72z2:
+    name: 58Z72Z2
+    icon: mdi:laptop-windows
+    entities:
+      - device_tracker.58z72z2
+      - device_tracker.58z72z2_2
+  device_fenrir:
+    name: Fenrir
+    icon: mdi:laptop-windows
+    entities:
+      - device_tracker.fenrir
+      - device_tracker.fenrir_2
 
 sensor:
   #### SERVER MONITORING #######################################################
@@ -33,190 +40,39 @@ sensor:
       - type: memory_use_percent
       - type: processor_use
 
-  #### CONNECTED DEVICES #######################################################
-
-  - platform: template
-    sensors:
-      system_58z72z2:
-        entity_id:
-          - device_tracker.nmap_58z72z2
-          - device_tracker.nmap_58z72z2_2
-        friendly_name: 58Z72Z2
-        icon_template: mdi:laptop-windows
-        value_template: >
-          {% if is_state('device_tracker.nmap_58z72z2', 'home') %}
-            Online
-          {% elif is_state('device_tracker.nmap_58z72z2_2', 'home') %}
-            Online
-          {% else %}
-            Offline
-          {% endif %}
-      system_ariel:
-        entity_id: device_tracker.nmap_ariel
-        friendly_name: Ariel
-        icon_template: mdi:laptop-windows
-        value_template: "{{ 'Online' if is_state('device_tracker.nmap_ariel', 'home') else 'Offline' }}"
-      system_aurora:
-        entity_id: device_tracker.nmap_aurora
-        friendly_name: Aurora
-        icon_template: mdi:cellphone-iphone
-        value_template: "{{ 'Online' if is_state('device_tracker.nmap_aurora', 'home') else 'Offline' }}"
-      system_avr_x6200w:
-        entity_id: device_tracker.nmap_avr_x6200w
-        friendly_name: AVR
-        icon_template: mdi:speaker
-        value_template: "{{ 'Online' if is_state('device_tracker.nmap_avr_x6200w', 'home') else 'Offline' }}"
-      system_fenrir:
-        entity_id:
-          - device_tracker.nmap_fenrir
-          - device_tracker.nmap_fenrir_2
-        friendly_name: Fenrir
-        icon_template: mdi:laptop-windows
-        value_template: >
-          {% if is_state('device_tracker.nmap_fenrir', 'home') %}
-            Online
-          {% elif is_state('device_tracker.nmap_fenrir_2', 'home') %}
-            Online
-          {% else %}
-            Offline
-          {% endif %}
-      system_freyja:
-        entity_id: device_tracker.nmap_freyja
-        friendly_name: Freyja
-        icon_template: mdi:cellphone-android
-        value_template: "{{ 'Online' if is_state('device_tracker.nmap_freyja', 'home') else 'Offline' }}"
-      system_heimdallr:
-        entity_id: device_tracker.nmap_heimdallr
-        friendly_name: Heimdallr
-        icon_template: mdi:router
-        value_template: "{{ 'Online' if is_state('device_tracker.nmap_heimdallr', 'home') else 'Offline' }}"
-      system_heimdallr_ap1:
-        friendly_name: Heimdallr AP1
-        icon_template: mdi:router-wireless
-        entity_id: device_tracker.nmap_heimdallr_ap1
-        value_template: "{{ 'Online' if is_state('device_tracker.nmap_heimdallr_ap1', 'home') else 'Offline' }}"
-      system_hel:
-        entity_id: device_tracker.nmap_hel
-        friendly_name: Hel
-        icon_template: mdi:raspberry-pi
-        value_template: "{{ 'Online' if is_state('device_tracker.nmap_hel', 'home') else 'Offline' }}"
-      system_kindle:
-        entity_id: device_tracker.nmap_kindle
-        friendly_name: Kindle
-        icon_template: mdi:book-open
-        value_template: "{{ 'Online' if is_state('device_tracker.nmap_kindle', 'home') else 'Offline' }}"
-      system_living_harmony:
-        entity_id: device_tracker.nmap_living_harmony
-        friendly_name: Living Harmony
-        icon_template: mdi:remote
-        value_template: "{{ 'Online' if is_state('device_tracker.nmap_living_harmony', 'home') else 'Offline' }}"
-      system_living_tv:
-        entity_id: device_tracker.nmap_living_tv
-        friendly_name: Living TV
-        icon_template: mdi:television-box
-        value_template: "{{ 'Online' if is_state('device_tracker.nmap_living_tv', 'home') else 'Offline' }}"
-      system_loki:
-        entity_id: device_tracker.nmap_loki
-        friendly_name: Loki
-        icon_template: mdi:tablet-ipad
-        value_template: "{{ 'Online' if is_state('device_tracker.nmap_loki', 'home') else 'Offline' }}"
-      system_nintendoswitch:
-        entity_id: device_tracker.nmap_nintendoswitch
-        friendly_name: Nintendo Switch
-        icon_template: mdi:nintendo-switch
-        value_template: "{{ 'Online' if is_state('device_tracker.nmap_nintendoswitch', 'home') else 'Offline' }}"
-      system_printer:
-        entity_id: device_tracker.nmap_printer
-        friendly_name: Printer
-        icon_template: mdi:printer-wireless
-        value_template: "{{ 'Online' if is_state('device_tracker.nmap_printer', 'home') else 'Offline' }}"
-      system_ps4pro:
-        entity_id: device_tracker.nmap_ps4pro
-        friendly_name: PS4 Pro
-        icon_template: mdi:playstation
-        value_template: "{{ 'Online' if is_state('device_tracker.nmap_ps4pro', 'home') else 'Offline' }}"
-      system_ring:
-        entity_id: device_tracker.nmap_ring
-        friendly_name: Ring
-        icon_template: mdi:doorbell-video
-        value_template: "{{ 'Online' if is_state('device_tracker.nmap_ring', 'home') else 'Offline' }}"
-      system_ringchime:
-        entity_id: device_tracker.nmap_ringchime
-        friendly_name: Ring Chime
-        icon_template: mdi:bell
-        value_template: "{{ 'Online' if is_state('device_tracker.nmap_ringchime', 'home') else 'Offline' }}"
-      system_sonos_connect:
-        entity_id: device_tracker.nmap_sonos_connect
-        friendly_name: Sonos CONNECT
-        icon_template: mdi:speaker-wireless
-        value_template: "{{ 'Online' if is_state('device_tracker.nmap_sonos_connect', 'home') else 'Offline' }}"
-      system_sonos_play1:
-        entity_id: device_tracker.nmap_sonos_play1
-        friendly_name: Sonos PLAY:1
-        icon_template: mdi:speaker-wireless
-        value_template: "{{ 'Online' if is_state('device_tracker.nmap_sonos_play1', 'home') else 'Offline' }}"
-      system_theater_harmony:
-        entity_id: device_tracker.nmap_theater_harmony
-        friendly_name: Cinema Harmony
-        icon_template: mdi:remote
-        value_template: "{{ 'Online' if is_state('device_tracker.nmap_theater_harmony', 'home') else 'Offline' }}"
-      system_theater_tv:
-        entity_id: device_tracker.nmap_theater_tv
-        friendly_name: Cinema TV
-        icon_template: mdi:television-box
-        value_template: "{{ 'Online' if is_state('device_tracker.nmap_theater_tv:', 'home') else 'Offline' }}"
-      system_thor:
-        entity_id: device_tracker.nmap_thor
-        friendly_name: Thor
-        icon_template: mdi:nas
-        value_template: "{{ 'Online' if is_state('device_tracker.nmap_thor', 'home') else 'Offline' }}"
-      system_ubp_x800:
-        entity_id: device_tracker.nmap_ubp_x800
-        friendly_name: UBP-X800
-        icon_template: mdi:disc-player
-        value_template: "{{ 'Online' if is_state('device_tracker.nmap_ubp_x800', 'home') else 'Offline' }}"
-
   #### COUNT ENTITIES ##########################################################
 
   - platform: template
     sensors:
       count_automations:
-        entity_id: sensor.date
         friendly_name: Automations
         icon_template: mdi:robot
         value_template: "{{ states.automation | count }}"
       count_binary_sensors:
-        entity_id: sensor.date
         friendly_name: Binary Sensors
         icon_template: mdi:contrast-circle
         value_template: "{{ states.binary_sensor | count }}"
       count_device_trackers:
-        entity_id: sensor.date
         friendly_name: Device Trackers
         icon_template: mdi:radar
         value_template: "{{ states.device_tracker | count }}"
       count_lights:
-        entity_id: sensor.date
         friendly_name: Lights
         icon_template: mdi:lightbulb-group
         value_template: "{{ states.light | count }}"
       count_scripts:
-        entity_id: sensor.date
         friendly_name: Scripts
         icon_template: mdi:script-text
         value_template: "{{ states.script | count }}"
       count_sensors:
-        entity_id: sensor.date
         friendly_name: Sensors
         icon_template: mdi:leak
         value_template: "{{ states.sensor | count }}"
       count_switches:
-        entity_id: sensor.date
         friendly_name: Switches
         icon_template: mdi:light-switch
         value_template: "{{ states.switch | count }}"
       count_zones:
-        entity_id: sensor.date
         friendly_name: Zones
         icon_template: mdi:map-marker-radius
         value_template: "{{ states.zone | count }}"
@@ -257,24 +113,24 @@ automation:
     trigger:
       - platform: state
         entity_id:
-          - sensor.system_heimdallr
-          - sensor.system_heimdallr_ap1
-          # - sensor.system_hel
-          - sensor.system_thor
-          - sensor.system_printer
-          - sensor.system_ring
-          - sensor.system_ringchime
-          # - sensor.system_living_tv
-          - sensor.system_living_harmony
-          # - sensor.system_avr_x6200w
-          # - sensor.system_theater_tv
-          # - sensor.system_ubp_x800
-          - sensor.system_theater_harmony
-          - sensor.system_sonos_connect
-          - sensor.system_sonos_play1
-          # - sensor.system_ps4pro
-          # - sensor.system_nintendoswitch
-        to: "Offline"
+          - device_tracker.modem
+          - device_tracker.heimdallr_ap1
+          - device_tracker.thor
+          - device_tracker.hel
+          - device_tracker.sec84251979ca6b
+          - device_tracker.ring
+          - device_tracker.ringchime
+          # - device_tracker.living
+          - device_tracker.living_harmony
+          - device_tracker.avr_x6200w
+          # - device_tracker.cinema
+          # - device_tracker.ubp_x800
+          - device_tracker.cinema_harmony
+          - device_tracker.sonos_connect
+          - device_tracker.sonos_play1
+          # - device_tracker.ps4pro
+          # - device_tracker.nintendoswitch
+        to: "offline"
         for:
           minutes: 5
     action:

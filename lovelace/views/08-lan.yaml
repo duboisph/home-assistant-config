@@ -122,34 +122,34 @@ cards:
     cards:
       - type: glance
         entities:
-          - sensor.system_heimdallr
-          - sensor.system_heimdallr_ap1
-          - sensor.system_thor
-          - sensor.system_hel
-          - sensor.system_printer
-          - sensor.system_ring
-          - sensor.system_ringchime
-          - sensor.system_living_tv
-          - sensor.system_living_harmony
-          - sensor.system_avr_x6200w
-          - sensor.system_theater_tv
-          - sensor.system_ubp_x800
-          - sensor.system_theater_harmony
-          - sensor.system_sonos_connect
-          - sensor.system_sonos_play1
-          - sensor.system_ps4pro
-          - sensor.system_nintendoswitch
+          - device_tracker.modem
+          - device_tracker.heimdallr_ap1
+          - device_tracker.thor
+          - device_tracker.hel
+          - device_tracker.sec84251979ca6b
+          - device_tracker.ring
+          - device_tracker.ringchime
+          - device_tracker.living
+          - device_tracker.living_harmony
+          - device_tracker.avr_x6200w
+          - device_tracker.cinema
+          - device_tracker.ubp_x800
+          - device_tracker.cinema_harmony
+          - device_tracker.sonos_connect
+          - device_tracker.sonos_play1
+          - device_tracker.ps4pro
+          - device_tracker.nintendoswitch
         show_name: false
         show_state: false
       - type: glance
         entities:
-          - sensor.system_58z72z2
-          - sensor.system_ariel
-          - sensor.system_aurora
-          - sensor.system_fenrir
-          - sensor.system_freyja
-          - sensor.system_loki
-          - sensor.system_kindle
+          - group.device_58z72z2
+          - device_tracker.ariel
+          - device_tracker.aurora_2
+          - group.device_fenrir
+          - device_tracker.freyja_2
+          - device_tracker.loki_2
+          - device_tracker.kindle
         show_state: false
       - type: glance
         entities:

@@ -3,17 +3,13 @@ logger:
 
 recorder:
   db_url: !secret recorder_db_url
-  purge_keep_days: 14
+  purge_keep_days: 30
   purge_interval: 1
   exclude:
     domains:
       - alert
-      # - automation
       - calendar
       - camera
-      - device_tracker
-      - group
-      - script
       - sun
       - updater
       - weblink
@@ -24,19 +20,6 @@ recorder:
       - sensor.last_boot
       - sensor.current_version
       - sensor.version_available
-  include:
-    entities:
-      - device_tracker.life360_elke
-      - device_tracker.life360_philip
-      - device_tracker.aurora
-      - device_tracker.freyja
-      - device_tracker.loki
-      - device_tracker.nmap_ariel
-      - device_tracker.nmap_aurora
-      - device_tracker.nmap_fenrir
-      - device_tracker.nmap_fenrir_2
-      - device_tracker.nmap_freyja
-      - device_tracker.nmap_loki
 
 # influxdb:
 #   host: a0d7b954-influxdb
