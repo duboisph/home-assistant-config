@@ -100,7 +100,7 @@ cards:
             cards:
               - type: custom:mini-graph-card
                 entities:
-                  - sensor.thor_cpu_load_total
+                  - sensor.synology_cpu_load_total
                 name: Thor
                 icon: mdi:chip
                 align_icon: state
@@ -109,8 +109,8 @@ cards:
                 # line_color: "#389638"
               - type: custom:bar-card
                 entities:
-                  - sensor.thor_memory_usage_real
-                  - sensor.thor_volume_used_volume_1
+                  - sensor.synology_memory_usage_real
+                  - sensor.synology_volume_used_volume_1
                 entity_row: true
                 align: split
                 color: "#3498db"
