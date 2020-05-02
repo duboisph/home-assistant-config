@@ -2,7 +2,7 @@
   url: /hacsfiles/custom-header/custom-header.js
 - type: module
   url: /hacsfiles/decluttering-card/decluttering-card.js
-- type: js
+- type: module
   url: /hacsfiles/bar-card/bar-card.js
 - type: module
   url: /hacsfiles/button-card/button-card.js

@@ -51,102 +51,72 @@ cards:
 
       - type: horizontal-stack
         cards:
-          # - type: custom:stack-in-card
-          #   mode: vertical
-          - type: vertical-stack
-            # title: Heimdallr
+          - type: custom:stack-in-card
+            mode: vertical
             cards:
               - type: custom:mini-graph-card
                 entities:
                   - sensor.mikrotik_cpu_load
                 name: Heimdallr
                 icon: mdi:chip
-                # align_icon: state
+                align_icon: state
                 decimals: 0
                 hours_to_show: 48
                 # line_color: "#389638"
               - type: custom:bar-card
-                entity: sensor.mikrotik_memory_usage
+                entities:
+                  - sensor.mikrotik_memory_usage
+                  - sensor.mikrotik_hdd_usage
                 entity_row: true
-                icon: mdi:memory
                 align: split
                 color: "#3498db"
                 positions:
                   icon: inside
-                  title: "off"
-              - type: custom:bar-card
-                entity: sensor.mikrotik_hdd_usage
-                entity_row: true
-                icon: mdi:harddisk
-                align: split
-                color: "#3498db"
-                positions:
-                  icon: inside
-                  title: "off"
-          # - type: custom:stack-in-card
-          #   mode: vertical
-          - type: vertical-stack
-            # title: Hel
+                  name: "off"
+          - type: custom:stack-in-card
+            mode: vertical
             cards:
               - type: custom:mini-graph-card
                 entities:
                   - sensor.processor_use
                 name: Hel
                 icon: mdi:chip
-                # align_icon: state
+                align_icon: state
                 decimals: 0
                 hours_to_show: 48
                 # line_color: "#389638"
               - type: custom:bar-card
-                entity: sensor.memory_use_percent
+                entities:
+                  - sensor.memory_use_percent
+                  - sensor.disk_use_percent
                 entity_row: true
-                icon: mdi:memory
                 align: split
                 color: "#3498db"
                 positions:
                   icon: inside
-                  title: "off"
-              - type: custom:bar-card
-                entity: sensor.disk_use_percent
-                entity_row: true
-                icon: mdi:harddisk
-                align: split
-                color: "#3498db"
-                positions:
-                  icon: inside
-                  title: "off"
-          # - type: custom:stack-in-card
-          #   mode: vertical
-          - type: vertical-stack
-            # title: Thor
+                  name: "off"
+          - type: custom:stack-in-card
+            mode: vertical
             cards:
               - type: custom:mini-graph-card
                 entities:
                   - sensor.thor_cpu_load_total
                 name: Thor
                 icon: mdi:chip
-                # align_icon: state
+                align_icon: state
                 decimals: 0
                 hours_to_show: 48
                 # line_color: "#389638"
               - type: custom:bar-card
-                entity: sensor.thor_memory_usage_real
+                entities:
+                  - sensor.thor_memory_usage_real
+                  - sensor.thor_volume_used_volume_1
                 entity_row: true
-                icon: mdi:memory
                 align: split
                 color: "#3498db"
                 positions:
                   icon: inside
-                  title: "off"
-              - type: custom:bar-card
-                entity: sensor.thor_volume_used_volume_1
-                entity_row: true
-                icon: mdi:harddisk
-                align: split
-                color: "#3498db"
-                positions:
-                  icon: inside
-                  title: "off"
+                  name: "off"
 
   - type: vertical-stack
     cards:
