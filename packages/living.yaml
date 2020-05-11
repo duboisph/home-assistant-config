@@ -51,7 +51,7 @@ automation:
       - platform: numeric_state
         entity_id: sun.sun
         value_template: "{{ state_attr('sun.sun', 'elevation') }}"
-        below: 2.0
+        below: -1.0
     action:
       - service: script.activate_scene
         data:
