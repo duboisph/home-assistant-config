@@ -4,7 +4,6 @@ logger:
 recorder:
   db_url: !secret recorder_db_url
   purge_keep_days: 30
-  purge_interval: 1
   exclude:
     domains:
       - alert

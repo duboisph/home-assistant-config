@@ -7,7 +7,6 @@ homeassistant:
   packages: !include_dir_named packages
 
 http:
-  base_url: !secret base_url
   ssl_certificate: /ssl/fullchain.pem
   ssl_key: /ssl/privkey.pem
 
