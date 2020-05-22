@@ -23,6 +23,7 @@ group:
     entities:
       - device_tracker.58z72z2
       - device_tracker.58z72z2_2
+      - device_tracker.58z72z2_3
   device_fenrir:
     name: Fenrir
     icon: mdi:laptop-windows
