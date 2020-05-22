@@ -1,4 +1,5 @@
-background: var(--background-image)
+# background: var(--background-image)
+background: 'center / cover no-repeat url("/local/night.jpg") fixed'
 custom_header:
   background: "rgba(155, 155, 155, 0.25)"
   compact_mode: true

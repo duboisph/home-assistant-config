@@ -11,8 +11,8 @@ homeassistant:
     device_tracker.*:
       templates:
         icon_color: >
-          if (state === 'home') return 'white';
-          else return 'rgb(225, 75, 76)';
+          if (state === 'home') return icon_color;
+          return 'rgb(225, 75, 76)';
 
 #### GROUPS ####################################################################
 
