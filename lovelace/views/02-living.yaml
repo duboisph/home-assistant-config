@@ -7,7 +7,7 @@ cards:
     cards:
       - type: custom:light-entity-card
         entity: light.living
-        header: Lichten
+        header: Lights
         color_picker: false
         color_wheel: false
         effects_list: false
@@ -39,7 +39,7 @@ cards:
 
   - type: horizontal-stack
     cards:
-      - type: custom:button-card
+      - type: button
         entity: switch.circadian_lighting_living
         name: Circadian
         tap_action:
@@ -48,7 +48,7 @@ cards:
           service_data:
             circadian_lighting: switch.circadian_lighting_living
             light: light.living
-      - type: custom:button-card
+      - type: button
         entity: scene.living_relax
         name: Relax
         tap_action:
@@ -57,7 +57,7 @@ cards:
           service_data:
             circadian_lighting: switch.circadian_lighting_living
             scene: scene.living_relax
-      - type: custom:button-card
+      - type: button
         entity: scene.living_romantic
         name: Romantic
         tap_action:
@@ -69,33 +69,21 @@ cards:
 
   - type: horizontal-stack
     cards:
-      - type: custom:mini-graph-card
-        entities:
-          - sensor.living_temperature
-        name: Temperatuur
-        decimals: 1
+      - type: sensor
+        entity: sensor.living_temperature
+        name: Temperature
+        graph: line
         hours_to_show: 72
-        points_per_hour: 0.25
-        font_size_header: 13
-        font_size: 90
-      - type: custom:mini-graph-card
-        entities:
-          - sensor.living_humidity
-        name: Vochtigheid
-        decimals: 1
+      - type: sensor
+        entity: sensor.living_humidity
+        name: Humidity
+        graph: line
         hours_to_show: 72
-        points_per_hour: 0.25
-        font_size_header: 13
-        font_size: 90
-      - type: custom:mini-graph-card
-        entities:
-          - sensor.living_pressure
-        name: Luchtdruk
-        decimals: 0
+      - type: sensor
+        entity: sensor.living_pressure
+        name: Pressure
+        graph: line
         hours_to_show: 72
-        points_per_hour: 0.25
-        font_size_header: 13
-        font_size: 90
 
   - type: custom:stack-in-card
     mode: vertical
@@ -105,9 +93,9 @@ cards:
         volume_device: Soundbar
         scale: 1.25
         activities:
-          - name: Speel muziek
+          - name: Listen to Music
             device: SHIELD TV
-          - name: Kijk TV
+          - name: Watch TV
             device: SHIELD TV
         buttons:
           skip_back:
@@ -140,10 +128,6 @@ cards:
             hide: true
           y:
             hide: true
-      - type: custom:mini-media-player
-        entity: media_player.living_shieldtv
-        # entity: media_player.living
-        name: Shield TV
-        artwork: none
-        hide:
-          volume: true
+
+  - type: media-control
+    entity: media_player.living

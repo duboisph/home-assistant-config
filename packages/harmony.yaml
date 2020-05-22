@@ -1,8 +1,0 @@
-#### CUSTOMIZE #################################################################
-
-homeassistant:
-  customize:
-    remote.living_room:
-      friendly_name: Living Harmony
-    remote.home_theater:
-      friendly_name: Cinema Harmony

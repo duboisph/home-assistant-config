@@ -11,7 +11,7 @@ cards:
   - type: vertical-stack
     cards:
       - type: entities
-        title: Lichten
+        title: Lights
         show_header_toggle: false
         entities:
           - type: custom:auto-entities
@@ -32,9 +32,9 @@ cards:
               head: light.office
             filter:
               include:
-                - area: Bureau
+                - area: Office
                   domain: light
-                - area: Bureau
+                - area: Office
                   domain: switch
             sort:
               method: name
@@ -44,9 +44,9 @@ cards:
               head: light.theater
             filter:
               include:
-                - area: Cinema
+                - area: Theater
                   domain: light
-                - area: Cinema
+                - area: Theater
                   domain: switch
             sort:
               method: name
@@ -56,32 +56,28 @@ cards:
               head: light.bedroom
             filter:
               include:
-                - area: Slaapkamer
+                - area: Bedroom
                   domain: light
-                - area: Slaapkamer
+                - area: Bedroom
                   domain: switch
             sort:
               method: name
           - type: custom:auto-entities
             card:
               type: custom:fold-entity-row
-              head:
-                type: custom:slider-entity-row
-                entity: light.kids_room
-                hide_when_off: true
-                toggle: true
+              head: light.kids_room
             filter:
               include:
-                - area: Kinderkamer
+                - area: Kids' Room
                   domain: light
-                - area: Kinderkamer
+                - area: Kids' Room
                   domain: switch
             sort:
               method: name
       - type: custom:auto-entities
         card:
           show_header_toggle: false
-          title: Rolluiken
+          title: Blinds
           type: entities
         filter:
           include:
@@ -96,62 +92,45 @@ cards:
         show_forecast: false
       - type: horizontal-stack
         cards:
-          - type: custom:mini-graph-card
-            entities:
-              - sensor.living_temperature
+          - type: sensor
+            entity: sensor.living_temperature
             name: Living
-            decimals: 1
+            icon: mdi:sofa
+            graph: line
             hours_to_show: 72
-            points_per_hour: 0.5
-            font_size_header: 13
-            font_size: 90
-          - type: custom:mini-graph-card
-            entities:
-              - sensor.office_temperature
-            name: Bureau
-            decimals: 1
+            # theme: clear
+          - type: sensor
+            entity: sensor.office_temperature
+            name: Office
+            icon: mdi:desk
+            graph: line
             hours_to_show: 72
-            points_per_hour: 0.5
-            font_size_header: 13
-            font_size: 90
-          - type: custom:mini-graph-card
-            entities:
-              - sensor.bedroom_temperature
-            name: Slaapkamer
-            decimals: 1
+          - type: sensor
+            entity: sensor.theater_temperature
+            name: Theater
+            icon: mdi:theater
+            graph: line
             hours_to_show: 72
-            points_per_hour: 0.5
-            font_size_header: 13
-            font_size: 90
       - type: horizontal-stack
         cards:
-          - type: custom:mini-graph-card
-            entities:
-              - sensor.kids_room_temperature
-            name: Kinderkamer
-            decimals: 1
+          - type: sensor
+            entity: sensor.bedroom_temperature
+            name: Bedroom
+            icon: mdi:bed-king
+            graph: line
             hours_to_show: 72
-            points_per_hour: 0.5
-            font_size_header: 13
-            font_size: 90
-          - type: custom:mini-graph-card
-            entities:
-              - sensor.bathroom_temperature
-            name: Badkamer
-            decimals: 1
+          - type: sensor
+            entity: sensor.kids_room_temperature
+            name: Kids' Room
+            icon: mdi:bed-king
+            graph: line
             hours_to_show: 72
-            points_per_hour: 0.5
-            font_size_header: 13
-            font_size: 90
-          - type: custom:mini-graph-card
-            entities:
-              - sensor.theater_temperature
-            name: Cinema
-            decimals: 1
+          - type: sensor
+            entity: sensor.bathroom_temperature
+            name: Bathroom
+            icon: mdi:baby
+            graph: line
             hours_to_show: 72
-            points_per_hour: 0.5
-            font_size_header: 13
-            font_size: 90
 
       - type: picture-glance
         camera_image: camera.front_door
@@ -162,7 +141,7 @@ cards:
           - entity: binary_sensor.front_door_ding
           - entity: sensor.front_door_last_ding
             icon: mdi:bell-ring-outline
-        title: Voordeur
+        title: Front Door
 
   - type: vertical-stack
     cards:
@@ -187,23 +166,7 @@ cards:
               id: spotify:playlist:5hC8A0idiKYqyTcxd1wAvN
               name: Chill
               icon: mdi:playlist-music
-      - type: custom:mini-media-player
+      - type: media-control
         entity: media_player.office_sonos
-        artwork: cover
-        group: true
-        hide:
-          power: true
-          shuffle: false
-      - type: custom:mini-media-player
+      - type: media-control
         entity: media_player.bathroom_sonos
-        artwork: cover
-        group: true
-        hide:
-          power: true
-          shuffle: false
-      # - type: vertical-stack
-      #   cards:
-      #     - type: media-control
-      #       entity: media_player.office_sonos
-      #     - type: media-control
-      #       entity: media_player.bathroom_sonos

@@ -1,4 +1,4 @@
-title: Cinema
+title: Theater
 icon: mdi:theater
 path: theater
 cards:
@@ -7,7 +7,7 @@ cards:
     cards:
       - type: custom:light-entity-card
         entity: light.theater
-        header: Lichten
+        header: Lights
         effects_list: false
         full_width_sliders: true
         show_slider_percent: false
@@ -19,14 +19,14 @@ cards:
           show_state: false
         filter:
           include:
-            - area: Cinema
+            - area: Theater
               domain: light
               options:
                 tap_action:
                   action: toggle
                 hold_action:
                   action: more-info
-            - area: Cinema
+            - area: Theater
               domain: switch
               options:
                 tap_action:
@@ -38,33 +38,21 @@ cards:
 
   - type: horizontal-stack
     cards:
-      - type: custom:mini-graph-card
-        entities:
-          - sensor.theater_temperature
-        name: Temperatuur
-        decimals: 1
+      - type: sensor
+        entity: sensor.theater_temperature
+        name: Temperature
+        graph: line
         hours_to_show: 72
-        points_per_hour: 0.25
-        font_size_header: 13
-        font_size: 90
-      - type: custom:mini-graph-card
-        entities:
-          - sensor.theater_humidity
-        name: Vochtigheid
-        decimals: 1
+      - type: sensor
+        entity: sensor.theater_humidity
+        name: Humidity
+        graph: line
         hours_to_show: 72
-        points_per_hour: 0.25
-        font_size_header: 13
-        font_size: 90
-      - type: custom:mini-graph-card
-        entities:
-          - sensor.theater_pressure
-        name: Luchtdruk
-        decimals: 0
+      - type: sensor
+        entity: sensor.theater_pressure
+        name: Pressure
+        graph: line
         hours_to_show: 72
-        points_per_hour: 0.25
-        font_size_header: 13
-        font_size: 90
 
   - type: custom:stack-in-card
     mode: vertical
@@ -74,11 +62,11 @@ cards:
         volume_device: Receiver
         scale: 1.25
         activities:
-          - name: Kijk een Film
-            device: Blu-ray Speler
-          - name: SHIELD TV
+          - name: Watch a Movie
+            device: Blu-ray Player
+          - name: Watch TV
             device: SHIELD TV
-          - name: Speel PS4
+          - name: Play a Game
             device: PlayStation 4
         buttons:
           dpad_up:
@@ -103,10 +91,6 @@ cards:
             hide: true
           y:
             hide: true
-      - type: custom:mini-media-player
-        entity: media_player.theater_shieldtv
-        # entity: media_player.theater
-        name: Shield TV
-        artwork: none
-        hide:
-          volume: true
+
+  - type: media-control
+    entity: media_player.theater

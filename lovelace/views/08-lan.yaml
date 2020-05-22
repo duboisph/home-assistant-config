@@ -12,7 +12,6 @@ cards:
             name: Ping
             decimals: 0
             hours_to_show: 72
-            # line_color: "#3498db"
           - type: custom:mini-graph-card
             entities:
               - sensor.speedtest_download
@@ -20,7 +19,6 @@ cards:
             icon: mdi:download-network
             decimals: 0
             hours_to_show: 72
-            # line_color: "#3498db"
           - type: custom:mini-graph-card
             entities:
               - sensor.speedtest_upload
@@ -28,26 +26,15 @@ cards:
             icon: mdi:upload-network
             decimals: 0
             hours_to_show: 72
-            # line_color: "#3498db"
       - type: horizontal-stack
         cards:
-          - type: custom:mini-graph-card
-            entities:
-              - sensor.adguard_dns_queries
-            name: DNS queries
-            hour24: true
-            hours_to_show: 72
-            show:
-              graph: none
           - type: custom:mini-graph-card
             entities:
               - sensor.adguard_dns_queries_blocked_ratio
             name: Ads blocked
             decimals: 0
-            hour24: true
             hours_to_show: 72
-            show:
-              graph: line
+            line_width: 2
 
       - type: horizontal-stack
         cards:
@@ -61,8 +48,7 @@ cards:
                 icon: mdi:chip
                 align_icon: state
                 decimals: 0
-                hours_to_show: 48
-                # line_color: "#389638"
+                hours_to_show: 72
               - type: custom:bar-card
                 entities:
                   - sensor.mikrotik_memory_usage
@@ -83,8 +69,7 @@ cards:
                 icon: mdi:chip
                 align_icon: state
                 decimals: 0
-                hours_to_show: 48
-                # line_color: "#389638"
+                hours_to_show: 72
               - type: custom:bar-card
                 entities:
                   - sensor.memory_use_percent
@@ -105,8 +90,7 @@ cards:
                 icon: mdi:chip
                 align_icon: state
                 decimals: 0
-                hours_to_show: 48
-                # line_color: "#389638"
+                hours_to_show: 72
               - type: custom:bar-card
                 entities:
                   - sensor.synology_memory_usage_real
@@ -129,14 +113,14 @@ cards:
           - device_tracker.sec84251979ca6b
           - device_tracker.ring
           - device_tracker.ringchime
-          - device_tracker.living
+          - device_tracker.living_shieldtv
           - device_tracker.living_harmony
           - device_tracker.avr_x6200w
-          - device_tracker.cinema
           - device_tracker.ubp_x800
-          - device_tracker.cinema_harmony
-          - device_tracker.sonos_connect
-          - device_tracker.sonos_play1
+          - device_tracker.theater_shieldtv
+          - device_tracker.theater_harmony
+          - device_tracker.office_sonos
+          - device_tracker.bathroom_sonos
           - device_tracker.ps4pro
           - device_tracker.nintendoswitch
         show_name: false

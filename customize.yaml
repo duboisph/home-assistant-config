@@ -1,6 +1,4 @@
+person.elke:
+  entity_picture: /local/elke.jpg
 person.philip:
   entity_picture: /local/philip.jpg
-device_tracker.life360_elke:
-  friendly_name: Elke
-device_tracker.life360_philip:
-  friendly_name: Philip

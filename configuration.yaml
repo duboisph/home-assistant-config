@@ -1,6 +1,7 @@
 #### CORE ######################################################################
 
 default_config:
+discovery:
 
 homeassistant:
   customize: !include customize.yaml
@@ -24,11 +25,6 @@ lovelace:
       title: Generated
       icon: mdi:tools
       show_in_sidebar: true
-
-discovery:
-
-downloader:
-  download_dir: downloads
 
 customizer:
   custom_ui: local

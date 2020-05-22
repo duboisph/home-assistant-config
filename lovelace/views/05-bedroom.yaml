@@ -1,4 +1,4 @@
-title: Slaapkamer
+title: Bedroom
 icon: mdi:bed-king
 path: bedroom
 cards:
@@ -7,7 +7,7 @@ cards:
     cards:
       - type: custom:light-entity-card
         entity: light.bedroom
-        header: Lichten
+        header: Lights
         color_picker: false
         color_wheel: false
         effects_list: false
@@ -20,14 +20,14 @@ cards:
           show_state: false
         filter:
           include:
-            - area: Slaapkamer
+            - area: Bedroom
               domain: light
               options:
                 tap_action:
                   action: toggle
                 hold_action:
                   action: more-info
-            - area: Slaapkamer
+            - area: Bedroom
               domain: switch
               options:
                 tap_action:
@@ -39,30 +39,18 @@ cards:
 
   - type: horizontal-stack
     cards:
-      - type: custom:mini-graph-card
-        entities:
-          - sensor.bedroom_temperature
-        name: Temperatuur
-        decimals: 1
+      - type: sensor
+        entity: sensor.bedroom_temperature
+        name: Temperature
+        graph: line
         hours_to_show: 72
-        points_per_hour: 0.25
-        font_size_header: 13
-        font_size: 90
-      - type: custom:mini-graph-card
-        entities:
-          - sensor.bedroom_humidity
-        name: Vochtigheid
-        decimals: 1
+      - type: sensor
+        entity: sensor.bedroom_humidity
+        name: Humidity
+        graph: line
         hours_to_show: 72
-        points_per_hour: 0.25
-        font_size_header: 13
-        font_size: 90
-      - type: custom:mini-graph-card
-        entities:
-          - sensor.bedroom_pressure
-        name: Luchtdruk
-        decimals: 0
+      - type: sensor
+        entity: sensor.bedroom_pressure
+        name: Pressure
+        graph: line
         hours_to_show: 72
-        points_per_hour: 0.25
-        font_size_header: 13
-        font_size: 90
