@@ -5,8 +5,10 @@ This is my [Home Assistant](https://www.home-assistant.io/) configuration.
 ## Lovelace screenshots
 
 ![Lovelace Home](/images/lovelace_home.png)
+![Lovelace Living](/images/lovelace_living.png)
 ![Lovelace Office](/images/lovelace_office.png)
-![Lovelace LAN](/images/lovelace_lan.png)
+![Lovelace Theater](/images/lovelace_theater.png)
+![Lovelace System](/images/lovelace_system.png)
 
 ## Devices
 
