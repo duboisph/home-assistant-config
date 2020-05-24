@@ -65,8 +65,36 @@
     - service: cover.open_cover
       entity_id: cover.kitchen
 
-- id: lights_turn_on_at_sunset
-  alias: "[LIGHTS - Living] Turn on as the sun goes down"
+- id: blinds_open_via_living_remote
+  alias: "[BLINDS] Open via Living remote"
+  trigger:
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: living
+        event: 1002 # left_upper_short_release
+  action:
+    - service: cover.open_cover
+      entity_id: cover.dining
+    - service: cover.open_cover
+      entity_id: cover.kitchen
+
+- id: blinds_close_via_living_remote
+  alias: "[BLINDS] Close via Living remote"
+  trigger:
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: living
+        event: 2002 # left_lower_short_release
+  action:
+    - service: cover.close_cover
+      entity_id: cover.dining
+    - service: cover.close_cover
+      entity_id: cover.kitchen
+
+- id: lights_living_turn_on_at_dusk
+  alias: "[LIGHTS - Living] Turn on at dusk"
   trigger:
     - platform: numeric_state
       entity_id: sun.sun
@@ -78,7 +106,7 @@
         circadian_lighting: switch.circadian_lighting_living
         scene: scene.living_relax
 
-- id: lights_turn_off_after_1am
+- id: lights_living_turn_off_after_1am
   alias: "[LIGHTS - Living] Turn off after 1AM"
   trigger:
     - platform: time
@@ -87,36 +115,8 @@
     - service: light.turn_off
       entity_id: light.living
 
-- id: lights_living_set_circadian_lighting_via_remote
-  alias: "[LIGHTS - Living] Turn on Circadian Lighting via remote"
-  trigger:
-    - platform: event
-      event_type: deconz_event
-      event_data:
-        id: living
-        event: 1002 # left_upper_short_release
-  action:
-    - service: script.activate_circadian_lighting
-      data:
-        circadian_lighting: switch.circadian_lighting_living
-        light: light.Living
-
 - id: lights_living_set_relax_scene_via_remote
   alias: "[LIGHTS - Living] Set Relax scene via remote"
-  trigger:
-    - platform: event
-      event_type: deconz_event
-      event_data:
-        id: living
-        event: 2002 # left_lower_short_release
-  action:
-    - service: script.activate_scene
-      data:
-        circadian_lighting: switch.circadian_lighting_living
-        scene: scene.Living_relax
-
-- id: lights_living_set_romantic_scene_via_remote
-  alias: "[LIGHTS - Living] Set Romantic scene via remote"
   trigger:
     - platform: event
       event_type: deconz_event
@@ -127,7 +127,7 @@
     - service: script.activate_scene
       data:
         circadian_lighting: switch.circadian_lighting_living
-        scene: scene.Living_romantic
+        scene: scene.Living_relax
 
 - id: lights_living_turn_off_via_remote
   alias: "[LIGHTS - Living] Turn off via remote"
