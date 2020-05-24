@@ -1,0 +1,50 @@
+# background: var(--background-image)
+title: Bedroom
+views:
+  - cards:
+      - type: custom:stack-in-card
+        mode: vertical
+        cards:
+          - type: light
+            entity: light.bedroom
+          - type: custom:auto-entities
+            card:
+              type: glance
+              show_name: true
+              show_state: false
+            filter:
+              include:
+                - area: Bedroom
+                  domain: light
+                  options:
+                    tap_action:
+                      action: toggle
+                    hold_action:
+                      action: more-info
+                - area: Bedroom
+                  domain: switch
+                  options:
+                    tap_action:
+                      action: toggle
+                    hold_action:
+                      action: more-info
+            sort:
+              method: name
+
+      - type: horizontal-stack
+        cards:
+          - type: sensor
+            entity: sensor.bedroom_temperature
+            name: Temperature
+            graph: line
+            hours_to_show: 72
+          - type: sensor
+            entity: sensor.bedroom_humidity
+            name: Humidity
+            graph: line
+            hours_to_show: 72
+          - type: sensor
+            entity: sensor.bedroom_pressure
+            name: Pressure
+            graph: line
+            hours_to_show: 72

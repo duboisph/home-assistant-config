@@ -1,18 +1,149 @@
 # background: var(--background-image)
-background: 'center / cover no-repeat url("/local/night.jpg") fixed'
-custom_header:
-  background: "rgba(155, 155, 155, 0.25)"
-  compact_mode: true
-  hidden_tab_redirect: false
-  hide_config: true
-  hide_help: true
-  hide_unused: false
-title: Home
+# custom_header:
+#   background: "rgba(155, 155, 155, 0.25)"
+#   compact_mode: true
+#   hidden_tab_redirect: false
+#   hide_config: true
+#   hide_help: true
+#   hide_unused: true
+title: Overview
 views:
-  - !include lovelace/views/01-home.yaml
-  - !include lovelace/views/02-living.yaml
-  - !include lovelace/views/03-office.yaml
-  - !include lovelace/views/04-theater.yaml
-  - !include lovelace/views/05-bedroom.yaml
-  - !include lovelace/views/08-lan.yaml
-  - !include lovelace/views/90-automations.yaml
+  - cards:
+      - type: glance
+        entities:
+          - entity: person.philip
+          - entity: person.elke
+        show_name: false
+
+      - type: vertical-stack
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: light
+                entity: light.all
+              - type: light
+                entity: light.living
+              - type: light
+                entity: light.office
+          - type: horizontal-stack
+            cards:
+              - type: light
+                entity: light.theater
+              - type: light
+                entity: light.bedroom
+              - type: light
+                entity: light.kids_room
+          - type: custom:auto-entities
+            card:
+              show_header_toggle: false
+              title: Blinds
+              type: entities
+            filter:
+              include:
+                - domain: cover
+            sort:
+              method: name
+
+      - type: vertical-stack
+        cards:
+          - type: weather-forecast
+            entity: weather.home
+            show_forecast: false
+          - type: horizontal-stack
+            cards:
+              - type: sensor
+                entity: sensor.living_temperature
+                name: Living
+                icon: mdi:sofa
+                graph: line
+                hours_to_show: 72
+                # theme: clear
+              - type: sensor
+                entity: sensor.office_temperature
+                name: Office
+                icon: mdi:desk
+                graph: line
+                hours_to_show: 72
+              - type: sensor
+                entity: sensor.theater_temperature
+                name: Theater
+                icon: mdi:theater
+                graph: line
+                hours_to_show: 72
+          - type: horizontal-stack
+            cards:
+              - type: sensor
+                entity: sensor.bedroom_temperature
+                name: Bedroom
+                icon: mdi:bed-king
+                graph: line
+                hours_to_show: 72
+              - type: sensor
+                entity: sensor.kids_room_temperature
+                name: Kids' Room
+                icon: mdi:baby
+                graph: line
+                hours_to_show: 72
+              - type: sensor
+                entity: sensor.bathroom_temperature
+                name: Bathroom
+                icon: mdi:shower
+                graph: line
+                hours_to_show: 72
+
+          - type: picture-glance
+            camera_image: camera.front_door
+            entities:
+              - entity: binary_sensor.front_door_motion
+              - entity: sensor.front_door_last_motion
+                icon: mdi:motion-sensor
+              - entity: binary_sensor.front_door_ding
+              - entity: sensor.front_door_last_ding
+                icon: mdi:bell-ring-outline
+            title: Front Door
+
+      - type: vertical-stack
+        cards:
+          # - type: custom:mini-media-player
+          #   entity: media_player.spotify
+          #   artwork: cover
+          #   hide:
+          #     power: true
+          #     shuffle: false
+          #   shortcuts:
+          #     columns: 3
+          #     buttons:
+          #       - type: playlist
+          #         id: spotify:playlist:19Xl108bOw7ykXet1cxO8v
+          #         name: Shazam
+          #         icon: mdi:playlist-music
+          #       - type: playlist
+          #         id: spotify:playlist:2Ps64TVbfmfX6jxWJnlX1j
+          #         name: ASOT
+          #         icon: mdi:playlist-music
+          #       - type: playlist
+          #         id: spotify:playlist:5hC8A0idiKYqyTcxd1wAvN
+          #         name: Chill
+          #         icon: mdi:playlist-music
+          - type: custom:mini-media-player
+            entity: media_player.living_shieldtv
+            artwork: cover
+            hide:
+              power: true
+              volume: true
+          - type: custom:mini-media-player
+            entity: media_player.theater_shieldtv
+            artwork: cover
+            hide:
+              power: true
+              volume: true
+          - type: custom:mini-media-player
+            entity: media_player.office_sonos
+            artwork: cover
+            hide:
+              power: true
+          - type: custom:mini-media-player
+            entity: media_player.bathroom_sonos
+            artwork: cover
+            hide:
+              power: true

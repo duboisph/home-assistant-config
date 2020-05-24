@@ -1,0 +1,91 @@
+# background: var(--background-image)
+title: Theater
+views:
+  - cards:
+      - type: vertical-stack
+        title: Room Control
+        cards:
+          - type: light
+            entity: light.theater
+          - type: custom:auto-entities
+            card:
+              type: glance
+              show_name: true
+              show_state: false
+            filter:
+              include:
+                - area: Theater
+                  domain: light
+                  options:
+                    tap_action:
+                      action: toggle
+                    hold_action:
+                      action: more-info
+                - area: Theater
+                  domain: switch
+                  options:
+                    tap_action:
+                      action: toggle
+                    hold_action:
+                      action: more-info
+            sort:
+              method: name
+          - type: horizontal-stack
+            cards:
+              - type: sensor
+                entity: sensor.theater_temperature
+                name: Temperature
+                graph: line
+                hours_to_show: 72
+              - type: sensor
+                entity: sensor.theater_humidity
+                name: Humidity
+                graph: line
+                hours_to_show: 72
+              - type: sensor
+                entity: sensor.theater_pressure
+                name: Pressure
+                graph: line
+                hours_to_show: 72
+
+      - type: vertical-stack
+        title: Entertainment
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: button
+                entity: switch.theater_harmony_watch_a_movie
+                show_name: false
+              - type: button
+                entity: switch.theater_harmony_watch_tv
+                show_name: false
+              - type: button
+                entity: switch.theater_harmony_play_a_game
+                show_name: false
+          - type: horizontal-stack
+            cards:
+              - type: button
+                entity: script.theater_harmony_mute
+                icon: mdi:volume-off
+                show_name: false
+                tap_action:
+                  action: call-service
+                  service: script.theater_harmony_mute
+              - type: button
+                entity: script.theater_harmony_volume_down
+                icon: mdi:volume-medium
+                show_name: false
+                tap_action:
+                  action: call-service
+                  service: script.theater_harmony_volume_down
+              - type: button
+                entity: script.theater_harmony_volume_up
+                icon: mdi:volume-high
+                show_name: false
+                tap_action:
+                  action: call-service
+                  service: script.theater_harmony_volume_up
+          - type: media-control
+            entity: media_player.theater_shieldtv
+          - type: media-control
+            entity: media_player.ps4pro
