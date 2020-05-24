@@ -1,4 +1,3 @@
-# background: var(--background-image)
 title: System
 views:
   - cards:

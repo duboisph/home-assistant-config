@@ -11,8 +11,13 @@ homeassistant:
     device_tracker.*:
       templates:
         icon_color: >
-          if (state === 'home') return icon_color;
-          return 'rgb(225, 75, 76)';
+          if (state === 'home') return 'var(--accent-color)';
+          return 'var(--disabled-text-color)';
+    group.device_*:
+      templates:
+        icon_color: >
+          if (state === 'home') return 'var(--accent-color)';
+          return 'var(--disabled-text-color)';
 
 #### GROUPS ####################################################################
 
