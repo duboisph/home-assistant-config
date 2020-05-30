@@ -1,0 +1,191 @@
+title: Home
+icon: mdi:home
+path: home
+# badges:
+#   - person.philip
+#   - person.elke
+cards:
+  - type: glance
+    entities:
+      - entity: person.philip
+      - entity: person.elke
+    show_name: false
+
+  - type: vertical-stack
+    cards:
+      - type: horizontal-stack
+        cards:
+          - type: button
+            entity: light.living
+            hold_action:
+              action: navigate
+              navigation_path: /lovelace/living
+          - type: button
+            entity: light.office
+            hold_action:
+              action: navigate
+              navigation_path: /lovelace/office
+          - type: button
+            entity: light.theater
+            hold_action:
+              action: navigate
+              navigation_path: /lovelace/theater
+      - type: horizontal-stack
+        cards:
+          - type: button
+            entity: light.bedroom
+            hold_action:
+              action: navigate
+              navigation_path: /lovelace/bedroom
+          - type: button
+            entity: light.kids_room
+            hold_action:
+              action: navigate
+              navigation_path: /lovelace/kids_room
+          - type: button
+            entity: light.all
+            icon: mdi:power
+      - type: custom:auto-entities
+        card:
+          show_header_toggle: false
+          title: Blinds
+          type: entities
+        filter:
+          include:
+            - domain: cover
+        sort:
+          method: name
+
+  - type: vertical-stack
+    cards:
+      - type: weather-forecast
+        entity: weather.home
+        show_forecast: false
+      - type: custom:mini-graph-card
+        entities:
+          - entity: sensor.living_temperature
+            icong: mdi:sofa
+            name: Living
+          - entity: sensor.office_temperature
+            icong: mdi:desk
+            name: Office
+          - entity: sensor.theater_temperature
+            icong: mdi:theater
+            name: Theater
+          - entity: sensor.bedroom_temperature
+            icong: mdi:bed-king
+            name: Bedroom
+          - entity: sensor.kids_room_temperature
+            icong: mdi:baby
+            name: Kids' Room
+          # - entity: sensor.bathroom_temperature
+          #   icong: mdi:shower
+          #   name: Bathroom
+        icon: mdi:thermometer
+        name: Temperature
+        line_width: 2
+        hours_to_show: 72
+      # - type: horizontal-stack
+      #   cards:
+      #     - type: sensor
+      #       entity: sensor.living_temperature
+      #       name: Living
+      #       icon: mdi:sofa
+      #       graph: line
+      #       hours_to_show: 72
+      #     - type: sensor
+      #       entity: sensor.office_temperature
+      #       name: Office
+      #       icon: mdi:desk
+      #       graph: line
+      #       hours_to_show: 72
+      #     - type: sensor
+      #       entity: sensor.theater_temperature
+      #       name: Theater
+      #       icon: mdi:theater
+      #       graph: line
+      #       hours_to_show: 72
+      # - type: horizontal-stack
+      #   cards:
+      #     - type: sensor
+      #       entity: sensor.bedroom_temperature
+      #       name: Bedroom
+      #       icon: mdi:bed-king
+      #       graph: line
+      #       hours_to_show: 72
+      #     - type: sensor
+      #       entity: sensor.kids_room_temperature
+      #       name: Kids' Room
+      #       icon: mdi:baby
+      #       graph: line
+      #       hours_to_show: 72
+      #     - type: sensor
+      #       entity: sensor.bathroom_temperature
+      #       name: Bathroom
+      #       icon: mdi:shower
+      #       graph: line
+      #       hours_to_show: 72
+
+      # - type: vertical-stack
+      #   cards:
+      # - type: custom:mini-media-player
+      #   entity: media_player.spotify
+      #   artwork: cover
+      #   hide:
+      #     power: true
+      #     shuffle: false
+      #   shortcuts:
+      #     columns: 3
+      #     buttons:
+      #       - type: playlist
+      #         id: spotify:playlist:19Xl108bOw7ykXet1cxO8v
+      #         name: Shazam
+      #         icon: mdi:playlist-music
+      #       - type: playlist
+      #         id: spotify:playlist:2Ps64TVbfmfX6jxWJnlX1j
+      #         name: ASOT
+      #         icon: mdi:playlist-music
+      #       - type: playlist
+      #         id: spotify:playlist:5hC8A0idiKYqyTcxd1wAvN
+      #         name: Chill
+      #         icon: mdi:playlist-music
+      - type: custom:mini-media-player
+        entity: media_player.living_shieldtv
+        artwork: cover
+        hide:
+          power: true
+          source: true
+          volume: true
+      - type: custom:mini-media-player
+        entity: media_player.theater_shieldtv
+        artwork: cover
+        hide:
+          power: true
+          source: true
+          volume: true
+      - type: custom:mini-media-player
+        entity: media_player.office_sonos
+        artwork: cover
+        hide:
+          power: true
+          shuffle: false
+          source: true
+          volume: true
+      - type: custom:mini-media-player
+        entity: media_player.bathroom_sonos
+        artwork: cover
+        hide:
+          power: true
+          shuffle: false
+          source: true
+          volume: true
+  # - type: picture-glance
+  #   camera_image: camera.front_door
+  #   entities:
+  #     - entity: binary_sensor.front_door_motion
+  #     - entity: sensor.front_door_last_motion
+  #       icon: mdi:motion-sensor
+  #     - entity: binary_sensor.front_door_ding
+  #     - entity: sensor.front_door_last_ding
+  #       icon: mdi:bell-ring-outline
+  #   title: Front Door

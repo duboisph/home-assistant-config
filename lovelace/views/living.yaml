@@ -1,0 +1,108 @@
+title: Licing
+icon: mdi:sofa
+path: living
+cards:
+  - type: vertical-stack
+    title: Room Control
+    cards:
+      - type: light
+        entity: light.living
+      - type: custom:auto-entities
+        card:
+          type: glance
+          show_name: true
+          show_state: false
+        filter:
+          include:
+            - area: Living
+              domain: light
+              options:
+                tap_action:
+                  action: toggle
+                hold_action:
+                  action: more-info
+            - area: Living
+              domain: switch
+              options:
+                tap_action:
+                  action: toggle
+                hold_action:
+                  action: more-info
+        sort:
+          method: name
+      - type: horizontal-stack
+        cards:
+          - type: button
+            entity: switch.circadian_lighting_living
+            name: Circadian
+            tap_action:
+              action: call-service
+              service: script.activate_circadian_lighting
+              service_data:
+                circadian_lighting: switch.circadian_lighting_living
+                light: light.living
+          - type: button
+            entity: scene.living_relax
+            name: Relax
+            tap_action:
+              action: call-service
+              service: script.activate_scene
+              service_data:
+                circadian_lighting: switch.circadian_lighting_living
+                scene: scene.living_relax
+      - type: horizontal-stack
+        cards:
+          - type: sensor
+            entity: sensor.living_temperature
+            name: Temperature
+            graph: line
+            hours_to_show: 72
+          - type: sensor
+            entity: sensor.living_humidity
+            name: Humidity
+            graph: line
+            hours_to_show: 72
+          - type: sensor
+            entity: sensor.living_pressure
+            name: Pressure
+            graph: line
+            hours_to_show: 72
+
+  - type: vertical-stack
+    title: Entertainment
+    cards:
+      # - type: markdown
+      #   content: "# Entertainment"
+      - type: horizontal-stack
+        cards:
+          - type: button
+            entity: switch.living_harmony_listen_to_music
+            show_name: false
+          - type: button
+            entity: switch.living_harmony_watch_tv
+            show_name: false
+      - type: horizontal-stack
+        cards:
+          - type: button
+            entity: script.living_harmony_mute
+            icon: mdi:volume-off
+            show_name: false
+            tap_action:
+              action: call-service
+              service: script.living_harmony_mute
+          - type: button
+            entity: script.living_harmony_volume_down
+            icon: mdi:volume-medium
+            show_name: false
+            tap_action:
+              action: call-service
+              service: script.living_harmony_volume_down
+          - type: button
+            entity: script.living_harmony_volume_up
+            icon: mdi:volume-high
+            show_name: false
+            tap_action:
+              action: call-service
+              service: script.living_harmony_volume_up
+      - type: media-control
+        entity: media_player.living_shieldtv

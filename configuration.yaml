@@ -25,36 +25,12 @@ frontend:
 
 lovelace:
   mode: yaml
-  resources: !include ui-lovelace-resources.yaml
+  resources: !include lovelace/resources.yaml
   dashboards:
-    lovelace-living:
-      mode: yaml
-      filename: ui-lovelace-living.yaml
-      title: 01 Living
-      icon: mdi:sofa
-      show_in_sidebar: true
-    lovelace-office:
-      mode: yaml
-      filename: ui-lovelace-office.yaml
-      title: 02 Office
-      icon: mdi:desk
-      show_in_sidebar: true
-    lovelace-theater:
-      mode: yaml
-      filename: ui-lovelace-theater.yaml
-      title: 03 Theater
-      icon: mdi:theater
-      show_in_sidebar: true
-    # lovelace-bedroom:
-    #   mode: yaml
-    #   filename: ui-lovelace-bedroom.yaml
-    #   title: 04 Bedroom
-    #   icon: mdi:bed-king
-    #   show_in_sidebar: true
     lovelace-system:
       mode: yaml
       filename: ui-lovelace-system.yaml
-      title: 05 System
+      title: System
       icon: mdi:server-network
       show_in_sidebar: true
 
