@@ -7,8 +7,9 @@ custom_header:
   hide_unused: true
 title: Overview
 views:
-  - !include lovelace/views/00-home.yaml
+  - !include lovelace/views/00-overview.yaml
   - !include lovelace/views/living.yaml
   - !include lovelace/views/office.yaml
   - !include lovelace/views/theater.yaml
   - !include lovelace/views/bedroom.yaml
+  - !include lovelace/views/kids_room.yaml

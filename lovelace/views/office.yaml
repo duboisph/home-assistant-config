@@ -5,36 +5,40 @@ cards:
   - type: vertical-stack
     title: Room Control
     cards:
-      - type: light
-        entity: light.office
-      - type: custom:auto-entities
-        card:
-          type: glance
-          show_name: true
-          show_state: false
-        filter:
-          include:
-            - area: Office
-              domain: light
-              options:
-                tap_action:
-                  action: toggle
-                hold_action:
-                  action: more-info
-            - area: Office
-              domain: switch
-              options:
-                tap_action:
-                  action: toggle
-                hold_action:
-                  action: more-info
-        sort:
-          method: name
+      - type: custom:stack-in-card
+        mode: vertical
+        cards:
+          - type: light
+            entity: light.office
+          - type: custom:auto-entities
+            card:
+              type: glance
+              show_name: true
+              show_state: false
+            filter:
+              include:
+                - area: Office
+                  domain: light
+                  options:
+                    tap_action:
+                      action: toggle
+                    hold_action:
+                      action: more-info
+                - area: Office
+                  domain: switch
+                  options:
+                    tap_action:
+                      action: toggle
+                    hold_action:
+                      action: more-info
+            sort:
+              method: name
       - type: horizontal-stack
         cards:
           - type: button
             entity: switch.circadian_lighting_office
             name: Circadian
+            icon_height: 48px
             tap_action:
               action: call-service
               service: script.activate_circadian_lighting
@@ -44,6 +48,7 @@ cards:
           - type: button
             entity: scene.office_green
             name: Green
+            icon_height: 48px
             tap_action:
               action: call-service
               service: script.activate_scene
@@ -53,6 +58,7 @@ cards:
           - type: button
             entity: scene.office_relax
             name: Relax
+            icon_height: 48px
             tap_action:
               action: call-service
               service: script.activate_scene
@@ -69,11 +75,6 @@ cards:
           - type: sensor
             entity: sensor.office_humidity
             name: Humidity
-            graph: line
-            hours_to_show: 72
-          - type: sensor
-            entity: sensor.office_pressure
-            name: Pressure
             graph: line
             hours_to_show: 72
 

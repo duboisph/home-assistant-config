@@ -46,3 +46,32 @@
       brightness: 200
       color_temp: 382
       hs_color: [16.925, 78.431]
+
+- id: theater_relax
+  name: Theater Relax
+  icon: mdi:palette-swatch
+  entities:
+    light.theater_spots:
+      state: off
+    light.theater_iris:
+      state: on
+
+- id: theater_full
+  name: Theater Full
+  icon: mdi:palette-swatch
+  entities:
+    light.theater_spots:
+      state: on
+      brightness: 255
+    light.theater_iris:
+      state: on
+
+- id: theater_dim
+  name: Theater Dim
+  icon: mdi:palette-swatch
+  entities:
+    light.theater_spots:
+      state: on
+      brightness: 45
+    light.theater_iris:
+      state: on

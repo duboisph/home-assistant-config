@@ -109,11 +109,11 @@ cards:
           - device_tracker.sec84251979ca6b
           - device_tracker.ring
           - device_tracker.ringchime
-          - device_tracker.living_shieldtv
+          - group.device_living_tv
           - device_tracker.living_harmony
           - device_tracker.avr_x6200w
           - device_tracker.ubp_x800
-          - device_tracker.theater_shieldtv
+          - device_tracker.theater_tv
           - device_tracker.theater_harmony
           - device_tracker.office_sonos
           - device_tracker.bathroom_sonos

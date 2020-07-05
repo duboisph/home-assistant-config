@@ -1,0 +1,21 @@
+title: Kids' Room
+icon: mdi:baby
+path: kids_room
+cards:
+  - type: vertical-stack
+    title: Room Control
+    cards:
+      - type: light
+        entity: light.kids_room
+      - type: horizontal-stack
+        cards:
+          - type: sensor
+            entity: sensor.kids_room_temperature
+            name: Temperature
+            graph: line
+            hours_to_show: 72
+          - type: sensor
+            entity: sensor.kids_room_humidity
+            name: Humidity
+            graph: line
+            hours_to_show: 72

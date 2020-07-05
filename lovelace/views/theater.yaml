@@ -5,31 +5,63 @@ cards:
   - type: vertical-stack
     title: Room Control
     cards:
-      - type: light
-        entity: light.theater
-      - type: custom:auto-entities
-        card:
-          type: glance
-          show_name: true
-          show_state: false
-        filter:
-          include:
-            - area: Theater
-              domain: light
-              options:
-                tap_action:
-                  action: toggle
-                hold_action:
-                  action: more-info
-            - area: Theater
-              domain: switch
-              options:
-                tap_action:
-                  action: toggle
-                hold_action:
-                  action: more-info
-        sort:
-          method: name
+      - type: custom:stack-in-card
+        mode: vertical
+        cards:
+          - type: light
+            entity: light.theater
+          - type: custom:auto-entities
+            card:
+              type: glance
+              show_name: true
+              show_state: false
+            filter:
+              include:
+                - area: Theater
+                  domain: light
+                  options:
+                    tap_action:
+                      action: toggle
+                    hold_action:
+                      action: more-info
+                - area: Theater
+                  domain: switch
+                  options:
+                    tap_action:
+                      action: toggle
+                    hold_action:
+                      action: more-info
+            sort:
+              method: name
+      - type: horizontal-stack
+        cards:
+          - type: button
+            entity: scene.theater_relax
+            name: Relax
+            icon_height: 48px
+            tap_action:
+              action: call-service
+              service: scene.turn_on
+              service_data:
+                entity_id: scene.theater_relax
+          - type: button
+            entity: scene.theater_full
+            name: Full
+            icon_height: 48px
+            tap_action:
+              action: call-service
+              service: scene.turn_on
+              service_data:
+                entity_id: scene.theater_full
+          - type: button
+            entity: scene.theater_dim
+            name: Dim
+            icon_height: 48px
+            tap_action:
+              action: call-service
+              service: scene.turn_on
+              service_data:
+                entity_id: scene.theater_dim
       - type: horizontal-stack
         cards:
           - type: sensor
@@ -42,11 +74,6 @@ cards:
             name: Humidity
             graph: line
             hours_to_show: 72
-          - type: sensor
-            entity: sensor.theater_pressure
-            name: Pressure
-            graph: line
-            hours_to_show: 72
 
   - type: vertical-stack
     title: Entertainment
@@ -55,18 +82,22 @@ cards:
         cards:
           - type: button
             entity: switch.theater_harmony_watch_a_movie
+            icon_height: 48px
             show_name: false
           - type: button
             entity: switch.theater_harmony_watch_tv
+            icon_height: 48px
             show_name: false
           - type: button
             entity: switch.theater_harmony_play_a_game
+            icon_height: 48px
             show_name: false
       - type: horizontal-stack
         cards:
           - type: button
             entity: script.theater_harmony_mute
             icon: mdi:volume-off
+            icon_height: 32px
             show_name: false
             tap_action:
               action: call-service
@@ -74,6 +105,7 @@ cards:
           - type: button
             entity: script.theater_harmony_volume_down
             icon: mdi:volume-medium
+            icon_height: 32px
             show_name: false
             tap_action:
               action: call-service
@@ -81,11 +113,12 @@ cards:
           - type: button
             entity: script.theater_harmony_volume_up
             icon: mdi:volume-high
+            icon_height: 32px
             show_name: false
             tap_action:
               action: call-service
               service: script.theater_harmony_volume_up
       - type: media-control
-        entity: media_player.theater_shieldtv
+        entity: media_player.theater_tv
       - type: media-control
         entity: media_player.ps4pro

@@ -1,32 +1,36 @@
 title: Home
 icon: mdi:home
 path: home
-# badges:
-#   - person.philip
-#   - person.elke
-cards:
-  - type: glance
-    entities:
-      - entity: person.philip
-      - entity: person.elke
+badges:
+  - entity: person.philip
     show_name: false
-
+  - entity: person.elke
+    show_name: false
+cards:
   - type: vertical-stack
     cards:
+      - type: button
+        entity: light.all
+        icon: mdi:power
+        icon_height: 48px
+        show_name: false
       - type: horizontal-stack
         cards:
           - type: button
             entity: light.living
+            icon_height: 48px
             hold_action:
               action: navigate
               navigation_path: /lovelace/living
           - type: button
             entity: light.office
+            icon_height: 48px
             hold_action:
               action: navigate
               navigation_path: /lovelace/office
           - type: button
             entity: light.theater
+            icon_height: 48px
             hold_action:
               action: navigate
               navigation_path: /lovelace/theater
@@ -34,17 +38,16 @@ cards:
         cards:
           - type: button
             entity: light.bedroom
+            icon_height: 48px
             hold_action:
               action: navigate
               navigation_path: /lovelace/bedroom
           - type: button
             entity: light.kids_room
+            icon_height: 48px
             hold_action:
               action: navigate
               navigation_path: /lovelace/kids_room
-          - type: button
-            entity: light.all
-            icon: mdi:power
       - type: custom:auto-entities
         card:
           show_header_toggle: false
@@ -60,7 +63,7 @@ cards:
     cards:
       - type: weather-forecast
         entity: weather.home
-        show_forecast: false
+        show_forecast: true
       - type: custom:mini-graph-card
         entities:
           - entity: sensor.living_temperature
@@ -85,84 +88,44 @@ cards:
         name: Temperature
         line_width: 2
         hours_to_show: 72
-      # - type: horizontal-stack
-      #   cards:
-      #     - type: sensor
-      #       entity: sensor.living_temperature
-      #       name: Living
-      #       icon: mdi:sofa
-      #       graph: line
-      #       hours_to_show: 72
-      #     - type: sensor
-      #       entity: sensor.office_temperature
-      #       name: Office
-      #       icon: mdi:desk
-      #       graph: line
-      #       hours_to_show: 72
-      #     - type: sensor
-      #       entity: sensor.theater_temperature
-      #       name: Theater
-      #       icon: mdi:theater
-      #       graph: line
-      #       hours_to_show: 72
-      # - type: horizontal-stack
-      #   cards:
-      #     - type: sensor
-      #       entity: sensor.bedroom_temperature
-      #       name: Bedroom
-      #       icon: mdi:bed-king
-      #       graph: line
-      #       hours_to_show: 72
-      #     - type: sensor
-      #       entity: sensor.kids_room_temperature
-      #       name: Kids' Room
-      #       icon: mdi:baby
-      #       graph: line
-      #       hours_to_show: 72
-      #     - type: sensor
-      #       entity: sensor.bathroom_temperature
-      #       name: Bathroom
-      #       icon: mdi:shower
-      #       graph: line
-      #       hours_to_show: 72
 
-      # - type: vertical-stack
-      #   cards:
+  - type: vertical-stack
+    cards:
+      - type: custom:mini-media-player
+        entity: media_player.spotify
+        artwork: cover
+        hide:
+          power: true
+          shuffle: false
+        shortcuts:
+          columns: 3
+          buttons:
+            - type: playlist
+              id: spotify:playlist:19Xl108bOw7ykXet1cxO8v
+              name: Likes
+              icon: mdi:playlist-music
+            - type: playlist
+              id: spotify:playlist:2Ps64TVbfmfX6jxWJnlX1j
+              name: ASOT
+              icon: mdi:playlist-music
+            - type: playlist
+              id: spotify:playlist:5hC8A0idiKYqyTcxd1wAvN
+              name: Chill
+              icon: mdi:playlist-music
       # - type: custom:mini-media-player
-      #   entity: media_player.spotify
+      #   entity: media_player.living_tv
       #   artwork: cover
       #   hide:
       #     power: true
-      #     shuffle: false
-      #   shortcuts:
-      #     columns: 3
-      #     buttons:
-      #       - type: playlist
-      #         id: spotify:playlist:19Xl108bOw7ykXet1cxO8v
-      #         name: Shazam
-      #         icon: mdi:playlist-music
-      #       - type: playlist
-      #         id: spotify:playlist:2Ps64TVbfmfX6jxWJnlX1j
-      #         name: ASOT
-      #         icon: mdi:playlist-music
-      #       - type: playlist
-      #         id: spotify:playlist:5hC8A0idiKYqyTcxd1wAvN
-      #         name: Chill
-      #         icon: mdi:playlist-music
-      - type: custom:mini-media-player
-        entity: media_player.living_shieldtv
-        artwork: cover
-        hide:
-          power: true
-          source: true
-          volume: true
-      - type: custom:mini-media-player
-        entity: media_player.theater_shieldtv
-        artwork: cover
-        hide:
-          power: true
-          source: true
-          volume: true
+      #     source: true
+      #     volume: true
+      # - type: custom:mini-media-player
+      #   entity: media_player.theater_tv
+      #   artwork: cover
+      #   hide:
+      #     power: true
+      #     source: true
+      #     volume: true
       - type: custom:mini-media-player
         entity: media_player.office_sonos
         artwork: cover

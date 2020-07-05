@@ -6,7 +6,7 @@
   action:
     - service: frontend.set_theme
       data:
-        name: sundown
+        name: clear
 
 - id: system_renew_letsencrypt_certificate
   alias: "[SYSTEM] Renew Let's Encrypt certificate"
@@ -91,6 +91,25 @@
     - service: cover.close_cover
       entity_id: cover.dining
     - service: cover.close_cover
+      entity_id: cover.kitchen
+
+- id: blinds_stop_via_living_remote
+  alias: "[BLINDS] Stop via Living remote"
+  trigger:
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: living
+        event: 1003 # left_upper_long_release
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: living
+        event: 2003 # left_lower_long_release
+  action:
+    - service: cover.stop_cover
+      entity_id: cover.dining
+    - service: cover.stop_cover
       entity_id: cover.kitchen
 
 - id: lights_living_turn_on_at_dusk
@@ -211,11 +230,11 @@
         - device_tracker.sec84251979ca6b
         - device_tracker.ring
         - device_tracker.ringchime
-        # - device_tracker.living_shieldtv
+        # - device_tracker.living_tv
         - device_tracker.living_harmony
         - device_tracker.avr_x6200w
         # - device_tracker.ubp_x800
-        # - device_tracker.theater_shieldtv
+        # - device_tracker.theater_tv
         - device_tracker.theater_harmony
         - device_tracker.office_sonos
         - device_tracker.bathroom_sonos
