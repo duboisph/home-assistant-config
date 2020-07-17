@@ -236,7 +236,7 @@
         # - device_tracker.ubp_x800
         # - device_tracker.theater_tv
         - device_tracker.theater_harmony
-        - device_tracker.office_sonos
+        # - device_tracker.office_sonos
         - device_tracker.bathroom_sonos
         # - device_tracker.ps4pro
         # - device_tracker.nintendoswitch

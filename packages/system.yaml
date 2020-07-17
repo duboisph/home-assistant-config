@@ -18,14 +18,20 @@ homeassistant:
 group:
   device_58z72z2:
     name: 58Z72Z2
-    icon: mdi:laptop-windows
+    icon: mdi:laptop
     entities:
       - device_tracker.58z72z2
       - device_tracker.58z72z2_2
       - device_tracker.58z72z2_3
+  device_fafnir:
+    name: Fafnir
+    icon: mdi:desktop-tower
+    entities:
+      - device_tracker.fafnir
+      - device_tracker.fafnir_2
   device_fenrir:
     name: Fenrir
-    icon: mdi:laptop-windows
+    icon: mdi:laptop
     entities:
       - device_tracker.fenrir
       - device_tracker.fenrir_2

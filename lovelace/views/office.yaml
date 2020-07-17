@@ -81,5 +81,29 @@ cards:
   - type: vertical-stack
     title: Entertainment
     cards:
-      - type: media-control
-        entity: media_player.office_sonos
+      - type: custom:mini-media-player
+        entity: media_player.spotify
+        artwork: cover
+        hide:
+          power: true
+          shuffle: false
+        shortcuts:
+          columns: 3
+          buttons:
+            - type: playlist
+              id: spotify:playlist:19Xl108bOw7ykXet1cxO8v
+              name: Likes
+              icon: mdi:playlist-music
+            - type: playlist
+              id: spotify:playlist:2Ps64TVbfmfX6jxWJnlX1j
+              name: ASOT
+              icon: mdi:playlist-music
+            - type: playlist
+              id: spotify:playlist:5hC8A0idiKYqyTcxd1wAvN
+              name: Chill
+              icon: mdi:playlist-music
+  # - type: vertical-stack
+  #   title: Entertainment
+  #   cards:
+  #     - type: media-control
+  #       entity: media_player.office_sonos

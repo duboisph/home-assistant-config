@@ -6,8 +6,8 @@ cover:
     automatic_add: False
     devices:
       071a000001020300: # RFY SOMFY
-        name: Living
-      071a000001020301: # RFY SOMFY
         name: Dining
+      071a000001020301: # RFY SOMFY
+        name: Living
       071a000001020302: # RFY SOMFY
         name: Kitchen

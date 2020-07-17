@@ -8,7 +8,7 @@ cards:
         cards:
           - type: custom:mini-graph-card
             entities:
-              - sensor.adguard_dns_queries_blocked_ratio
+              - sensor.pi_hole_ads_percentage_blocked_today
             name: Ads blocked
             decimals: 0
             hours_to_show: 72
@@ -76,27 +76,27 @@ cards:
                 positions:
                   icon: inside
                   name: "off"
-          - type: custom:stack-in-card
-            mode: vertical
-            cards:
-              - type: custom:mini-graph-card
-                entities:
-                  - sensor.synology_cpu_load_total
-                name: Thor
-                icon: mdi:chip
-                align_icon: state
-                decimals: 0
-                hours_to_show: 72
-              - type: custom:bar-card
-                entities:
-                  - sensor.synology_memory_usage_real
-                  - sensor.synology_volume_used_volume_1
-                entity_row: true
-                align: split
-                color: "#3498db"
-                positions:
-                  icon: inside
-                  name: "off"
+          # - type: custom:stack-in-card
+          #   mode: vertical
+          #   cards:
+          #     - type: custom:mini-graph-card
+          #       entities:
+          #         - sensor.synology_cpu_load_total
+          #       name: Thor
+          #       icon: mdi:chip
+          #       align_icon: state
+          #       decimals: 0
+          #       hours_to_show: 72
+          #     - type: custom:bar-card
+          #       entities:
+          #         - sensor.synology_memory_usage_real
+          #         - sensor.synology_volume_used_volume_1
+          #       entity_row: true
+          #       align: split
+          #       color: "#3498db"
+          #       positions:
+          #         icon: inside
+          #         name: "off"
 
   - type: vertical-stack
     cards:
@@ -115,7 +115,7 @@ cards:
           - device_tracker.ubp_x800
           - device_tracker.theater_tv
           - device_tracker.theater_harmony
-          - device_tracker.office_sonos
+          # - device_tracker.office_sonos
           - device_tracker.bathroom_sonos
           - device_tracker.ps4pro
           - device_tracker.nintendoswitch
@@ -126,6 +126,7 @@ cards:
           - group.device_58z72z2
           - device_tracker.ariel
           - device_tracker.aurora_2
+          - group.device_fafnir
           - group.device_fenrir
           - device_tracker.freyja_2
           - device_tracker.loki_2

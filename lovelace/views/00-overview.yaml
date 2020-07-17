@@ -126,14 +126,14 @@ cards:
       #     power: true
       #     source: true
       #     volume: true
-      - type: custom:mini-media-player
-        entity: media_player.office_sonos
-        artwork: cover
-        hide:
-          power: true
-          shuffle: false
-          source: true
-          volume: true
+      # - type: custom:mini-media-player
+      #   entity: media_player.office_sonos
+      #   artwork: cover
+      #   hide:
+      #     power: true
+      #     shuffle: false
+      #     source: true
+      #     volume: true
       - type: custom:mini-media-player
         entity: media_player.bathroom_sonos
         artwork: cover
