@@ -48,46 +48,72 @@ cards:
             hold_action:
               action: navigate
               navigation_path: /lovelace/kids_room
-      - type: custom:auto-entities
-        card:
-          show_header_toggle: false
-          title: Blinds
-          type: entities
-        filter:
-          include:
-            - domain: cover
-        sort:
-          method: name
+      - type: entities
+        title: Blinds
+        entities:
+          - cover.awning
+          - type: divider
+          - cover.living
+          - cover.kitchen
+          # - cover.dining
 
   - type: vertical-stack
     cards:
       - type: weather-forecast
         entity: weather.home
         show_forecast: true
-      - type: custom:mini-graph-card
+      - type: entities
+        title: Climate
+        state_color: true
         entities:
-          - entity: sensor.living_temperature
-            icong: mdi:sofa
+          - entity: sensor.living_humidity
+            type: custom:multiple-entity-row
+            icon: mdi:sofa
             name: Living
-          - entity: sensor.office_temperature
-            icong: mdi:desk
+            state_header: Humidity
+            entities:
+              - entity: sensor.living_temperature
+                name: Temperature
+          - entity: sensor.office_humidity
+            type: custom:multiple-entity-row
+            icon: mdi:desk
             name: Office
-          - entity: sensor.theater_temperature
-            icong: mdi:theater
-            name: Theater
-          - entity: sensor.bedroom_temperature
-            icong: mdi:bed-king
+            state_header: Humidity
+            entities:
+              - entity: sensor.office_temperature
+                name: Temperature
+          - entity: sensor.bedroom_humidity
+            type: custom:multiple-entity-row
+            icon: mdi:bed-king
             name: Bedroom
-          - entity: sensor.kids_room_temperature
-            icong: mdi:baby
+            state_header: Humidity
+            entities:
+              - entity: sensor.bedroom_temperature
+                name: Temperature
+          - entity: sensor.kids_room_humidity
+            type: custom:multiple-entity-row
+            icon: mdi:baby
             name: Kids' Room
-          # - entity: sensor.bathroom_temperature
-          #   icong: mdi:shower
-          #   name: Bathroom
-        icon: mdi:thermometer
-        name: Temperature
-        line_width: 2
-        hours_to_show: 72
+            state_header: Humidity
+            entities:
+              - entity: sensor.kids_room_temperature
+                name: Temperature
+          - entity: sensor.theater_humidity
+            type: custom:multiple-entity-row
+            icon: mdi:theater
+            name: Theater
+            state_header: Humidity
+            entities:
+              - entity: sensor.theater_temperature
+                name: Temperature
+          - entity: sensor.bathroom_humidity
+            type: custom:multiple-entity-row
+            icon: mdi:shower
+            name: Bathroom
+            state_header: Humidity
+            entities:
+              - entity: sensor.bathroom_temperature
+                name: Temperature
 
   - type: vertical-stack
     cards:

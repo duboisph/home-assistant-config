@@ -12,3 +12,5 @@
   url: /hacsfiles/stack-in-card/stack-in-card.js
 - type: module
   url: /hacsfiles/lovelace-battery-entity/battery-entity.js
+- type: module
+  url: /hacsfiles/lovelace-multiple-entity-row/multiple-entity-row.js

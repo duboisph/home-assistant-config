@@ -11,3 +11,5 @@ cover:
         name: Living
       071a000001020302: # RFY SOMFY
         name: Kitchen
+      071a000001020303: # RFY SOMFY
+        name: Awning
