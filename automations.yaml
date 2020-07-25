@@ -77,6 +77,8 @@
     - service: cover.open_cover
       entity_id: cover.dining
     - service: cover.open_cover
+      entity_id: cover.living
+    - service: cover.open_cover
       entity_id: cover.kitchen
 
 - id: blinds_close_via_living_remote
@@ -90,6 +92,8 @@
   action:
     - service: cover.close_cover
       entity_id: cover.dining
+    - service: cover.close_cover
+      entity_id: cover.living
     - service: cover.close_cover
       entity_id: cover.kitchen
 
@@ -109,6 +113,8 @@
   action:
     - service: cover.stop_cover
       entity_id: cover.dining
+    - service: cover.stop_cover
+      entity_id: cover.living
     - service: cover.stop_cover
       entity_id: cover.kitchen
 

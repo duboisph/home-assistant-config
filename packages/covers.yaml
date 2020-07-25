@@ -1,15 +1,12 @@
 rfxtrx:
   device: /dev/serial/by-id/usb-RFXCOM_RFXtrx433XL_DO43QQZI-if00-port0
-
-cover:
-  - platform: rfxtrx
-    automatic_add: False
-    devices:
-      071a000001020300: # RFY SOMFY
-        name: Dining
-      071a000001020301: # RFY SOMFY
-        name: Living
-      071a000001020302: # RFY SOMFY
-        name: Kitchen
-      071a000001020303: # RFY SOMFY
-        name: Awning
+  automatic_add: false
+  devices:
+    # RFY SOMFY - Dining
+    071a000001020300:
+    # RFY SOMFY - Living
+    071a000001020301:
+    # RFY SOMFY - Kitchen
+    071a000001020302:
+    # RFY SOMFY - Awning
+    071a000001020303:
