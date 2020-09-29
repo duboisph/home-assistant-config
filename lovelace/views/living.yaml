@@ -1,4 +1,4 @@
-title: Licing
+title: Living Room
 icon: mdi:sofa
 path: living
 cards:
@@ -9,61 +9,47 @@ cards:
         mode: vertical
         cards:
           - type: light
-            entity: light.living
-          - type: custom:auto-entities
-            card:
-              type: glance
-              show_name: true
-              show_state: false
-            filter:
-              include:
-                - area: Living
-                  domain: light
-                  options:
-                    tap_action:
-                      action: toggle
-                    hold_action:
-                      action: more-info
-                - area: Living
-                  domain: switch
-                  options:
-                    tap_action:
-                      action: toggle
-                    hold_action:
-                      action: more-info
-            sort:
-              method: name
+            entity: light.living_room
+          - type: glance
+            entities:
+              - entity: light.living_eastern_lamp
+                tap_action:
+                  action: toggle
+                hold_action:
+                  action: more-info
+              - entity: switch.living_floor_lamp
+                tap_action:
+                  action: toggle
+                hold_action:
+                  action: more-info
+              - entity: light.living_plant_lamp
+                tap_action:
+                  action: toggle
+                hold_action:
+                  action: more-info
+            show_name: true
+            show_state: false
       - type: horizontal-stack
         cards:
           - type: button
-            entity: switch.circadian_lighting_living
-            name: Circadian
-            icon_height: 48px
-            tap_action:
-              action: call-service
-              service: script.activate_circadian_lighting
-              service_data:
-                circadian_lighting: switch.circadian_lighting_living
-                light: light.living
-          - type: button
-            entity: scene.living_relax
+            entity: scene.living_room_relax
             name: Relax
             icon_height: 48px
             tap_action:
               action: call-service
               service: script.activate_scene
               service_data:
-                circadian_lighting: switch.circadian_lighting_living
-                scene: scene.living_relax
+                circadian_lighting: switch.circadian_lighting_living_room
+                scene: scene.living_room_relax
       - type: horizontal-stack
         cards:
           - type: sensor
-            entity: sensor.living_temperature
+            entity: sensor.living_room_temperature
             name: Temperature
             graph: line
             hours_to_show: 72
           - type: sensor
-            entity: sensor.living_humidity
+            entity: sensor.living_room_humidity
             name: Humidity
             graph: line
             hours_to_show: 72
@@ -110,4 +96,4 @@ cards:
               action: call-service
               service: script.living_harmony_volume_up
       - type: media-control
-        entity: media_player.living_tv
+        entity: media_player.living_room_tv

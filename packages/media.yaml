@@ -2,11 +2,15 @@ spotify:
   client_id: !secret spotify_client_id
   client_secret: !secret spotify_client_secret
 
+webostv:
+  host: !secret mancave_tv_ip
+  name: Mancave TV
+
 sensor:
   - platform: template
     sensors:
       living_harmony:
-        value_template: "{{ state_attr('remote.remote.living_room', 'current_activity') }}"
+        value_template: "{{ state_attr('remote.living_room', 'current_activity') }}"
         friendly_name: "Living Activity"
       theater_harmony:
         value_template: "{{ state_attr('remote.home_theater', 'current_activity') }}"
@@ -42,7 +46,7 @@ switch:
           data:
             entity_id: remote.living_room
             activity: "PowerOff"
-      ## THEATER
+      ## Mancave
       theater_harmony_watch_a_movie:
         value_template: "{{ is_state_attr('remote.home_theater', 'current_activity', 'Watch a Movie') }}"
         icon_template: mdi:movie-roll
@@ -113,7 +117,7 @@ script:
           entity_id: remote.living_room
           command: Mute
           device: Soundbar
-  ## THEATER
+  ## mancave
   theater_harmony_volume_up:
     alias: Living Volume Up
     sequence:

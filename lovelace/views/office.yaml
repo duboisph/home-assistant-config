@@ -10,29 +10,25 @@ cards:
         cards:
           - type: light
             entity: light.office
-          - type: custom:auto-entities
-            card:
-              type: glance
-              show_name: true
-              show_state: false
-            filter:
-              include:
-                - area: Office
-                  domain: light
-                  options:
-                    tap_action:
-                      action: toggle
-                    hold_action:
-                      action: more-info
-                - area: Office
-                  domain: switch
-                  options:
-                    tap_action:
-                      action: toggle
-                    hold_action:
-                      action: more-info
-            sort:
-              method: name
+          - type: glance
+            entities:
+              - entity: light.office_ikea_ps
+                tap_action:
+                  action: toggle
+                hold_action:
+                  action: more-info
+              - entity: light.office_lightstrip_1
+                tap_action:
+                  action: toggle
+                hold_action:
+                  action: more-info
+              - entity: light.office_lightstrip_2
+                tap_action:
+                  action: toggle
+                hold_action:
+                  action: more-info
+            show_name: true
+            show_state: false
       - type: horizontal-stack
         cards:
           - type: button
@@ -77,33 +73,3 @@ cards:
             name: Humidity
             graph: line
             hours_to_show: 72
-
-  - type: vertical-stack
-    title: Entertainment
-    cards:
-      - type: custom:mini-media-player
-        entity: media_player.spotify
-        artwork: cover
-        hide:
-          power: true
-          shuffle: false
-        shortcuts:
-          columns: 3
-          buttons:
-            - type: playlist
-              id: spotify:playlist:19Xl108bOw7ykXet1cxO8v
-              name: Likes
-              icon: mdi:playlist-music
-            - type: playlist
-              id: spotify:playlist:2Ps64TVbfmfX6jxWJnlX1j
-              name: ASOT
-              icon: mdi:playlist-music
-            - type: playlist
-              id: spotify:playlist:5hC8A0idiKYqyTcxd1wAvN
-              name: Chill
-              icon: mdi:playlist-music
-  # - type: vertical-stack
-  #   title: Entertainment
-  #   cards:
-  #     - type: media-control
-  #       entity: media_player.office_sonos

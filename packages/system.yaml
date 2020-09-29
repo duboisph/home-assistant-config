@@ -36,12 +36,6 @@ group:
       - device_tracker.fenrir
       - device_tracker.fenrir_2
       - device_tracker.fenrir_3
-  device_living_tv:
-    name: Living TV
-    icon: mdi:television-box
-    entities:
-      - device_tracker.living_tv
-      - device_tracker.living_tv_2
 
 sensor:
   #### SERVER MONITORING #######################################################

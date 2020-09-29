@@ -2,13 +2,13 @@ circadian_lighting:
 
 switch:
   - platform: circadian_lighting
-    name: Living
-    lights_xy:
-      - light.living
-  - platform: circadian_lighting
     name: Office
     lights_xy:
       - light.office
+  - platform: circadian_lighting
+    name: Mancave
+    lights_xy:
+      - light.mancave_lightstrip_1
 
 script:
   activate_circadian_lighting:
@@ -17,10 +17,10 @@ script:
     fields:
       circadian_lighting:
         description: Circadian Lighting Switch to activate
-        example: switch.circadian_lighting_living_room
+        example: switch.circadian_lighting_office
       light:
         description: Light to activate
-        example: light.living_room
+        example: light.office
     sequence:
       - service: switch.turn_on
         data_template:
@@ -28,21 +28,5 @@ script:
       - service: light.turn_on
         data_template:
           entity_id: "{{ light }}"
+          kelvin: "{{ state_attr('sensor.circadian_values', 'colortemp') | int }}"
           brightness_pct: "{{ state_attr(circadian_lighting, 'brightness') | int }}"
-  activate_scene:
-    alias: Activate Scene
-    description: Activate a scene while disabling Circadian Lighting
-    fields:
-      circadian_lighting:
-        description: Circadian Lighting Switch to deactivate
-        example: switch.circadian_lighting_living_room
-      scene:
-        description: Scene to activate
-        example: scene.living_room_relax
-    sequence:
-      - service: switch.turn_off
-        data_template:
-          entity_id: "{{ circadian_lighting }}"
-      - service: scene.turn_on
-        data_template:
-          entity_id: "{{ scene }}"

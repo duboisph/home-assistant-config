@@ -17,7 +17,7 @@ cards:
       - type: horizontal-stack
         cards:
           - type: button
-            entity: light.living
+            entity: light.living_room
             icon_height: 48px
             hold_action:
               action: navigate
@@ -29,11 +29,11 @@ cards:
               action: navigate
               navigation_path: /lovelace/office
           - type: button
-            entity: light.theater
+            entity: light.mancave
             icon_height: 48px
             hold_action:
               action: navigate
-              navigation_path: /lovelace/theater
+              navigation_path: /lovelace/mancave
       - type: horizontal-stack
         cards:
           - type: button
@@ -53,9 +53,9 @@ cards:
         entities:
           - cover.awning
           - type: divider
-          - cover.living
+          - cover.living_room
           - cover.kitchen
-          # - cover.dining
+          # - cover.dining_room
 
   - type: vertical-stack
     cards:
@@ -66,13 +66,21 @@ cards:
         title: Climate
         state_color: true
         entities:
-          - entity: sensor.living_humidity
+          - entity: sensor.living_room_humidity
             type: custom:multiple-entity-row
             icon: mdi:sofa
-            name: Living
+            name: Living Room
             state_header: Humidity
             entities:
-              - entity: sensor.living_temperature
+              - entity: sensor.living_room_temperature
+                name: Temperature
+          - entity: sensor.mancave_humidity
+            type: custom:multiple-entity-row
+            icon: mdi:theater
+            name: Mancave
+            state_header: Humidity
+            entities:
+              - entity: sensor.mancave_temperature
                 name: Temperature
           - entity: sensor.office_humidity
             type: custom:multiple-entity-row
@@ -98,21 +106,13 @@ cards:
             entities:
               - entity: sensor.kids_room_temperature
                 name: Temperature
-          - entity: sensor.theater_humidity
+          - entity: sensor.outside_humidity
             type: custom:multiple-entity-row
-            icon: mdi:theater
-            name: Theater
+            icon: mdi:beach
+            name: Outside
             state_header: Humidity
             entities:
-              - entity: sensor.theater_temperature
-                name: Temperature
-          - entity: sensor.bathroom_humidity
-            type: custom:multiple-entity-row
-            icon: mdi:shower
-            name: Bathroom
-            state_header: Humidity
-            entities:
-              - entity: sensor.bathroom_temperature
+              - entity: sensor.outside_temperature
                 name: Temperature
 
   - type: vertical-stack
@@ -139,25 +139,10 @@ cards:
               name: Chill
               icon: mdi:playlist-music
       # - type: custom:mini-media-player
-      #   entity: media_player.living_tv
+      #   entity: media_player.living_room_tv
       #   artwork: cover
       #   hide:
       #     power: true
-      #     source: true
-      #     volume: true
-      # - type: custom:mini-media-player
-      #   entity: media_player.theater_tv
-      #   artwork: cover
-      #   hide:
-      #     power: true
-      #     source: true
-      #     volume: true
-      # - type: custom:mini-media-player
-      #   entity: media_player.office_sonos
-      #   artwork: cover
-      #   hide:
-      #     power: true
-      #     shuffle: false
       #     source: true
       #     volume: true
       - type: custom:mini-media-player

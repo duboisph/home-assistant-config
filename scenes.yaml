@@ -1,19 +1,19 @@
-- id: living_relax
-  name: Living Relax
+- id: living_room_relax
+  name: Living Room Relax
   icon: mdi:palette-swatch
   entities:
-    light.living:
-      state: on
+    light.living_room:
+      state: "on"
       brightness: 200
       color_temp: 447
       hs_color: [36.568, 66.275]
 
-- id: living_romantic
-  name: Living Romantic
+- id: living_room_romantic
+  name: Living Room Romantic
   icon: mdi:palette-swatch
   entities:
-    light.living:
-      state: on
+    light.living_room:
+      state: "on"
       brightness: 128
       kelvin: 1800
 
@@ -21,6 +21,8 @@
   name: Office Green
   icon: mdi:palette-swatch
   entities:
+    switch.circadian_lighting_office:
+      state: "off"
     light.office:
       state: "on"
       brightness: 227
@@ -31,47 +33,74 @@
   name: Office Relax
   icon: mdi:palette-swatch
   entities:
+    switch.circadian_lighting_office:
+      state: "off"
     light.office:
       state: "on"
       brightness: 144
       color_temp: 447
       hs_color: [36.568, 66.275]
 
-- id: office_savannah_sunset
-  name: Office Savannah Sunset
+- id: mancave_work
+  name: Mancave Work
   icon: mdi:palette-swatch
   entities:
-    light.office:
+    switch.circadian_lighting_mancave:
       state: "on"
-      brightness: 200
-      color_temp: 382
-      hs_color: [16.925, 78.431]
-
-- id: theater_relax
-  name: Theater Relax
-  icon: mdi:palette-swatch
-  entities:
-    light.theater_spots:
-      state: off
-    light.theater_iris:
-      state: on
-
-- id: theater_full
-  name: Theater Full
-  icon: mdi:palette-swatch
-  entities:
-    light.theater_spots:
-      state: on
+    light.mancave_lightstrip_1:
+      state: "on"
+    light.mancave_spots:
+      state: "on"
       brightness: 255
-    light.theater_iris:
-      state: on
+    light.mancave_iris:
+      state: "off"
 
-- id: theater_dim
-  name: Theater Dim
+- id: mancave_relax
+  name: Mancave Relax
   icon: mdi:palette-swatch
   entities:
-    light.theater_spots:
-      state: on
+    switch.circadian_lighting_mancave:
+      state: "on"
+    light.mancave_lightstrip_1:
+      state: "on"
+      brightness: 150
+    light.mancave_spots:
+      state: "on"
       brightness: 45
-    light.theater_iris:
-      state: on
+    light.mancave_iris:
+      state: "on"
+      brightness: 227
+      color_temp: 301
+      hs_color: [140.455, 58.627]
+
+- id: mancave_game
+  name: Mancave Game
+  icon: mdi:palette-swatch
+  entities:
+    switch.circadian_lighting_mancave:
+      state: "off"
+    light.mancave_lightstrip_1:
+      state: "on"
+      brightness: 227
+      color_temp: 301
+      hs_color: [140.455, 58.627]
+    light.mancave_spots:
+      state: "off"
+    light.mancave_iris:
+      state: "on"
+      brightness: 227
+      color_temp: 301
+      hs_color: [140.455, 58.627]
+
+- id: mancave_movie
+  name: Mancave Movie
+  icon: mdi:palette-swatch
+  entities:
+    switch.circadian_lighting_mancave:
+      state: "off"
+    light.mancave_lightstrip_1:
+      state: "off"
+    light.mancave_spots:
+      state: "off"
+    light.mancave_iris:
+      state: "off"

@@ -33,6 +33,3 @@ lovelace:
       title: System
       icon: mdi:server-network
       show_in_sidebar: true
-
-customizer:
-  custom_ui: local

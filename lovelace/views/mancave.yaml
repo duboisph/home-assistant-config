@@ -1,76 +1,70 @@
-title: Theater
+title: Mancave
 icon: mdi:theater
-path: theater
+path: mancave
 cards:
   - type: vertical-stack
     title: Room Control
     cards:
-      - type: custom:stack-in-card
-        mode: vertical
-        cards:
-          - type: light
-            entity: light.theater
-          - type: custom:auto-entities
-            card:
-              type: glance
-              show_name: true
-              show_state: false
-            filter:
-              include:
-                - area: Theater
-                  domain: light
-                  options:
-                    tap_action:
-                      action: toggle
-                    hold_action:
-                      action: more-info
-                - area: Theater
-                  domain: switch
-                  options:
-                    tap_action:
-                      action: toggle
-                    hold_action:
-                      action: more-info
-            sort:
-              method: name
+      - type: entities
+        title: Lights
+        entities:
+          - type: custom:slider-entity-row
+            entity: light.mancave_iris
+            toggle: false
+          - type: custom:slider-entity-row
+            entity: light.mancave_lightstrip_1
+            name: LED-Strip 1
+            toggle: false
+          - type: custom:slider-entity-row
+            entity: light.mancave_spots
+            toggle: false
       - type: horizontal-stack
         cards:
           - type: button
-            entity: scene.theater_relax
+            entity: scene.mancave_work
+            name: Work
+            icon_height: 48px
+            tap_action:
+              action: call-service
+              service: scene.turn_on
+              service_data:
+                entity_id: scene.mancave_work
+          - type: button
+            entity: scene.mancave_relax
             name: Relax
             icon_height: 48px
             tap_action:
               action: call-service
               service: scene.turn_on
               service_data:
-                entity_id: scene.theater_relax
+                entity_id: scene.mancave_relax
           - type: button
-            entity: scene.theater_full
-            name: Full
+            entity: scene.mancave_game
+            name: Game
             icon_height: 48px
             tap_action:
               action: call-service
               service: scene.turn_on
               service_data:
-                entity_id: scene.theater_full
+                entity_id: scene.mancave_game
           - type: button
-            entity: scene.theater_dim
-            name: Dim
+            entity: scene.mancave_movie
+            name: Movie
             icon_height: 48px
             tap_action:
               action: call-service
               service: scene.turn_on
               service_data:
-                entity_id: scene.theater_dim
+                entity_id: scene.mancave_movie
       - type: horizontal-stack
         cards:
           - type: sensor
-            entity: sensor.theater_temperature
+            entity: sensor.mancave_temperature
             name: Temperature
             graph: line
             hours_to_show: 72
           - type: sensor
-            entity: sensor.theater_humidity
+            entity: sensor.mancave_humidity
             name: Humidity
             graph: line
             hours_to_show: 72
@@ -118,7 +112,30 @@ cards:
             tap_action:
               action: call-service
               service: script.theater_harmony_volume_up
+      - type: custom:mini-media-player
+        entity: media_player.spotify
+        artwork: cover
+        hide:
+          power: true
+          shuffle: false
+        shortcuts:
+          columns: 3
+          buttons:
+            - type: playlist
+              id: spotify:playlist:19Xl108bOw7ykXet1cxO8v
+              name: Likes
+              icon: mdi:playlist-music
+            - type: playlist
+              id: spotify:playlist:2Ps64TVbfmfX6jxWJnlX1j
+              name: ASOT
+              icon: mdi:playlist-music
+            - type: playlist
+              id: spotify:playlist:5hC8A0idiKYqyTcxd1wAvN
+              name: Chill
+              icon: mdi:playlist-music
       - type: media-control
-        entity: media_player.theater_tv
+        entity: media_player.mancave_tv
+      - type: media-control
+        entity: media_player.mancave_tv_homekit
       - type: media-control
         entity: media_player.ps4pro

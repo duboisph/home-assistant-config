@@ -6,8 +6,8 @@ This is my [Home Assistant](https://www.home-assistant.io/) configuration.
 
 ![Lovelace Home](/images/lovelace_home.png)
 ![Lovelace Living](/images/lovelace_living.png)
+![Lovelace Mancave](/images/lovelace_mancave.png)
 ![Lovelace Office](/images/lovelace_office.png)
-![Lovelace Theater](/images/lovelace_theater.png)
 ![Lovelace System](/images/lovelace_system.png)
 
 ## Devices

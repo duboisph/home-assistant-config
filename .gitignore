@@ -11,11 +11,11 @@ custom_components/
 deps/
 downloads/
 glances/
+image/
 node-red/
 themes/
 tts/
 www/community/
-www/custom_ui/
 
 # Log, DB, dump
 home-assistant.log
@@ -26,6 +26,7 @@ core
 harmony_*.conf
 known_devices.yaml
 emulated_hue_ids.json
+webostv.conf
 
 # Secrets
 ip_bans.yaml
