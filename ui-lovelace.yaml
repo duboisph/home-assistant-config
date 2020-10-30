@@ -1,14 +1,7 @@
-custom_header:
-  # background: "rgba(155, 155, 155, 0.25)"
-  compact_mode: true
-  hidden_tab_redirect: false
-  hide_config: true
-  hide_help: true
-  hide_unused: true
 title: Overview
 views:
   - !include lovelace/views/00-overview.yaml
-  - !include lovelace/views/living.yaml
+  - !include lovelace/views/living_room.yaml
   - !include lovelace/views/mancave.yaml
   - !include lovelace/views/office.yaml
   - !include lovelace/views/bedroom.yaml

@@ -9,24 +9,3 @@ switch:
     name: Mancave
     lights_xy:
       - light.mancave_lightstrip_1
-
-script:
-  activate_circadian_lighting:
-    alias: Activate Circadian Lighting
-    description: Turn on a light with Circadian Lighting
-    fields:
-      circadian_lighting:
-        description: Circadian Lighting Switch to activate
-        example: switch.circadian_lighting_office
-      light:
-        description: Light to activate
-        example: light.office
-    sequence:
-      - service: switch.turn_on
-        data_template:
-          entity_id: "{{ circadian_lighting }}"
-      - service: light.turn_on
-        data_template:
-          entity_id: "{{ light }}"
-          kelvin: "{{ state_attr('sensor.circadian_values', 'colortemp') | int }}"
-          brightness_pct: "{{ state_attr(circadian_lighting, 'brightness') | int }}"

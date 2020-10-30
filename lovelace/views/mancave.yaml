@@ -7,13 +7,13 @@ cards:
     cards:
       - type: entities
         title: Lights
+        show_header_toggle: true
         entities:
           - type: custom:slider-entity-row
             entity: light.mancave_iris
             toggle: false
           - type: custom:slider-entity-row
             entity: light.mancave_lightstrip_1
-            name: LED-Strip 1
             toggle: false
           - type: custom:slider-entity-row
             entity: light.mancave_spots
@@ -75,43 +75,43 @@ cards:
       - type: horizontal-stack
         cards:
           - type: button
-            entity: switch.theater_harmony_watch_a_movie
+            entity: switch.mancave_harmony_watch_a_movie
             icon_height: 48px
             show_name: false
           - type: button
-            entity: switch.theater_harmony_watch_tv
+            entity: switch.mancave_harmony_watch_tv
             icon_height: 48px
             show_name: false
           - type: button
-            entity: switch.theater_harmony_play_a_game
+            entity: switch.mancave_harmony_play_a_game
             icon_height: 48px
             show_name: false
       - type: horizontal-stack
         cards:
           - type: button
-            entity: script.theater_harmony_mute
+            entity: script.mancave_harmony_mute
             icon: mdi:volume-off
             icon_height: 32px
             show_name: false
             tap_action:
               action: call-service
-              service: script.theater_harmony_mute
+              service: script.mancave_harmony_mute
           - type: button
-            entity: script.theater_harmony_volume_down
+            entity: script.mancave_harmony_volume_down
             icon: mdi:volume-medium
             icon_height: 32px
             show_name: false
             tap_action:
               action: call-service
-              service: script.theater_harmony_volume_down
+              service: script.mancave_harmony_volume_down
           - type: button
-            entity: script.theater_harmony_volume_up
+            entity: script.mancave_harmony_volume_up
             icon: mdi:volume-high
             icon_height: 32px
             show_name: false
             tap_action:
               action: call-service
-              service: script.theater_harmony_volume_up
+              service: script.mancave_harmony_volume_up
       - type: custom:mini-media-player
         entity: media_player.spotify
         artwork: cover

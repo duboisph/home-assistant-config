@@ -17,6 +17,15 @@
       brightness: 128
       kelvin: 1800
 
+- id: office_work
+  name: Office Work
+  icon: mdi:palette-swatch
+  entities:
+    switch.circadian_lighting_office:
+      state: "on"
+    light.office:
+      state: "on"
+
 - id: office_green
   name: Office Green
   icon: mdi:palette-swatch
@@ -51,7 +60,7 @@
       state: "on"
     light.mancave_spots:
       state: "on"
-      brightness: 255
+      brightness: 50
     light.mancave_iris:
       state: "off"
 
@@ -60,18 +69,20 @@
   icon: mdi:palette-swatch
   entities:
     switch.circadian_lighting_mancave:
-      state: "on"
+      state: "off"
     light.mancave_lightstrip_1:
       state: "on"
-      brightness: 150
+      brightness: 144
+      color_temp: 447
+      hs_color: [36.568, 66.275]
     light.mancave_spots:
       state: "on"
       brightness: 45
     light.mancave_iris:
       state: "on"
-      brightness: 227
-      color_temp: 301
-      hs_color: [140.455, 58.627]
+      brightness: 144
+      color_temp: 447
+      hs_color: [36.568, 66.275]
 
 - id: mancave_game
   name: Mancave Game

@@ -6,30 +6,29 @@ cards:
     cards:
       - type: horizontal-stack
         cards:
-          - type: custom:mini-graph-card
-            entities:
-              - sensor.pi_hole_ads_percentage_blocked_today
+          - type: sensor
+            entity: sensor.pi_hole_ads_percentage_blocked_today
             name: Ads blocked
-            decimals: 0
+            graph: line
             hours_to_show: 72
-          - type: custom:mini-graph-card
-            entities:
-              - sensor.speedtest_ping
+          - type: sensor
+            entity: sensor.speedtest_ping
             name: Ping
-            decimals: 0
+            graph: line
             hours_to_show: 72
       - type: horizontal-stack
         cards:
-          - type: custom:mini-graph-card
-            entities:
-              - entity: sensor.speedtest_download
-                name: Download
-              - entity: sensor.speedtest_upload
-                name: Upload
-            name: Throughput
-            icon: mdi:network
-            line_width: 3
-            decimals: 0
+          - type: sensor
+            entity: sensor.speedtest_download
+            name: Download
+            icon: mdi:download-network
+            graph: line
+            hours_to_show: 72
+          - type: sensor
+            entity: sensor.speedtest_upload
+            name: Upload
+            icon: mdi:upload-network
+            graph: line
             hours_to_show: 72
 
       - type: horizontal-stack
@@ -37,13 +36,11 @@ cards:
           - type: custom:stack-in-card
             mode: vertical
             cards:
-              - type: custom:mini-graph-card
-                entities:
-                  - sensor.mikrotik_cpu_load
+              - type: sensor
+                entity: sensor.mikrotik_cpu_load
                 name: Heimdallr
                 icon: mdi:chip
-                align_icon: state
-                decimals: 0
+                graph: line
                 hours_to_show: 72
               - type: custom:bar-card
                 entities:
@@ -58,13 +55,11 @@ cards:
           - type: custom:stack-in-card
             mode: vertical
             cards:
-              - type: custom:mini-graph-card
-                entities:
-                  - sensor.processor_use
+              - type: sensor
+                entity: sensor.processor_use
                 name: Hel
                 icon: mdi:chip
-                align_icon: state
-                decimals: 0
+                graph: line
                 hours_to_show: 72
               - type: custom:bar-card
                 entities:
@@ -76,27 +71,6 @@ cards:
                 positions:
                   icon: inside
                   name: "off"
-          # - type: custom:stack-in-card
-          #   mode: vertical
-          #   cards:
-          #     - type: custom:mini-graph-card
-          #       entities:
-          #         - sensor.synology_cpu_load_total
-          #       name: Thor
-          #       icon: mdi:chip
-          #       align_icon: state
-          #       decimals: 0
-          #       hours_to_show: 72
-          #     - type: custom:bar-card
-          #       entities:
-          #         - sensor.synology_memory_usage_real
-          #         - sensor.synology_volume_used_volume_1
-          #       entity_row: true
-          #       align: split
-          #       color: "#3498db"
-          #       positions:
-          #         icon: inside
-          #         name: "off"
 
   - type: vertical-stack
     cards:
@@ -110,11 +84,11 @@ cards:
           - device_tracker.ring
           - device_tracker.ringchime
           - device_tracker.living_room_tv
-          - device_tracker.living_harmony
+          - device_tracker.living_room_harmony
           - device_tracker.avr_x6200w
           - device_tracker.ubp_x800
-          - device_tracker.theater_harmony
-          # - device_tracker.office_sonos
+          - device_tracker.mancave_tv
+          - device_tracker.mancave_harmony
           - device_tracker.bathroom_sonos
           - device_tracker.ps4pro
           - device_tracker.nintendoswitch
@@ -125,8 +99,8 @@ cards:
           - group.device_58z72z2
           - device_tracker.ariel
           - device_tracker.aurora_2
-          - group.device_fafnir
-          - group.device_fenrir
+          - device_tracker.fafnir
+          - device_tracker.fenrir
           - device_tracker.freyja_2
           - device_tracker.loki_2
           - device_tracker.kindle

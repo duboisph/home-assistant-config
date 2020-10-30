@@ -13,30 +13,6 @@ homeassistant:
           if (state === 'home') return 'var(--accent-color)';
           return 'var(--disabled-text-color)';
 
-#### GROUPS ####################################################################
-
-group:
-  device_58z72z2:
-    name: 58Z72Z2
-    icon: mdi:laptop
-    entities:
-      - device_tracker.58z72z2
-      - device_tracker.58z72z2_2
-      - device_tracker.58z72z2_3
-  device_fafnir:
-    name: Fafnir
-    icon: mdi:desktop-tower
-    entities:
-      - device_tracker.fafnir
-      - device_tracker.fafnir_2
-  device_fenrir:
-    name: Fenrir
-    icon: mdi:laptop
-    entities:
-      - device_tracker.fenrir
-      - device_tracker.fenrir_2
-      - device_tracker.fenrir_3
-
 sensor:
   #### SERVER MONITORING #######################################################
 
@@ -83,31 +59,3 @@ sensor:
         friendly_name: Zones
         icon_template: mdi:map-marker-radius
         value_template: "{{ states.zone | count }}"
-
-  #### WIREGUARD ###############################################################
-
-  - platform: rest
-    resource: http://a0d7b954-wireguard
-    name: wireguard_sensor
-    value_template: TEST
-    json_attributes:
-      - Loki
-      - Freyja
-      - Fenrir
-  - platform: template
-    sensors:
-      wireguard_loki_latest_handshake:
-        friendly_name: Loki latest handshak
-        icon_template: mdi:handshake
-        unit_of_measurement: s
-        value_template: "{{ states.sensor.wireguard_sensor.attributes['Loki']['latest_handshake'] }}"
-      wireguard_freyja_latest_handshake:
-        friendly_name: Freyja latest handshake
-        icon_template: mdi:handshake
-        unit_of_measurement: s
-        value_template: "{{ states.sensor.wireguard_sensor.attributes['Freyja']['latest_handshake'] }}"
-      wireguard_fenrir_latest_handshake:
-        friendly_name: Fenrir latest handshake
-        icon_template: mdi:handshake
-        unit_of_measurement: s
-        value_template: "{{ states.sensor.wireguard_sensor.attributes['Fenrir']['latest_handshake'] }}"

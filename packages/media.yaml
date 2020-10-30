@@ -9,18 +9,18 @@ webostv:
 sensor:
   - platform: template
     sensors:
-      living_harmony:
+      living_room_harmony:
         value_template: "{{ state_attr('remote.living_room', 'current_activity') }}"
         friendly_name: "Living Activity"
-      theater_harmony:
-        value_template: "{{ state_attr('remote.home_theater', 'current_activity') }}"
-        friendly_name: "Theater Activity"
+      mancave_harmony:
+        value_template: "{{ state_attr('remote.mancave', 'current_activity') }}"
+        friendly_name: "Mancave Activity"
 
 switch:
   - platform: template
     switches:
       ## LIVING
-      living_harmony_listen_to_music:
+      living_room_harmony_listen_to_music:
         value_template: "{{ is_state_attr('remote.living_room', 'current_activity', 'Listen to Music') }}"
         icon_template: mdi:music
         turn_on:
@@ -33,7 +33,7 @@ switch:
           data:
             entity_id: remote.living_room
             activity: "PowerOff"
-      living_harmony_watch_tv:
+      living_room_harmony_watch_tv:
         value_template: "{{ is_state_attr('remote.living_room', 'current_activity', 'Watch TV') }}"
         icon_template: mdi:youtube-tv
         turn_on:
@@ -47,49 +47,49 @@ switch:
             entity_id: remote.living_room
             activity: "PowerOff"
       ## Mancave
-      theater_harmony_watch_a_movie:
-        value_template: "{{ is_state_attr('remote.home_theater', 'current_activity', 'Watch a Movie') }}"
+      mancave_harmony_watch_a_movie:
+        value_template: "{{ is_state_attr('remote.mancave', 'current_activity', 'Watch a Movie') }}"
         icon_template: mdi:movie-roll
         turn_on:
           service: remote.turn_on
           data:
-            entity_id: remote.home_theater
+            entity_id: remote.mancave
             activity: "Watch a Movie"
         turn_off:
           service: remote.turn_on
           data:
-            entity_id: remote.home_theater
+            entity_id: remote.mancave
             activity: "PowerOff"
-      theater_harmony_watch_tv:
-        value_template: "{{ is_state_attr('remote.home_theater', 'current_activity', 'Watch TV') }}"
+      mancave_harmony_watch_tv:
+        value_template: "{{ is_state_attr('remote.mancave', 'current_activity', 'Watch TV') }}"
         icon_template: mdi:youtube-tv
         turn_on:
           service: remote.turn_on
           data:
-            entity_id: remote.home_theater
+            entity_id: remote.mancave
             activity: "Watch TV"
         turn_off:
           service: remote.turn_on
           data:
-            entity_id: remote.home_theater
+            entity_id: remote.mancave
             activity: "PowerOff"
-      theater_harmony_play_a_game:
-        value_template: "{{ is_state_attr('remote.home_theater', 'current_activity', 'Play a Game') }}"
+      mancave_harmony_play_a_game:
+        value_template: "{{ is_state_attr('remote.mancave', 'current_activity', 'Play a Game') }}"
         icon_template: mdi:controller-classic
         turn_on:
           service: remote.turn_on
           data:
-            entity_id: remote.home_theater
+            entity_id: remote.mancave
             activity: "Play a Game"
         turn_off:
           service: remote.turn_on
           data:
-            entity_id: remote.home_theater
+            entity_id: remote.mancave
             activity: "PowerOff"
 
 script:
   ## LIVING
-  living_harmony_volume_up:
+  living_room_harmony_volume_up:
     alias: Living Volume Up
     sequence:
       - service: remote.send_command
@@ -99,7 +99,7 @@ script:
           device: Soundbar
           num_repeats: 5
           delay_secs: 0.25
-  living_harmony_volume_down:
+  living_room_harmony_volume_down:
     alias: Living Volume Down
     sequence:
       - service: remote.send_command
@@ -109,7 +109,7 @@ script:
           device: Soundbar
           num_repeats: 5
           delay_secs: 0.25
-  living_harmony_mute:
+  living_room_harmony_mute:
     alias: Living Mute
     sequence:
       - service: remote.send_command
@@ -118,31 +118,31 @@ script:
           command: Mute
           device: Soundbar
   ## mancave
-  theater_harmony_volume_up:
+  mancave_harmony_volume_up:
     alias: Living Volume Up
     sequence:
       - service: remote.send_command
         data:
-          entity_id: remote.home_theater
+          entity_id: remote.mancave
           command: VolumeUp
           device: Receiver
           num_repeats: 5
           delay_secs: 0.25
-  theater_harmony_volume_down:
+  mancave_harmony_volume_down:
     alias: Living Volume Down
     sequence:
       - service: remote.send_command
         data:
-          entity_id: remote.home_theater
+          entity_id: remote.mancave
           command: VolumeDown
           device: Receiver
           num_repeats: 5
           delay_secs: 0.25
-  theater_harmony_mute:
+  mancave_harmony_mute:
     alias: Living Mute
     sequence:
       - service: remote.send_command
         data:
-          entity_id: remote.home_theater
+          entity_id: remote.mancave
           command: Mute
           device: Receiver

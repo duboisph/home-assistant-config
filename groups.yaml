@@ -3,3 +3,11 @@ family:
   entities:
     - person.elke
     - person.philip
+
+device_58z72z2:
+  name: 58Z72Z2
+  icon: mdi:laptop
+  entities:
+    - device_tracker.58z72z2
+    - device_tracker.58z72z2_2
+    - device_tracker.58z72z2_3

@@ -12,7 +12,7 @@ cards:
             entity: light.office
           - type: glance
             entities:
-              - entity: light.office_ikea_ps
+              - entity: light.eastern_lamp
                 tap_action:
                   action: toggle
                 hold_action:
@@ -32,35 +32,32 @@ cards:
       - type: horizontal-stack
         cards:
           - type: button
-            entity: switch.circadian_lighting_office
-            name: Circadian
+            entity: scene.office_work
+            name: Work
             icon_height: 48px
             tap_action:
               action: call-service
-              service: script.activate_circadian_lighting
+              service: scene.turn_on
               service_data:
-                circadian_lighting: switch.circadian_lighting_office
-                light: light.office
+                entity_id: scene.office_work
           - type: button
             entity: scene.office_green
             name: Green
             icon_height: 48px
             tap_action:
               action: call-service
-              service: script.activate_scene
+              service: scene.turn_on
               service_data:
-                circadian_lighting: switch.circadian_lighting_office
-                scene: scene.office_green
+                entity_id: scene.office_green
           - type: button
             entity: scene.office_relax
             name: Relax
             icon_height: 48px
             tap_action:
               action: call-service
-              service: script.activate_scene
+              service: scene.turn_on
               service_data:
-                circadian_lighting: switch.circadian_lighting_office
-                scene: scene.office_relax
+                entity_id: scene.office_relax
       - type: horizontal-stack
         cards:
           - type: sensor
