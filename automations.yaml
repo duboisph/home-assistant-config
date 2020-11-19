@@ -126,8 +126,8 @@
       value_template: "{{ state_attr('sun.sun', 'elevation') }}"
       below: -1.0
   action:
-    service: scene.turn_on
-    entity_id: scene.living_room_relax
+    - service: scene.turn_on
+      entity_id: scene.living_room_relax
 
 - id: lights_living_turn_off_after_1am
   alias: "[LIGHTS - Living] Turn off after 1AM"
@@ -147,8 +147,8 @@
         id: living_room
         event: 3002 # right_upper_short_release
   action:
-    service: scene.turn_on
-    entity_id: scene.living_room_relax
+    - service: scene.turn_on
+      entity_id: scene.living_room_relax
 
 - id: lights_living_turn_off_via_remote
   alias: "[LIGHTS - Living] Turn off via remote"
@@ -171,8 +171,8 @@
         id: office
         event: 1002 # left_upper_short_release
   action:
-    service: scene.turn_on
-    entity_id: scene.office_work
+    - service: scene.turn_on
+      entity_id: scene.office_work
 
 - id: lights_office_set_relax_scene_via_remote
   alias: "[LIGHTS - Office] Set Relax scene via remote"
@@ -183,8 +183,8 @@
         id: office
         event: 2002 # left_lower_short_release
   action:
-    service: scene.turn_on
-    entity_id: scene.office_relax
+    - service: scene.turn_on
+      entity_id: scene.office_relax
 
 - id: lights_office_set_green_scene_via_remote
   alias: "[LIGHTS - Office] Set Green scene via remote"
@@ -195,8 +195,8 @@
         id: office
         event: 3002 # right_upper_short_release
   action:
-    service: scene.turn_on
-    entity_id: scene.office_green
+    - service: scene.turn_on
+      entity_id: scene.office_green
 
 - id: lights_office_turn_off_via_remote
   alias: "[LIGHTS - Office] Turn off via remote"
@@ -221,8 +221,8 @@
         id: mancave
         event: 1002 # left_upper_short_release
   action:
-    service: scene.turn_on
-    entity_id: scene.mancave_work
+    - service: scene.turn_on
+      entity_id: scene.mancave_work
 
 - id: lights_mancave_set_relax_scene_via_remote
   alias: "[LIGHTS - Mancave] Set Relax scene via remote"
@@ -233,8 +233,8 @@
         id: mancave
         event: 2002 # left_lower_short_release
   action:
-    service: scene.turn_on
-    entity_id: scene.mancave_relax
+    - service: scene.turn_on
+      entity_id: scene.mancave_relax
 
 - id: lights_mancave_set_game_scene_via_remote
   alias: "[LIGHTS - Mancave] Set Game scene via remote"
@@ -245,8 +245,8 @@
         id: mancave
         event: 3002 # right_upper_short_release
   action:
-    service: scene.turn_on
-    entity_id: scene.mancave_game
+    - service: scene.turn_on
+      entity_id: scene.mancave_game
 
 - id: lights_mancave_turn_off_via_remote
   alias: "[LIGHTS - Mancave] Turn off via remote"
@@ -256,6 +256,17 @@
       event_data:
         id: mancave
         event: 4002 # right_lower_short_release
+  action:
+    - service: switch.turn_off
+      entity_id: switch.circadian_lighting_mancave
+    - service: light.turn_off
+      entity_id: light.mancave
+
+- id: lights_mancave_turn_off_after_1am
+  alias: "[LIGHTS - Mancave] Turn off after 1AM"
+  trigger:
+    - platform: time
+      at: 01:00:00
   action:
     - service: switch.turn_off
       entity_id: switch.circadian_lighting_mancave

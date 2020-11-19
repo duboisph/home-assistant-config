@@ -136,6 +136,8 @@ cards:
       - type: media-control
         entity: media_player.mancave_tv
       - type: media-control
-        entity: media_player.mancave_tv_homekit
-      - type: media-control
         entity: media_player.ps4pro
+      - type: media-control
+        entity: media_player.avr_x6200w
+      - type: media-control
+        entity: media_player.ubp_x800
