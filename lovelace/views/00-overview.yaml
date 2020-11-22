@@ -118,34 +118,6 @@ cards:
   - type: vertical-stack
     cards:
       - type: custom:mini-media-player
-        entity: media_player.spotify
-        artwork: cover
-        hide:
-          power: true
-          shuffle: false
-        shortcuts:
-          columns: 3
-          buttons:
-            - type: playlist
-              id: spotify:playlist:19Xl108bOw7ykXet1cxO8v
-              name: Likes
-              icon: mdi:playlist-music
-            - type: playlist
-              id: spotify:playlist:2Ps64TVbfmfX6jxWJnlX1j
-              name: ASOT
-              icon: mdi:playlist-music
-            - type: playlist
-              id: spotify:playlist:5hC8A0idiKYqyTcxd1wAvN
-              name: Chill
-              icon: mdi:playlist-music
-      # - type: custom:mini-media-player
-      #   entity: media_player.living_room_tv
-      #   artwork: cover
-      #   hide:
-      #     power: true
-      #     source: true
-      #     volume: true
-      - type: custom:mini-media-player
         entity: media_player.bathroom_sonos
         artwork: cover
         hide:
