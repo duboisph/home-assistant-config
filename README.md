@@ -41,14 +41,12 @@ This is my [Home Assistant](https://www.home-assistant.io/) configuration.
 
 #### Media
 
-- [Nvidia Shield TV (2015)](https://www.nvidia.com/en-us/shield/)
 - [Nvidia Shield TV (2019 tube)](https://www.nvidia.com/en-us/shield/)
 - Sonos CONNECT
 - Sonos PLAY:1
 
 #### Remotes & Switches
 
-- [Logitech Harmony Elite](https://www.logitech.com/en-us/product/harmony-elite?crid=60)
 - [Logitech Harmony Companion](https://www.logitech.com/en-us/product/harmony-companion?crid=60)
 - [Niko Friends of Hue switches (120-91004)](https://www.niko.eu/en/article/120-91004)
 - [Philips Hue Dimmer Switches](https://www2.meethue.com/en-us/p/hue-dimmer-switch/046677473372)
@@ -61,7 +59,6 @@ This is my [Home Assistant](https://www.home-assistant.io/) configuration.
 
 - [Mikrotik CRS125-24-1s-RM](https://mikrotik.com/product/crs125_24g_1s_rm) as router
 - [Netgear Nighthawk X4S R7800](https://www.netgear.com/home/products/networking/wifi-routers/R7800.aspx) in AP mode
-- [Synology DS118 NAS](https://www.synology.com/en-us/products/DS118)
 - [Pi-Hole](https://pi-hole.net/) Ad Blocking DNS
 - [WireGuard VPN](https://www.wireguard.com/)
 

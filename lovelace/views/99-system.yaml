@@ -88,7 +88,6 @@ cards:
           - device_tracker.avr_x6200w
           - device_tracker.ubp_x800
           - device_tracker.mancave_tv
-          - device_tracker.mancave_harmony
           - device_tracker.bathroom_sonos
           - device_tracker.ps4pro
           - device_tracker.nintendoswitch

@@ -72,46 +72,6 @@ cards:
   - type: vertical-stack
     title: Entertainment
     cards:
-      - type: horizontal-stack
-        cards:
-          - type: button
-            entity: switch.mancave_harmony_watch_a_movie
-            icon_height: 48px
-            show_name: false
-          - type: button
-            entity: switch.mancave_harmony_watch_tv
-            icon_height: 48px
-            show_name: false
-          - type: button
-            entity: switch.mancave_harmony_play_a_game
-            icon_height: 48px
-            show_name: false
-      - type: horizontal-stack
-        cards:
-          - type: button
-            entity: script.mancave_harmony_mute
-            icon: mdi:volume-off
-            icon_height: 32px
-            show_name: false
-            tap_action:
-              action: call-service
-              service: script.mancave_harmony_mute
-          - type: button
-            entity: script.mancave_harmony_volume_down
-            icon: mdi:volume-medium
-            icon_height: 32px
-            show_name: false
-            tap_action:
-              action: call-service
-              service: script.mancave_harmony_volume_down
-          - type: button
-            entity: script.mancave_harmony_volume_up
-            icon: mdi:volume-high
-            icon_height: 32px
-            show_name: false
-            tap_action:
-              action: call-service
-              service: script.mancave_harmony_volume_up
       - type: custom:mini-media-player
         entity: media_player.spotify
         artwork: cover
