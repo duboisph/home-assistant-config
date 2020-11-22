@@ -117,14 +117,10 @@ cards:
 
   - type: vertical-stack
     cards:
-      - type: custom:mini-media-player
+      - type: media-control
+        entity: media_player.mancave_sonos
+      - type: media-control
         entity: media_player.bathroom_sonos
-        artwork: cover
-        hide:
-          power: true
-          shuffle: false
-          source: true
-          volume: true
   # - type: picture-glance
   #   camera_image: camera.front_door
   #   entities:
