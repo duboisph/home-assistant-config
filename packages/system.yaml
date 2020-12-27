@@ -1,5 +1,6 @@
-#### CUSTOMIZE #################################################################
+#### SYSTEM OVERVIEW ###########################################################
 
+## CUSTOMIZE
 homeassistant:
   customize_glob:
     device_tracker.*:
@@ -14,17 +15,14 @@ homeassistant:
           return 'var(--disabled-text-color)';
 
 sensor:
-  #### SERVER MONITORING #######################################################
-
+  ## SERVER MONITORING
   - platform: systemmonitor
     resources:
       - type: disk_use_percent
         arg: "/"
       - type: memory_use_percent
       - type: processor_use
-
-  #### COUNT ENTITIES ##########################################################
-
+  ## COUNT ENTITIES
   - platform: template
     sensors:
       count_automations:

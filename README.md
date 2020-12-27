@@ -47,7 +47,6 @@ This is my [Home Assistant](https://www.home-assistant.io/) configuration.
 
 #### Remotes & Switches
 
-- [Logitech Harmony Companion](https://www.logitech.com/en-us/product/harmony-companion?crid=60)
 - [Niko Friends of Hue switches (120-91004)](https://www.niko.eu/en/article/120-91004)
 - [Philips Hue Dimmer Switches](https://www2.meethue.com/en-us/p/hue-dimmer-switch/046677473372)
 

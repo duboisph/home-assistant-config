@@ -154,7 +154,7 @@
       subtype: button_4
   action:
     - service: light.turn_off
-      entity_id: light.Living_room
+      entity_id: light.living_room
   mode: single
 - id: lights_office_set_work_scene_via_remote
   alias: "[LIGHTS - Office] Set Work scene via remote"
@@ -283,9 +283,7 @@
   action:
     - service: notify.philip
       data_template:
-        title: Device {{ trigger.to_state.name }} is
-        message: >
-          {{ trigger.to_state.state }}
+        title: Device {{ trigger.to_state.name }} is {{ trigger.to_state.state }}
 - id: lan_device_detected
   alias: "[LAN] Alert on detection of new devices"
   trigger:
@@ -295,7 +293,19 @@
     - service: notify.philip
       data_template:
         title: New device detected
-        message: >
-          {{trigger.event.data.host_name}}
-          ({{trigger.event.data.entity_id}})
-          MAC: {{trigger.event.data.mac}}
+        message:
+          "{{trigger.event.data.host_name}} ({{trigger.event.data.entity_id}})
+          MAC: {{trigger.event.data.mac}}"
+- id: "1609087690776"
+  alias: "[LIGHTS - Christmas Tree] Turn on at 8:30 AM"
+  description: ""
+  trigger:
+    - platform: time
+      at: "8:30"
+  condition: []
+  action:
+    - type: turn_on
+      device_id: a903d0481dff4acea6e78483baef73c1
+      entity_id: switch.christmas_tree
+      domain: switch
+  mode: single

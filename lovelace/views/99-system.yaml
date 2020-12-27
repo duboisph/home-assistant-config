@@ -84,25 +84,25 @@ cards:
           - device_tracker.ring
           - device_tracker.ringchime
           - device_tracker.living_room_tv
-          - device_tracker.living_room_harmony
           - device_tracker.avr_x6200w
           - device_tracker.ubp_x800
           - device_tracker.mancave_tv
+          - device_tracker.mancave_sonos
           - device_tracker.bathroom_sonos
-          - device_tracker.ps4pro
-          - device_tracker.nintendoswitch
         show_name: false
         show_state: false
       - type: glance
         entities:
           - group.device_58z72z2
           - device_tracker.ariel
-          - device_tracker.aurora_2
+          - device_tracker.tiana_2
           - device_tracker.fafnir
           - device_tracker.fenrir
           - device_tracker.freyja_2
           - device_tracker.loki_2
           - device_tracker.kindle
+          - device_tracker.ps4pro
+          - device_tracker.nintendoswitch
         show_state: false
       - type: glance
         entities:

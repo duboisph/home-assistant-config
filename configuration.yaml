@@ -11,13 +11,6 @@ http:
   ssl_certificate: /ssl/fullchain.pem
   ssl_key: /ssl/privkey.pem
 
-#### INCLUDES ##################################################################
-
-automation: !include automations.yaml
-group: !include groups.yaml
-scene: !include scenes.yaml
-script: !include scripts.yaml
-
 #### UI  #######################################################################
 
 frontend:
@@ -33,3 +26,89 @@ lovelace:
       title: System
       icon: mdi:server-network
       show_in_sidebar: true
+
+#### DATA ######################################################################
+
+logger:
+  default: info
+
+recorder:
+  db_url: !secret recorder_db_url
+  purge_keep_days: 30
+  exclude:
+    domains:
+      - alert
+      - calendar
+      - camera
+      - sun
+      - updater
+      - weblink
+    entities:
+      - binary_sensor.updater
+      - sensor.date
+      - sensor.time
+      - sensor.last_boot
+      - sensor.current_version
+      - sensor.version_available
+
+influxdb:
+  host: a0d7b954-influxdb
+  port: 8086
+  database: homeassistant
+  username: homeassistant
+  password: !secret influxdb_password
+  max_retries: 3
+  default_measurement: state
+
+#### NOTIFICATIONS #############################################################
+
+notify:
+  - name: all
+    platform: group
+    services:
+      - service: mobile_app_freyja
+      - service: mobile_app_loki
+      - service: mobile_app_tiana
+  - name: philip
+    platform: group
+    services:
+      - service: mobile_app_freyja
+      - service: mobile_app_loki
+  - name: elke
+    platform: group
+    services:
+      - service: mobile_app_tiana
+
+#### INTEGRATIONS ##############################################################
+
+## CIRCADIAN LIGHTING
+circadian_lighting:
+switch:
+  - platform: circadian_lighting
+    name: Office
+    lights_xy:
+      - light.office
+  - platform: circadian_lighting
+    name: Mancave
+    lights_xy:
+      - light.mancave_lightstrip_1
+
+## EMULATED HUE
+emulated_hue:
+  listen_port: 80
+  exposed_domains:
+    - light
+    - scene
+    - switch
+
+## WEBOSTV
+webostv:
+  host: !secret mancave_tv_ip
+  name: Mancave TV
+
+#### INCLUDES ##################################################################
+
+automation: !include automations.yaml
+group: !include groups.yaml
+scene: !include scenes.yaml
+script: !include scripts.yaml

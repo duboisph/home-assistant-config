@@ -58,41 +58,5 @@ cards:
     cards:
       # - type: markdown
       #   content: "# Entertainment"
-      - type: horizontal-stack
-        cards:
-          - type: button
-            entity: switch.living_room_harmony_listen_to_music
-            icon_height: 48px
-            show_name: false
-          - type: button
-            entity: switch.living_room_harmony_watch_tv
-            icon_height: 48px
-            show_name: false
-      - type: horizontal-stack
-        cards:
-          - type: button
-            entity: script.living_room_harmony_mute
-            icon: mdi:volume-off
-            icon_height: 32px
-            show_name: false
-            tap_action:
-              action: call-service
-              service: script.living_room_harmony_mute
-          - type: button
-            entity: script.living_room_harmony_volume_down
-            icon: mdi:volume-medium
-            icon_height: 32px
-            show_name: false
-            tap_action:
-              action: call-service
-              service: script.living_room_harmony_volume_down
-          - type: button
-            entity: script.living_room_harmony_volume_up
-            icon: mdi:volume-high
-            icon_height: 32px
-            show_name: false
-            tap_action:
-              action: call-service
-              service: script.living_room_harmony_volume_up
       - type: media-control
         entity: media_player.living_room_tv
