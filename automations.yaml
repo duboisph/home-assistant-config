@@ -298,14 +298,9 @@
           MAC: {{trigger.event.data.mac}}"
 - id: "1609087690776"
   alias: "[LIGHTS - Christmas Tree] Turn on at 8:30 AM"
-  description: ""
   trigger:
     - platform: time
-      at: "8:30"
-  condition: []
+      at: 08:30:00
   action:
-    - type: turn_on
-      device_id: a903d0481dff4acea6e78483baef73c1
+    - service: switch.turn_on
       entity_id: switch.christmas_tree
-      domain: switch
-  mode: single
