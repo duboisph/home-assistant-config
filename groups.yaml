@@ -10,4 +10,10 @@ device_58z72z2:
   entities:
     - device_tracker.58z72z2
     - device_tracker.58z72z2_2
-    - device_tracker.58z72z2_3
+
+device_fafnir:
+  name: Fafnir
+  icon: mdi:desktop-tower-monitor
+  entities:
+    - device_tracker.fafnir
+    - device_tracker.fafnir_2

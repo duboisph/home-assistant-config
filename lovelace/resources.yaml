@@ -12,3 +12,17 @@
   type: module
 - url: /hacsfiles/custom-ui/custom-ui.js
   type: module
+- url: /hacsfiles/lovelace-swipe-navigation/swipe-navigation.js
+  type: module
+- url: /hacsfiles/lovelace-card-mod/card-mod.js
+  type: module
+- url: /hacsfiles/lovelace-state-switch/state-switch.js
+  type: module
+- url: /hacsfiles/simple-weather-card/simple-weather-card-bundle.js
+  type: module
+- url: /hacsfiles/lovelace-layout-card/layout-card.js
+  type: module
+- url: /hacsfiles/mini-graph-card/mini-graph-card-bundle.js
+  type: module
+- url: /hacsfiles/mini-media-player/mini-media-player-bundle.js
+  type: module

@@ -1,133 +1,191 @@
 title: Home
 icon: mdi:home
 path: home
-badges:
-  - entity: person.philip
-    show_name: false
-  - entity: person.elke
-    show_name: false
 cards:
-  - type: vertical-stack
-    cards:
-      - type: button
-        entity: light.all
-        icon: mdi:power
-        icon_height: 48px
-        show_name: false
-      - type: horizontal-stack
-        cards:
-          - type: button
-            entity: light.living_room
-            icon_height: 48px
-            hold_action:
-              action: navigate
-              navigation_path: /lovelace/living
-          - type: button
-            entity: light.office
-            icon_height: 48px
-            hold_action:
-              action: navigate
-              navigation_path: /lovelace/office
-          - type: button
-            entity: light.mancave
-            icon_height: 48px
-            hold_action:
-              action: navigate
-              navigation_path: /lovelace/mancave
-      - type: horizontal-stack
-        cards:
-          - type: button
-            entity: light.bedroom
-            icon_height: 48px
-            hold_action:
-              action: navigate
-              navigation_path: /lovelace/bedroom
-          - type: button
-            entity: light.kids_room
-            icon_height: 48px
-            hold_action:
-              action: navigate
-              navigation_path: /lovelace/kids_room
-      - type: entities
-        title: Blinds
-        entities:
-          - cover.awning
-          - type: divider
-          - cover.living_room
-          - cover.kitchen
-          # - cover.dining_room
+  - type: custom:mod-card
+    style: |
+      ha-card {
+        padding: 0px 14px 0px 14px;
+      }
+    card:
+      type: vertical-stack
+      cards:
+        # - type: markdown ## Greeting
+        #   style:
+        #     .: |
+        #       ha-card {
+        #         margin: 5px 0px -5px 0px;
+        #         box-shadow: none;
+        #         --ha-card-background: rgba(0, 0, 0, 0.0)
+        #       }
+        #     ha-markdown:
+        #       $: |
+        #         h1 {
+        #           font-size: 20px;
+        #           font-weight: 500;
+        #           color: var(--app-header-text-color);
+        #         }
+        #   content: |
+        #     {% if now().hour < 5 %}
+        #     # Good night, {{user}}!
+        #     {% elif now().hour < 12 %}
+        #     # Good morning, {{user}}!
+        #     {% elif now().hour < 18 %}
+        #     # Good afternoon, {{user}}!
+        #     {% else %}
+        #     # Have a nice evening, {{user}}!
+        #     {% endif %}
 
-  - type: vertical-stack
-    cards:
-      - type: weather-forecast
-        entity: weather.home
-        show_forecast: true
-      - type: entities
-        title: Climate
-        state_color: true
-        entities:
-          - entity: sensor.living_room_humidity
-            type: custom:multiple-entity-row
-            icon: mdi:sofa
-            name: Living Room
-            state_header: Humidity
-            entities:
-              - entity: sensor.living_room_temperature
-                name: Temperature
-          - entity: sensor.mancave_humidity
-            type: custom:multiple-entity-row
-            icon: mdi:theater
-            name: Mancave
-            state_header: Humidity
-            entities:
-              - entity: sensor.mancave_temperature
-                name: Temperature
-          - entity: sensor.office_humidity
-            type: custom:multiple-entity-row
-            icon: mdi:desk
-            name: Office
-            state_header: Humidity
-            entities:
-              - entity: sensor.office_temperature
-                name: Temperature
-          - entity: sensor.bedroom_humidity
-            type: custom:multiple-entity-row
-            icon: mdi:bed-king
-            name: Bedroom
-            state_header: Humidity
-            entities:
-              - entity: sensor.bedroom_temperature
-                name: Temperature
-          - entity: sensor.kids_room_humidity
-            type: custom:multiple-entity-row
-            icon: mdi:baby
-            name: Kids' Room
-            state_header: Humidity
-            entities:
-              - entity: sensor.kids_room_temperature
-                name: Temperature
-          - entity: sensor.outside_humidity
-            type: custom:multiple-entity-row
-            icon: mdi:beach
-            name: Outside
-            state_header: Humidity
-            entities:
-              - entity: sensor.outside_temperature
-                name: Temperature
+        - type: markdown ## Date
+          content: |
+            {% set months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"] %}
+            {% set month = months[now().month -1] %}
+            {% set days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"] %}
+            {% set day = days[now().weekday()] %}
+            # {{ day + ' ' + now().strftime('%-d') + ' ' + month }}
+          style:
+            .: |
+              ha-card {
+              margin: 12px 0px -5px 0px;
+              box-shadow: none;
+              --ha-card-background: rgba(0, 0, 0, 0.0)
+              }
+            ha-markdown:
+              $: |
+                h1 { 
+                font-size: 18px !important;
+                font-weight: 400 !important;
+                padding-left: 10px !important;
+                border-left: 3px solid rgba(81, 134, 236);
+                }
 
-  - type: vertical-stack
-    cards:
-      - type: media-control
-        entity: media_player.mancave_sonos
-      - type: media-control
-        entity: media_player.bathroom_sonos
-  # - type: picture-glance
-  #   camera_image: camera.front_door
-  #   entities:
-  #     - entity: binary_sensor.front_door_motion
-  #     - entity: sensor.front_door_last_motion
-  #       icon: mdi:motion-sensor
-  #     - entity: binary_sensor.front_door_ding
-  #     - entity: sensor.front_door_last_ding
-  #       icon: mdi:bell-ring-outline
-  #   title: Front Door
+        - type: custom:state-switch ## Weather
+          entity: weather.home
+          default: default
+          states:
+            sunny:
+              type: custom:simple-weather-card
+              entity: weather.home
+              name: "Home"
+              secondary_info: precipitation
+              tap_action:
+                action: more-info
+                cards:
+              backdrop:
+                day: "rgba(249, 233, 181)"
+                text: var(--app-header-text-color)
+                night: "rgba(76, 87, 110)"
+                fade: true
+            default:
+              type: custom:simple-weather-card
+              entity: weather.home
+              name: "Home"
+              secondary_info: precipitation
+              tap_action:
+                action: more-info
+                cards:
+              backdrop:
+                day: "rgba(159, 193, 249)"
+                text: var(--app-header-text-color)
+                night: "rgba(76, 87, 110)"
+                fade: true
+
+        - type: markdown ## At a glance header
+          content: |
+            # At a glance...
+          style:
+            .: |
+              ha-card {
+              margin: 12px 0px -5px 0px;
+              box-shadow: none;
+              --ha-card-background: rgba(0, 0, 0, 0.0)
+              }
+            ha-markdown:
+              $: |
+                h1 { 
+                font-size: 18px !important;
+                font-weight: 400 !important;
+                padding-left: 10px !important;
+                border-left: 3px solid rgba(81, 134, 236);
+                }
+        ####
+        - type: button
+          entity: light.all
+          icon: mdi:power
+          icon_height: 48px
+          show_name: false
+        - type: horizontal-stack
+          cards:
+            - type: button
+              entity: light.living_room
+              icon_height: 48px
+              hold_action:
+                action: navigate
+                navigation_path: /lovelace/living
+            - type: button
+              entity: light.office
+              icon_height: 48px
+              hold_action:
+                action: navigate
+                navigation_path: /lovelace/office
+            - type: button
+              entity: light.mancave
+              icon_height: 48px
+              hold_action:
+                action: navigate
+                navigation_path: /lovelace/mancave
+        - type: horizontal-stack
+          cards:
+            - type: button
+              entity: light.bedroom
+              icon_height: 48px
+              hold_action:
+                action: navigate
+                navigation_path: /lovelace/bedroom
+            - type: button
+              entity: light.kids_room
+              icon_height: 48px
+              hold_action:
+                action: navigate
+                navigation_path: /lovelace/kids_room
+
+        - type: entities
+          title: Blinds
+          entities:
+            - cover.awning
+            - type: divider
+            - cover.living_room
+            - cover.kitchen
+            # - cover.dining_room
+
+        - type: media-control
+          entity: media_player.mancave_sonos
+        - type: media-control
+          entity: media_player.bathroom_sonos
+
+    # - type: vertical-stack
+    #   title: Entertainment
+    #   cards:
+    #     - type: media-control
+    #       entity: media_player.living_room_tv
+    #     - type: media-control
+    #       entity: media_player.mancave_tv
+    #     - type: media-control
+    #       entity: media_player.mancave_sonos
+    #     - type: media-control
+    #       entity: media_player.ps4pro
+    #     - type: media-control
+    #       entity: media_player.avr_x6200w
+    #     - type: media-control
+    #       entity: media_player.ubp_x800
+
+    # - type: picture-glance
+    #   camera_image: camera.front_door
+    #   entities:
+    #     - entity: binary_sensor.front_door_motion
+    #     - entity: sensor.front_door_last_motion
+    #       icon: mdi:motion-sensor
+    #     - entity: binary_sensor.front_door_ding
+    #     - entity: sensor.front_door_last_ding
+    #       icon: mdi:bell-ring-outline
+    #   title: Front Door

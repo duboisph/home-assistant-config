@@ -1,13 +1,26 @@
-- id: system_set_lovelace_theme_on_startup
-  alias: "[SYSTEM] Set Lovelace theme on startup"
+- id: system_set_theme
+  alias: "[SYSTEM] Set Lovelace theme"
+  initial_state: true
   trigger:
     - platform: homeassistant
       event: start
+    - platform: state
+      entity_id: sun.sun
+      to: above_horizon
+    - platform: state
+      entity_id: sun.sun
+      to: below_horizon
   action:
-    - service: frontend.set_theme
-      data:
-        name: clear
-  mode: single
+    - choose:
+        - conditions: "{{ is_state('sun.sun', 'below_horizon')}}"
+          sequence:
+            - service: frontend.set_theme
+              data:
+                name: "Google Dark Theme"
+      default:
+        - service: frontend.set_theme
+          data:
+            name: "Google Light Theme"
 - id: system_renew_letsencrypt_certificate
   alias: "[SYSTEM] Renew Let's Encrypt certificate"
   trigger:

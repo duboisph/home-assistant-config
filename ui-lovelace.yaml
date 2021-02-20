@@ -1,8 +1,6 @@
 title: Overview
 views:
   - !include lovelace/views/00-overview.yaml
-  - !include lovelace/views/living_room.yaml
-  - !include lovelace/views/mancave.yaml
-  - !include lovelace/views/office.yaml
-  - !include lovelace/views/bedroom.yaml
-  - !include lovelace/views/kids_room.yaml
+  - !include lovelace/views/lights.yaml
+  - !include lovelace/views/climate.yaml
+  - !include lovelace/views/99-system.yaml

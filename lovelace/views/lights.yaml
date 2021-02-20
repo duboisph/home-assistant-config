@@ -1,0 +1,238 @@
+title: Lights
+icon: mdi:home-lightbulb-outline
+path: lights
+cards:
+  - type: custom:mod-card
+    style: |
+      ha-card {
+        padding: 0px 14px 0px 14px;
+      }
+    card:
+      type: vertical-stack
+      cards:
+        - type: markdown ## Living Room header
+          content: |
+            # Living Room
+          style:
+            .: |
+              ha-card {
+                margin: 12px 0px -5px 0px;
+                box-shadow: none;
+                --ha-card-background: rgba(0, 0, 0, 0.0)
+              }
+            ha-markdown:
+              $: |
+                h1 { 
+                font-size: 18px !important;
+                font-weight: 400 !important;
+                padding-left: 10px !important;
+                border-left: 3px solid rgba(81, 134, 236);
+                }
+        - type: button
+          entity: scene.living_room_relax
+          name: Relax
+          icon_height: 48px
+          tap_action:
+            action: call-service
+            service: scene.turn_on
+            service_data:
+              entity_id: scene.living_room_relax
+        - type: entities
+          title: Lights
+          show_header_toggle: true
+          entities:
+            - entity: switch.living_floor_lamp
+            - type: custom:slider-entity-row
+              entity: light.ikea_ps
+              toggle: false
+            - type: custom:slider-entity-row
+              entity: light.living_plant_lamp
+              toggle: false
+            # - entity: switch.christmas_tree
+
+        - type: markdown ## Mancave header
+          content: |
+            # Mancave
+          style:
+            .: |
+              ha-card {
+                margin: 12px 0px -5px 0px;
+                box-shadow: none;
+                --ha-card-background: rgba(0, 0, 0, 0.0)
+              }
+            ha-markdown:
+              $: |
+                h1 { 
+                font-size: 18px !important;
+                font-weight: 400 !important;
+                padding-left: 10px !important;
+                border-left: 3px solid rgba(81, 134, 236);
+                }
+        - type: horizontal-stack
+          cards:
+            - type: button
+              entity: scene.mancave_work
+              name: Work
+              icon_height: 48px
+              tap_action:
+                action: call-service
+                service: scene.turn_on
+                service_data:
+                  entity_id: scene.mancave_work
+            - type: button
+              entity: scene.mancave_relax
+              name: Relax
+              icon_height: 48px
+              tap_action:
+                action: call-service
+                service: scene.turn_on
+                service_data:
+                  entity_id: scene.mancave_relax
+            - type: button
+              entity: scene.mancave_game
+              name: Game
+              icon_height: 48px
+              tap_action:
+                action: call-service
+                service: scene.turn_on
+                service_data:
+                  entity_id: scene.mancave_game
+            - type: button
+              entity: scene.mancave_movie
+              name: Movie
+              icon_height: 48px
+              tap_action:
+                action: call-service
+                service: scene.turn_on
+                service_data:
+                  entity_id: scene.mancave_movie
+        - type: entities
+          title: Lights
+          show_header_toggle: true
+          entities:
+            - type: custom:slider-entity-row
+              entity: light.mancave_iris
+              toggle: false
+            - type: custom:slider-entity-row
+              entity: light.mancave_lightstrip_1
+              toggle: false
+            - type: custom:slider-entity-row
+              entity: light.mancave_spots
+              toggle: false
+
+        - type: markdown ## Office header
+          content: |
+            # Office
+          style:
+            .: |
+              ha-card {
+                margin: 12px 0px -5px 0px;
+                box-shadow: none;
+                --ha-card-background: rgba(0, 0, 0, 0.0)
+              }
+            ha-markdown:
+              $: |
+                h1 { 
+                font-size: 18px !important;
+                font-weight: 400 !important;
+                padding-left: 10px !important;
+                border-left: 3px solid rgba(81, 134, 236);
+                }
+        - type: horizontal-stack
+          cards:
+            - type: button
+              entity: scene.office_work
+              name: Work
+              icon_height: 48px
+              tap_action:
+                action: call-service
+                service: scene.turn_on
+                service_data:
+                  entity_id: scene.office_work
+            - type: button
+              entity: scene.office_green
+              name: Green
+              icon_height: 48px
+              tap_action:
+                action: call-service
+                service: scene.turn_on
+                service_data:
+                  entity_id: scene.office_green
+            - type: button
+              entity: scene.office_relax
+              name: Relax
+              icon_height: 48px
+              tap_action:
+                action: call-service
+                service: scene.turn_on
+                service_data:
+                  entity_id: scene.office_relax
+        - type: entities
+          title: Lights
+          show_header_toggle: true
+          entities:
+            - type: custom:slider-entity-row
+              entity: light.eastern_lamp
+              toggle: false
+            - type: custom:slider-entity-row
+              entity: light.office_lightstrip_1
+              toggle: false
+            - type: custom:slider-entity-row
+              entity: light.office_lightstrip_2
+              toggle: false
+
+        - type: markdown ## Bedroom header
+          content: |
+            # Bedroom
+          style:
+            .: |
+              ha-card {
+                margin: 12px 0px -5px 0px;
+                box-shadow: none;
+                --ha-card-background: rgba(0, 0, 0, 0.0)
+              }
+            ha-markdown:
+              $: |
+                h1 { 
+                font-size: 18px !important;
+                font-weight: 400 !important;
+                padding-left: 10px !important;
+                border-left: 3px solid rgba(81, 134, 236);
+                }
+        - type: entities
+          title: Lights
+          show_header_toggle: true
+          entities:
+            - entity: switch.bedroom_string_lights
+            - type: custom:slider-entity-row
+              entity: light.night_light_elke
+              toggle: false
+            - type: custom:slider-entity-row
+              entity: light.night_light_philip
+              toggle: false
+
+        - type: markdown ## Kids' Room header
+          content: |
+            # Kids' Room
+          style:
+            .: |
+              ha-card {
+                margin: 12px 0px -5px 0px;
+                box-shadow: none;
+                --ha-card-background: rgba(0, 0, 0, 0.0)
+              }
+            ha-markdown:
+              $: |
+                h1 { 
+                font-size: 18px !important;
+                font-weight: 400 !important;
+                padding-left: 10px !important;
+                border-left: 3px solid rgba(81, 134, 236);
+                }
+        - type: entities
+          title: Lights
+          show_header_toggle: true
+          entities:
+            - type: custom:slider-entity-row
+              entity: light.kids_room
+              toggle: false

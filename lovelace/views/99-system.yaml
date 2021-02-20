@@ -2,112 +2,96 @@ title: System
 icon: mdi:server-network
 path: system
 cards:
-  - type: vertical-stack
-    cards:
-      - type: horizontal-stack
-        cards:
-          - type: sensor
-            entity: sensor.pi_hole_ads_percentage_blocked_today
-            name: Ads blocked
-            graph: line
-            hours_to_show: 72
-          - type: sensor
-            entity: sensor.speedtest_ping
-            name: Ping
-            graph: line
-            hours_to_show: 72
-      - type: horizontal-stack
-        cards:
-          - type: sensor
-            entity: sensor.speedtest_download
-            name: Download
-            icon: mdi:download-network
-            graph: line
-            hours_to_show: 72
-          - type: sensor
-            entity: sensor.speedtest_upload
-            name: Upload
-            icon: mdi:upload-network
-            graph: line
-            hours_to_show: 72
+  - type: custom:mod-card
+    style: |
+      ha-card {
+        padding: 0px 14px 0px 14px;
+      }
+    card:
+      type: vertical-stack
+      cards:
+        - type: sensor
+          entity: sensor.pi_hole_ads_percentage_blocked_today
+          name: Ads blocked
+          graph: line
+          hours_to_show: 72
 
-      - type: horizontal-stack
-        cards:
-          - type: custom:stack-in-card
-            mode: vertical
-            cards:
-              - type: sensor
-                entity: sensor.mikrotik_cpu_load
-                name: Heimdallr
-                icon: mdi:chip
-                graph: line
-                hours_to_show: 72
-              - type: custom:bar-card
-                entities:
-                  - sensor.mikrotik_memory_usage
-                  - sensor.mikrotik_hdd_usage
-                entity_row: true
-                align: split
-                color: "#3498db"
-                positions:
-                  icon: inside
-                  name: "off"
-          - type: custom:stack-in-card
-            mode: vertical
-            cards:
-              - type: sensor
-                entity: sensor.processor_use
-                name: Hel
-                icon: mdi:chip
-                graph: line
-                hours_to_show: 72
-              - type: custom:bar-card
-                entities:
-                  - sensor.memory_use_percent
-                  - sensor.disk_use_percent
-                entity_row: true
-                align: split
-                color: "#3498db"
-                positions:
-                  icon: inside
-                  name: "off"
+        # - type: horizontal-stack
+        #   cards:
+        #     - type: custom:stack-in-card
+        #       mode: vertical
+        #       cards:
+        #         - type: sensor
+        #           entity: sensor.mikrotik_cpu_load
+        #           name: Heimdallr
+        #           icon: mdi:chip
+        #           graph: line
+        #           hours_to_show: 72
+        #         - type: custom:bar-card
+        #           entities:
+        #             - sensor.mikrotik_memory_usage
+        #             - sensor.mikrotik_hdd_usage
+        #           entity_row: true
+        #           align: split
+        #           color: "#3498db"
+        #           positions:
+        #             icon: inside
+        #             name: "off"
+        #     - type: custom:stack-in-card
+        #       mode: vertical
+        #       cards:
+        #         - type: sensor
+        #           entity: sensor.processor_use
+        #           name: Hel
+        #           icon: mdi:chip
+        #           graph: line
+        #           hours_to_show: 72
+        #         - type: custom:bar-card
+        #           entities:
+        #             - sensor.memory_use_percent
+        #             - sensor.disk_use_percent
+        #           entity_row: true
+        #           align: split
+        #           color: "#3498db"
+        #           positions:
+        #             icon: inside
+        #             name: "off"
 
-  - type: vertical-stack
-    cards:
-      - type: glance
-        entities:
-          - device_tracker.modem
-          - device_tracker.heimdallr_ap1
-          - device_tracker.thor
-          - device_tracker.hel
-          - device_tracker.sec84251979ca6b
-          - device_tracker.ring
-          - device_tracker.ringchime
-          - device_tracker.living_room_tv
-          - device_tracker.avr_x6200w
-          - device_tracker.ubp_x800
-          - device_tracker.mancave_tv
-          - device_tracker.mancave_sonos
-          - device_tracker.bathroom_sonos
-        show_name: false
-        show_state: false
-      - type: glance
-        entities:
-          - group.device_58z72z2
-          - device_tracker.ariel
-          - device_tracker.tiana_2
-          - device_tracker.fafnir
-          - device_tracker.fenrir
-          - device_tracker.freyja_2
-          - device_tracker.loki_2
-          - device_tracker.kindle
-          - device_tracker.ps4pro
-          - device_tracker.nintendoswitch
-        show_state: false
-      - type: glance
-        entities:
-          - entity: sensor.count_automations
-          - entity: sensor.count_lights
-          - entity: sensor.count_scripts
-          - entity: sensor.count_sensors
-          - entity: sensor.count_switches
+        - type: glance
+          entities:
+            #- device_tracker.heimdallr_ap1
+            - device_tracker.archer_ax50
+            - device_tracker.thor
+            - device_tracker.hel
+            - device_tracker.sec84251979ca6b
+            - device_tracker.ring
+            - device_tracker.ringchime
+            - device_tracker.living_room_tv
+            - device_tracker.avr_x6200w
+            - device_tracker.ubp_x800
+            - device_tracker.mancave_tv
+            - device_tracker.harmonyhub
+            - device_tracker.mancave_sonos
+            - device_tracker.bathroom_sonos
+          show_name: false
+          show_state: false
+        - type: glance
+          entities:
+            - group.device_58z72z2
+            - device_tracker.ariel
+            - device_tracker.tiana_2
+            - group.device_fafnir
+            - device_tracker.fenrir
+            - device_tracker.freyja_2
+            - device_tracker.loki_2
+            - device_tracker.kindle
+            - device_tracker.ps4pro
+            - device_tracker.nintendoswitch
+          show_state: false
+        - type: glance
+          entities:
+            - entity: sensor.count_automations
+            - entity: sensor.count_lights
+            - entity: sensor.count_scripts
+            - entity: sensor.count_sensors
+            - entity: sensor.count_switches

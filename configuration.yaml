@@ -19,13 +19,6 @@ frontend:
 lovelace:
   mode: yaml
   resources: !include lovelace/resources.yaml
-  dashboards:
-    lovelace-system:
-      mode: yaml
-      filename: ui-lovelace-system.yaml
-      title: System
-      icon: mdi:server-network
-      show_in_sidebar: true
 
 #### DATA ######################################################################
 
@@ -51,14 +44,14 @@ recorder:
       - sensor.current_version
       - sensor.version_available
 
-influxdb:
-  host: a0d7b954-influxdb
-  port: 8086
-  database: homeassistant
-  username: homeassistant
-  password: !secret influxdb_password
-  max_retries: 3
-  default_measurement: state
+# influxdb:
+#   host: a0d7b954-influxdb
+#   port: 8086
+#   database: homeassistant
+#   username: homeassistant
+#   password: !secret influxdb_password
+#   max_retries: 3
+#   default_measurement: state
 
 #### NOTIFICATIONS #############################################################
 

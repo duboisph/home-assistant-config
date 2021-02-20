@@ -1,0 +1,180 @@
+title: Climate
+icon: mdi:home-thermometer-outline
+path: climate
+cards:
+  - type: custom:mod-card
+    style: |
+      ha-card {
+        padding: 0px 14px 0px 14px;
+      }
+    card:
+      type: vertical-stack
+      cards:
+        - type: markdown ## Climate header
+          content: |
+            # Climate
+          style:
+            .: |
+              ha-card {
+                margin: 12px 0px -5px 0px;
+                box-shadow: none;
+                --ha-card-background: rgba(0, 0, 0, 0.0)
+              }
+            ha-markdown:
+              $: |
+                h1 { 
+                font-size: 18px !important;
+                font-weight: 400 !important;
+                padding-left: 10px !important;
+                border-left: 3px solid rgba(81, 134, 236);
+                }
+        - type: horizontal-stack
+          cards:
+            - type: custom:mini-graph-card ## Living Room
+              entities:
+                - entity: sensor.living_room_temperature
+                  name: Living Room
+                - entity: sensor.living_room_humidity
+                  show_graph: false
+                  show_state: true
+              icon: mdi:sofa
+              points_per_hour: 1
+              hour24: true
+              show:
+                extrema: true
+              align_header: left
+              align_icon: left
+              line_color: var(--accent-color)
+              line_width: 8
+              font_size: 75
+              color_thresholds:
+                - value: 15
+                  color: "#5f9bea"
+                - value: 19
+                  color: "#e5ff00"
+                - value: 23
+                  color: "#d35400"
+            - type: custom:mini-graph-card ## Outside
+              entities:
+                - entity: sensor.outside_temperature
+                  name: Outside
+                - entity: sensor.outside_humidity
+                  show_graph: false
+                  show_state: true
+              icon: mdi:beach
+              points_per_hour: 1
+              hour24: true
+              show:
+                extrema: true
+              align_header: left
+              align_icon: left
+              line_color: var(--accent-color)
+              line_width: 8
+              font_size: 75
+              color_thresholds:
+                - value: 8
+                  color: "#5f9bea"
+                - value: 18
+                  color: "#e5ff00"
+                - value: 28
+                  color: "#d35400"
+        - type: horizontal-stack
+          cards:
+            - type: custom:mini-graph-card ## Mancave
+              entities:
+                - entity: sensor.mancave_temperature
+                  name: Mancave
+                - entity: sensor.mancave_humidity
+                  show_graph: false
+                  show_state: true
+              icon: mdi:theater
+              points_per_hour: 1
+              hour24: true
+              show:
+                extrema: true
+              align_header: left
+              align_icon: left
+              line_color: var(--accent-color)
+              line_width: 8
+              font_size: 75
+              color_thresholds:
+                - value: 15
+                  color: "#5f9bea"
+                - value: 19
+                  color: "#e5ff00"
+                - value: 23
+                  color: "#d35400"
+            - type: custom:mini-graph-card ## Office
+              entities:
+                - entity: sensor.office_temperature
+                  name: Office
+                - entity: sensor.office_humidity
+                  show_graph: false
+                  show_state: true
+              icon: mdi:desk
+              points_per_hour: 1
+              hour24: true
+              show:
+                extrema: true
+              align_header: left
+              align_icon: left
+              line_color: var(--accent-color)
+              line_width: 8
+              font_size: 75
+              color_thresholds:
+                - value: 15
+                  color: "#5f9bea"
+                - value: 19
+                  color: "#e5ff00"
+                - value: 23
+                  color: "#d35400"
+        - type: horizontal-stack
+          cards:
+            - type: custom:mini-graph-card ## Bedroom
+              entities:
+                - entity: sensor.bedroom_temperature
+                  name: Bedroom
+                - entity: sensor.bedroom_humidity
+                  show_graph: false
+                  show_state: true
+              icon: mdi:bed-king
+              points_per_hour: 1
+              hour24: true
+              show:
+                extrema: true
+              align_header: left
+              align_icon: left
+              line_color: var(--accent-color)
+              line_width: 8
+              font_size: 75
+              color_thresholds:
+                - value: 15
+                  color: "#5f9bea"
+                - value: 19
+                  color: "#e5ff00"
+                - value: 23
+                  color: "#d35400"
+            - type: custom:mini-graph-card ## Kids' Room
+              entities:
+                - entity: sensor.kids_room_temperature
+                  name: Kids' Room
+                - entity: sensor.kids_room_humidity
+                  show_graph: false
+                  show_state: true
+              icon: mdi:baby
+              points_per_hour: 1
+              hour24: true
+              show:
+                extrema: true
+              align_header: left
+              align_icon: left
+              line_color: var(--accent-color)
+              line_width: 8
+              font_size: 75
+              color_thresholds:
+                - value: 15
+                  color: "#5f9bea"
+                - value: 19
+                  color: "#e5ff00"
+                - value: 23
+                  color: "#d35400"

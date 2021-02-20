@@ -1,3 +1,0 @@
-title: System
-views:
-  - !include lovelace/views/99-system.yaml
