@@ -1,3 +1,6 @@
+**!! Deprecation notice !!** This repository has not been maintained while my HASS setup moved more and more from YAML-based to GUI setup. This repo is now archived.
+
+
 # My Home Assistant configuration
 
 This is my [Home Assistant](https://www.home-assistant.io/) configuration.
